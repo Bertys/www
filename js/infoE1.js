@@ -118,7 +118,11 @@ function loadWizzard(){
 }
 
 function  startInfoEnvio(datas){
-    window.frames[0].location = 'data:text/html;'+datas;
+//    window.frames[0].location = 'data:text/html;'+datas;
+    var doc = document.getElementById('iframe').contentWindow.document;
+doc.open();
+doc.write(datas);
+doc.close();
     
 }
 function cambiarFrame(data){
