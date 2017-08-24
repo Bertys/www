@@ -1,0 +1,132 @@
+html, body{
+  margin: 0px;
+  padding: 0px;
+  font-size: 100%;
+}
+.md-dense{
+	background-color: #2b8ff9 !important;
+}
+.md-toolbar .md-title:first-child {
+    margin-left: 16px !important;
+	  font-size: 1.0em !important;
+		font-weight: bold;
+}
+img.logo
+{
+	display: block;
+	margin: auto;
+	padding: 50px 0 0 0;
+	max-width: 70px;
+}
+
+@media screen and (orientation: portrait) {
+  img.logo { max-width: 70px;}
+}
+
+@media screen and (orientation: landscape) {
+  img.logo { max-width: 70px; }
+}
+
+form{
+	max-width: 80%;
+	display: block;
+	margin: 20px auto 0 auto;
+	padding-right: 20px;
+}
+.md-input-container:after{
+		background-color: rgba(43, 143, 249, 0.2) !important;
+}
+.md-input-container.md-input-focused:after{
+		background-color: rgba(43, 143, 249, 1) !important;
+}
+.md-input-container input, .md-input-container.md-input-placeholder input {
+    font-size: 14px !important;
+    color: rgba(43, 143, 249, 1) !important;
+}
+.md-input-container.md-input-focused input{
+		color: #2b8ff9 !important;
+		text-shadow: 0 0 0 rgba(43, 143, 249, 1) !important;
+		font-size: 14px !important;
+}
+.md-input-container label{
+		color: rgba(0, 0, 0, 0.54);
+		font-size: 10px !important;
+}
+.md-input-container.md-input-focused label{
+		color: #ef8f24 !important;
+		font-size: 10px !important;
+}
+.md-input-container input::-webkit-input-placeholder { /* Chrome/Opera/Safari */
+  font-size: 13px !important;
+}
+.md-input-container input::-moz-placeholder { /* Firefox 19+ */
+  font-size: 13px !important;
+}
+.md-input-container input:-ms-input-placeholder { /* IE 10+ */
+  font-size: 13px !important;
+}
+.md-input-container input:-moz-placeholder { /* Firefox 18- */
+  font-size: 13px !important;
+}
+.md-icon-button.login{
+		background-color: #73b4f9 !important;
+		position: absolute;
+		right: 4%;
+		bottom: 4%;
+}
+.md-icon-button.login i{
+		color: #fff;
+		font-size: 1.3em;
+    line-height: 1.2em;
+}
+
+.md-primary{
+	position: fixed;
+	bottom: 0px;
+	left: 0px;
+	width: 100%;
+	background-color: #d8d8d8;
+  color: #666 !important;
+	padding: 0px;
+	margin: 0px;
+	-webkit-transition: background .2s ease-in-out, border .2s ease-in-out;
+	-moz-transition: background .2s ease-in-out, border .2s ease-in-out;
+	-ms-transition: background .2s ease-in-out, border .2s ease-in-out;
+	-o-transition: background .2s ease-in-out, border .2s ease-in-out;
+	transition: background .2s ease-in-out, border .2s ease-in-out;
+}
+.hidden
+{
+   display: none
+}
+.modal {
+    display:    none;
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+}
+/* When the body has the loading class, we turn
+   the scrollbar off with overflow:hidden */
+body.loading {
+    overflow: hidden;
+}
+/* Anytime the body has the loading class, our
+   modal element will be visible */
+body.loading .modal {
+    display: block;
+}
+#loading {
+    -webkit-animation: rotation 2s infinite linear;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    margin-left: -30px;
+    margin-top: -30px;
+}
+@-webkit-keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to   {-webkit-transform: rotate(359deg);}
+}
