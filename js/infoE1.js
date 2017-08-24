@@ -33,7 +33,7 @@ app.initialize();
 function deviceReadyM() {
     $("#infoE1").removeClass("hidden");
     
-    
+    document.addEventListener("backbutton", onBackKeyDown, false);
     
     
     
@@ -119,14 +119,42 @@ function loadWizzard(){
 
 function  startInfoEnvio(datas){
 //    window.frames[0].location = 'data:text/html;'+datas;
+    console.log(datas);
     var doc = document.getElementById('iframe').contentWindow.document;
 doc.open();
-    datas="'"+datas+"'";
-doc.write(datas);
+    var datas2="'"+datas+"'";
+    datas2 = datas2.replace(/\r/g, '');
+    datas2 = datas2.replace(/\t/g, '');
+    datas2 = datas2.replace(/\n/g, '');
+    console.log(datas2);
+doc.write(datas2);
 doc.close();
+    $body.removeClass("loading");
+//    $('#datosEmail').trigger('click');
     
+//    var link = document.getElementById( 'datosEmail' );
+//    var event = document.createEvent( 'HTMLEvents' );
+//
+//event.initEvent( 'click', true, true );
+//link.dispatchEvent( event );
+//var button = document.getElementById("datosEmail");
+//button.click();
 }
-function cambiarFrame(data){
-    console.log(data);
-    $("#frame").attr("src", "data:text/html,"+data);
+
+
+// Handle the back button
+    //
+    function onBackKeyDown() {
+        location.replace('./envios.html');
+    }
+
+
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
 }

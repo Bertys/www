@@ -90,7 +90,7 @@ function deviceReadyM() {
     f=localStorage.getItem("campanaName");
 
 
-
+    document.addEventListener("backbutton", onBackKeyDown, false);
 
 
     $('#userName').html(c);
@@ -150,7 +150,7 @@ function listenerEnvios(){
       location.replace('./campanas.html');
         });
     $('#goBack').click(function(e) {
-    location.replace('./envios.html');
+    location.replace('./campanas.html');
         });
 
 }
@@ -273,3 +273,10 @@ function loadWizzard(){
 function printPerfil(){
     console.log(wiz.Perfil);
 }
+
+
+// Handle the back button
+    //
+    function onBackKeyDown() {
+        location.replace('./campanas.html');
+    }

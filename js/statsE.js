@@ -37,7 +37,7 @@ var envId, envName;
 function deviceReadyM() {
     $("#statsE").removeClass("hidden");
     
-    
+    document.addEventListener("backbutton", onBackKeyDown, false);
     
     loadWizzard();
 
@@ -154,3 +154,9 @@ function inicioStatsEnv(){
 $('#btnInfo').click(function(e) {
     location.replace('./infoE1.html');
         });
+
+// Handle the back button
+    //
+    function onBackKeyDown() {
+        location.replace('./envios.html');
+    }

@@ -35,6 +35,8 @@ app.initialize();
 function deviceReadyM() {
     $("#infoE2").removeClass("hidden");
     
+    document.addEventListener("backbutton", onBackKeyDown, false);
+    
     $('#goBack').click(function(e) {
     location.replace('./envios.html');
         });
@@ -42,3 +44,9 @@ function deviceReadyM() {
     
     
 }
+
+// Handle the back button
+    //
+    function onBackKeyDown() {
+        location.replace('./envios.html');
+    }

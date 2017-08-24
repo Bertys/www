@@ -56,7 +56,7 @@ function deviceReadyM() {
     StatusBar.backgroundColorByName("blue");
     $("#campanas").removeClass("hidden");
     
-    
+    document.addEventListener("backbutton", onBackKeyDown, false);
     
     $body = $("body");
         $(document).on({
@@ -121,11 +121,11 @@ function listenerCampanas(){
 
 //////////CODIGO MIO ///////////
 $('#goBack').click(function(e) {
-    location.replace('./index.html');
+    location.replace('./dashboard.html');
         });
-$('#searcher').click(function(e) {
-    location.replace('./searcher.html');
-        });
+//$('#searcher').click(function(e) {
+//    location.replace('./searcher.html');
+//        });
     
     var clicks=0;
      $('#btnCampDay').click(function(e) {
@@ -146,4 +146,11 @@ $('#searcher').click(function(e) {
     });
     
     
+    }
+
+
+// Handle the back button
+    //
+    function onBackKeyDown() {
+        location.replace('./dashboard.html');
     }

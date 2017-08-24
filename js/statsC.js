@@ -36,7 +36,7 @@ var campId, campName;
 function deviceReadyM() {
     $("#statsC").removeClass("hidden");
     
-    
+    document.addEventListener("backbutton", onBackKeyDown, false);
     
     loadWizzard();
 
@@ -140,3 +140,9 @@ function inicioStatsCamp(){
     
     $body.removeClass("loading");
 }
+
+// Handle the back button
+    //
+    function onBackKeyDown() {
+        location.replace('./campanas.html');
+    }

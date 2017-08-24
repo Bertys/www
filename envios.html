@@ -129,22 +129,18 @@
       <div class="md-subhead">{{ dateFormat(data.info.timestamp) }}</div>
     </md-card-header-text>
 
-    <md-menu md-size="4" md-direction="bottom left">
+    
       <md-button class="md-icon-button" md-menu-trigger v-on:click="gotoStats3(data.info.envio_id, data.info.envio.nombre)" >
         <i class="material-icons">equalizer</i>
       </md-button>
-      <md-menu-content>
-      </md-menu-content>
-    </md-menu>
+
     
-    <md-menu md-size="4" md-direction="bottom left">
+    
       <md-button class="md-icon-button" md-menu-trigger v-on:click="gotoInfo3(data.info.envio_id, data.info.envio.nombre)" >
         <i class="material-icons">info_outline</i>
       </md-button>
 
-      <md-menu-content>
-      </md-menu-content>
-    </md-menu>
+
     
   </md-card-header>
       
@@ -207,7 +203,7 @@
     <md-bottom-bar>
   <md-bottom-bar-item md-iconset="icon-speedometer" id="aDashboard"></md-bottom-bar-item>
   <md-bottom-bar-item md-iconset="icon-paper-plane">Campañas</md-bottom-bar-item>
-  <md-bottom-bar-item md-iconset="icon-envelope"></md-bottom-bar-item>
+  <md-bottom-bar-item md-iconset="icon-envelope" disabled></md-bottom-bar-item>
 </md-bottom-bar>
     
     

@@ -102,22 +102,17 @@
       <div class="md-title">{{ data.info.name }}</div>
     </md-card-header-text>
 
-    <md-menu md-size="4" md-direction="bottom left">
+    
       <md-button class="md-icon-button" md-menu-trigger v-on:click="gotoStats2(data.info.dmds_remote_id, data.info.name)" >
         <i class="material-icons">equalizer</i>
       </md-button>
-      <md-menu-content>
-      </md-menu-content>
-    </md-menu>
+
     
-    <md-menu md-size="4" md-direction="bottom left">
+    
       <md-button class="md-icon-button" md-menu-trigger v-on:click="gotoEnvios2(data.info.dmds_remote_id, data.info.name)" >
         <i class="material-icons">mail_outline</i>
       </md-button>
 
-      <md-menu-content>
-      </md-menu-content>
-    </md-menu>
     
   </md-card-header>
       
