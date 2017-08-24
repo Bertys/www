@@ -121,6 +121,7 @@ function  startInfoEnvio(datas){
 //    window.frames[0].location = 'data:text/html;'+datas;
     var doc = document.getElementById('iframe').contentWindow.document;
 doc.open();
+    datas="'"+datas+"'";
 doc.write(datas);
 doc.close();
     
