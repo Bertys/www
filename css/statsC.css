@@ -22,7 +22,11 @@
 /*  padding: 1rem;*/
   text-align: center;
 }
-
+.main-toolbar{
+    position: fixed!important;
+    top:0;
+    width: 100%;
+}
 
 .hidden
 {

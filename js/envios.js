@@ -145,9 +145,14 @@ document.getElementById("logout2").addEventListener("click", function(){
 function listenerEnvios(){
         
 
-    
     $('#anavCampanas').click(function(e) {
       location.replace('./campanas.html');
+        });
+    $('#aCampanas').click(function(e) {
+      location.replace('./campanas.html');
+        });
+    $('#btnStatsC').click(function(e) {
+      location.replace('./statsC.html');
         });
     $('#goBack').click(function(e) {
     location.replace('./campanas.html');

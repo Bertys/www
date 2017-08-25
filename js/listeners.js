@@ -36,3 +36,4 @@ $('#aCampanas').click(function(e) {
     $('#aDashboard').click(function(e) {
       location.replace('./dashboard.html');
         });
+ 

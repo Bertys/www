@@ -33,12 +33,13 @@ app.initialize();
 function deviceReadyM() {
     
   StatusBar.backgroundColorByName("orange"); 
-  $("#dashboard").removeClass("hidden");
+  
     
 //    console.log(StatusBar);
     
      loadWizzard();
         
+    document.addEventListener("backbutton", onBackKeyDown, false);
     
     x=localStorage.getItem("token");
     b=localStorage.getItem("userEmail");
@@ -61,7 +62,10 @@ function deviceReadyM() {
     $body = $("body");
         $(document).on({
         ajaxStart: function() { $body.addClass("loading"); },
-        ajaxStop: function() { $body.removeClass("loading"); }
+        ajaxStop: function() { 
+            $body.removeClass("loading");
+        $(".main").removeClass("hidden");
+        }
         });
     
 
@@ -79,7 +83,10 @@ function deviceReadyM() {
     
    
 
-
+function onBackKeyDown() {
+         $('#dialog').click();
+    startlistenexit();
+    }
 
 
 
@@ -149,6 +156,21 @@ function listenerDashboard(){
              }
              e.preventDefault();
     });
+    
+    
+    $('#aCampanas').click(function(e) {
+        location.replace('./campanas.html');
+        e.preventDefault();
+    });
+    
+}
+
+
+function startlistenexit(){
+    $('#closeapp').click(function(e) {
+        console.log('cerrando lapp');
+        navigator.app.exitApp();
+    });
 }
 
 function loadWizzard(){
@@ -167,3 +189,7 @@ function loadWizzard(){
 function printPerfil(){
     console.log(wiz.Perfil);
 }
+
+// Handle the back button
+    //
+    

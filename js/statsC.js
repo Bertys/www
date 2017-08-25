@@ -34,7 +34,7 @@ var page='campanasStats';
 var campId, campName;
 //////////////////START////////////////////////////
 function deviceReadyM() {
-    $("#statsC").removeClass("hidden");
+    
     
     document.addEventListener("backbutton", onBackKeyDown, false);
     
@@ -90,6 +90,9 @@ function deviceReadyM() {
     $('#btnEnv').click(function(e) {
     location.replace('./envios.html');
         });
+    $('#aEnvios').click(function(e) {
+    location.replace('./envios.html');
+        });
 
 }
 
@@ -138,6 +141,8 @@ function inicioStatsCamp(){
     $('#desTot').html(wiz.enviosTot[0].info.ev_desuscripcion);
     $('#desTotP').html((wiz.enviosTot[0].info.ev_desuscripcion/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
     
+    
+    $("#statsC").removeClass("hidden");
     $body.removeClass("loading");
 }
 

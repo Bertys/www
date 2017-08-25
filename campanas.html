@@ -31,7 +31,7 @@
 <body id="campanas" class="hidden">
 <div class="app-viewport" id="file-list">
     
-    <md-whiteframe md-elevation="3" class="main-toolbar">
+    <md-whiteframe md-elevation="3" class="main-toolbarXX">
  
       <md-toolbar class="md-dense">
 
@@ -74,7 +74,7 @@
   </md-whiteframe>
    
 <!--    <h4 class="md-title headerCamp" style="flex: 1">Lista de campañas de lo últimos</h4>-->
-    
+  <md-whiteframe>  
     <md-card md-with-hover>
 
 
@@ -96,14 +96,16 @@
     
     
     <md-card class="card-example" style="padding: 0em;" v-for="(data, index) in listCamp">
+        <div v-on:click="gotoStats2(data.info.dmds_remote_id, data.info.name)">
   <md-card-area md-inset>
 <md-card-header>
     <md-card-header-text>
       <div class="md-title">{{ data.info.name }}</div>
     </md-card-header-text>
 
+<!--
     
-      <md-button class="md-icon-button" md-menu-trigger v-on:click="gotoStats2(data.info.dmds_remote_id, data.info.name)" >
+      <md-button class="md-icon-button" md-menu-trigger>
         <i class="material-icons">equalizer</i>
       </md-button>
 
@@ -112,6 +114,7 @@
       <md-button class="md-icon-button" md-menu-trigger v-on:click="gotoEnvios2(data.info.dmds_remote_id, data.info.name)" >
         <i class="material-icons">mail_outline</i>
       </md-button>
+-->
 
     
   </md-card-header>
@@ -159,13 +162,13 @@
   <md-card-content>
     
   </md-card-content>
--->
+--></div>
 </md-card> 
       
       
       <md-button id="butCarMas" class="md-primary center" v-on:click="cargarMas()">Cargar Mas</md-button>
       
-      
+  </md-whiteframe>    
       <div class="modal">
               <img id="loading" src="img/logo.png" alt="Planisys DMDS">
           </div>
@@ -173,7 +176,7 @@
     
     
 <!--    <div class="footer">-->
-    <md-bottom-bar>
+    <md-bottom-bar class="xxx">
   <md-bottom-bar-item md-iconset="icon-speedometer" id="aDashboard"></md-bottom-bar-item>
   <md-bottom-bar-item md-iconset="icon-paper-plane">Campañas</md-bottom-bar-item>
   <md-bottom-bar-item md-iconset="icon-envelope" disabled></md-bottom-bar-item>

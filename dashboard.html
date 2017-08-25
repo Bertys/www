@@ -28,10 +28,10 @@
 
 </head>
     
-<body id="dashboard" class="hidden">
+<body id="dashboard" class="loading">
 
 <div class="app-viewport" id="file-list">
-    
+    <div class="main hidden">
     <md-whiteframe md-elevation="3" class="main-toolbar">
  
       <md-toolbar class="md-dense">
@@ -73,7 +73,7 @@
       
       
   </md-whiteframe>
-   
+    <br><br>
     <h4 class="md-title headerCamp" style="flex: 1">Estadísticas Generales</h4>
     
     <md-card md-with-hover>
@@ -227,15 +227,32 @@
 
   </md-card-actions>
 </md-card>
+    <div class="hidden">
+    <md-button class="md-primary md-raised" @click="openDialog('dialog')" id="dialog">Dialog</md-button>
+    </div>
+    <md-dialog md-open-from="#custom" md-close-to="#custom" ref="dialog">
+  <md-dialog-title>Cerra App</md-dialog-title>
+
+  <md-dialog-content>Está seguro que desea salir y cerrar la aplicación?</md-dialog-content>
+
+  <md-dialog-actions>
+    <md-button class="md-primary" @click="closeDialog('dialog')">Cancelar</md-button>
+    <md-button class="md-primary" @click="closeDialog('dialog')" id="closeapp">Salir</md-button>
+  </md-dialog-actions>
+</md-dialog>
     
 
 <!--    <div class="footer">-->
-    <md-bottom-bar >
+    <md-bottom-bar class="xxx">
   <md-bottom-bar-item md-iconset="icon-speedometer">Dashboard</md-bottom-bar-item>
   <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas"></md-bottom-bar-item>
   <md-bottom-bar-item md-iconset="icon-envelope" id="aEnvios" disabled="true"></md-bottom-bar-item>
 </md-bottom-bar>
-   
+   </div> 
+     <!-- loading -->
+      <div class="modal">
+        <img id="loading" src="img/logo.png" alt="Planisys DMDS">
+      </div>
     
     </div>   
     

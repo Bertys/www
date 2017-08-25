@@ -101,7 +101,7 @@
         <i class="material-icons">mail_outline</i>
       </md-button>
     
-    <md-button class="md-icon-button" md-menu-trigger active style="float:right;">
+    <md-button class="md-icon-button" md-menu-trigger active style="float:right;" id="btnStatsC">
         <i class="material-icons">equalizer</i>
       </md-button>
 
@@ -122,6 +122,7 @@
       
 -->
      <md-card class="card-example" style="padding: 0em;" v-for="(data, index) in listEnv"> 
+         <div v-on:click="gotoStats3(data.info.envio_id, data.info.envio.nombre)">
       <md-card-area md-inset>
 <md-card-header>
     <md-card-header-text>
@@ -129,6 +130,7 @@
       <div class="md-subhead">{{ dateFormat(data.info.timestamp) }}</div>
     </md-card-header-text>
 
+<!--
     
       <md-button class="md-icon-button" md-menu-trigger v-on:click="gotoStats3(data.info.envio_id, data.info.envio.nombre)" >
         <i class="material-icons">equalizer</i>
@@ -139,6 +141,7 @@
       <md-button class="md-icon-button" md-menu-trigger v-on:click="gotoInfo3(data.info.envio_id, data.info.envio.nombre)" >
         <i class="material-icons">info_outline</i>
       </md-button>
+-->
 
 
     
@@ -188,6 +191,7 @@
 </div>
     </md-card-content>
   </md-card-area>
+         </div>
       </md-card> 
         
         <md-button id="butCarMasE" class="md-primary center" v-on:click="cargarMasE()">Cargar Mas</md-button>
@@ -202,8 +206,8 @@
 <!--    <div class="footer">-->
     <md-bottom-bar>
   <md-bottom-bar-item md-iconset="icon-speedometer" id="aDashboard"></md-bottom-bar-item>
-  <md-bottom-bar-item md-iconset="icon-paper-plane">Campañas</md-bottom-bar-item>
-  <md-bottom-bar-item md-iconset="icon-envelope" disabled></md-bottom-bar-item>
+  <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas"></md-bottom-bar-item>
+  <md-bottom-bar-item md-iconset="icon-envelope" active>Envíos</md-bottom-bar-item>
 </md-bottom-bar>
     
     

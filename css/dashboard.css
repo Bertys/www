@@ -20,11 +20,19 @@
 /*  width: auto;*/
   text-align: center;
 }
-
-
+.x{
+    position: fixed!important;
+    bottom:0;
+    width: 100%;
+}
+.main-toolbar{
+    position: fixed!important;
+    top:0;
+    width: 100%;
+}
 .hidden
 {
-   display: none
+   display: none;
 }
 
 .modal {

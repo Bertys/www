@@ -31,7 +31,7 @@ app.initialize();
 //////////////////START////////////////////////////
 function deviceReadyM() {
 
-     $body = $("body");
+     $body = $(".main");
     listenerLogin();
 
 
@@ -42,7 +42,6 @@ function deviceReadyM() {
         $body.removeClass("loading");
 
         }else if(localStorage.getItem("nuevo")=='Bueno'){
-//            $body.addClass("loading");
             startPageLogin(localStorage.getItem("usrAuxMeu"),localStorage.getItem("pswAuxMeu"));
         }else{
 //            inicioCampanas();
