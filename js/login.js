@@ -31,15 +31,17 @@ app.initialize();
 //////////////////START////////////////////////////
 function deviceReadyM() {
 
-     $body = $(".main");
+     $body = $("body");
+     $main = $(".main");
     listenerLogin();
 
 
 
   if(localStorage.getItem("nuevo")==null){
             console.log('entra nuevo=null');
-        $body.removeClass("hidden");
+        
         $body.removeClass("loading");
+      $main.removeClass("hidden");
 
         }else if(localStorage.getItem("nuevo")=='Bueno'){
             startPageLogin(localStorage.getItem("usrAuxMeu"),localStorage.getItem("pswAuxMeu"));
