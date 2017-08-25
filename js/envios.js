@@ -90,7 +90,7 @@ function deviceReadyM() {
     f=localStorage.getItem("campanaName");
 
 
-    document.addEventListener("backbutton", onBackKeyDown, false);
+
 
 
     $('#userName').html(c);
@@ -145,17 +145,12 @@ document.getElementById("logout2").addEventListener("click", function(){
 function listenerEnvios(){
         
 
+    
     $('#anavCampanas').click(function(e) {
       location.replace('./campanas.html');
         });
-    $('#aCampanas').click(function(e) {
-      location.replace('./campanas.html');
-        });
-    $('#btnStatsC').click(function(e) {
-      location.replace('./statsC.html');
-        });
     $('#goBack').click(function(e) {
-    location.replace('./campanas.html');
+    location.replace('./envios.html');
         });
 
 }
@@ -278,10 +273,3 @@ function loadWizzard(){
 function printPerfil(){
     console.log(wiz.Perfil);
 }
-
-
-// Handle the back button
-    //
-    function onBackKeyDown() {
-        location.replace('./campanas.html');
-    }

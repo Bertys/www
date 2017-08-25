@@ -35,7 +35,7 @@ var campId, campName;
 var envId, envName;
 //////////////////START////////////////////////////
 function deviceReadyM() {
-    $("#statsE").removeClass("hidden");
+    
     
     document.addEventListener("backbutton", onBackKeyDown, false);
     
@@ -119,8 +119,11 @@ function loadWizzard(){
 
 function inicioStatsEnv(){
     
+    console.log(wiz.envios[0].info);
+    console.log(envId);
+    
     for(i=0;i<wiz.envios.length;i++){
-        if(wiz.envios[i].info.id==envId){
+        if(wiz.envios[i].info.envio.id==envId){
     console.log(wiz.envios[i].info);
    
 //    console.log(JSON.stringify(wiz.enviosTot.info.totalEnvios));
@@ -140,9 +143,13 @@ function inicioStatsEnv(){
     $('#reUniP').html((wiz.envios[i].info.ev_rebote_hard/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
     $('#desTot').html(wiz.envios[i].info.ev_desuscripcion);
     $('#desTotP').html((wiz.envios[i].info.ev_desuscripcion/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
-         }
+        console.log('done'+JSON.stringify(wiz.envios[i].info)); 
+        }
     }
+    
+    $(".main").removeClass("hidden");
     $body.removeClass("loading");
+   
 }
 //////////////////START////////////////////////////
 

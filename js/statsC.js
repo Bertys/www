@@ -36,7 +36,7 @@ var campId, campName;
 function deviceReadyM() {
     
     
-    document.addEventListener("backbutton", onBackKeyDown, false);
+    
     
     loadWizzard();
 
@@ -65,7 +65,7 @@ function deviceReadyM() {
     
 //    console.log(b);
     $('#userName').html(b);
-    $('#h2p5').html("<br />Nombre de Campaña: '"+campName+"'");
+    $('#h2p7').html("<br />Campaña: '"+campName+"'");
     
     
     
@@ -88,9 +88,6 @@ function deviceReadyM() {
     location.replace('./campanas.html');
         });
     $('#btnEnv').click(function(e) {
-    location.replace('./envios.html');
-        });
-    $('#aEnvios').click(function(e) {
     location.replace('./envios.html');
         });
 
@@ -141,13 +138,6 @@ function inicioStatsCamp(){
     $('#desTot').html(wiz.enviosTot[0].info.ev_desuscripcion);
     $('#desTotP').html((wiz.enviosTot[0].info.ev_desuscripcion/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
     
-    
-    $("#statsC").removeClass("hidden");
+    $(".main").removeClass("hidden");
     $body.removeClass("loading");
 }
-
-// Handle the back button
-    //
-    function onBackKeyDown() {
-        location.replace('./campanas.html');
-    }

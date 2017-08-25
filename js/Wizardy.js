@@ -269,6 +269,8 @@ totalEnvios=envios.recordsFiltered;
   }else if(page=='envios'){
         printEnvios();
   }else if(page=='envioStats'){
+      console.log(JSON.stringify(wiz.enviosTot));
+      console.log(JSON.stringify(wiz.envios));
         inicioStatsEnv();
   }
     
