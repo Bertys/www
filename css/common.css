@@ -1,0 +1,121 @@
+html{
+  height: auto !important;
+}
+body{
+  background-color: #efefef;
+  color: #515151;
+}
+
+.main-toolbar-header, .main-toolbar-footer{
+    position: fixed;
+    z-index: 1;
+    width: 100%;
+}
+.main-toolbar-header{
+    top:0;
+}
+.main-toolbar-footer{
+    bottom: 0;
+}
+.wrap{
+     padding: 70px 15px 70px;
+}
+h4{
+  font-size: 15px;
+  margin: 0px;
+  padding: 0px;
+}
+
+.md-card-statistics{
+   width: 100%;
+   margin: 10px 0 70px 0;
+   padding: 20px 15px;
+   border: 1px solid #e5e5e5  !important;
+   z-index: 0  !important;
+   border-radius: 0px  !important;
+   box-shadow: 0 1px 5px rgba(0, 0, 0, 0), 0 2px 2px rgba(0, 0, 0, 0), 0 3px 1px -2px rgba(0, 0, 0, 0) !important;
+   float: right;
+}
+.md-card-statistics .md-button.md-icon-button {
+    width: 100% !important;
+    min-width: auto !important;
+   border: 1px solid #e5e5e5  !important;
+    height: 40px;
+    margin: 0 6px;
+    padding: 6px;
+    border-radius: 0 !important;
+    line-height: 24px;
+}
+.md-card-statistics .md-button.md-icon-button i,
+.md-card-statistics .md-button.md-icon-button span
+{
+  display: inline-block;
+  position: relative;
+  text-align: right;
+}
+.md-card-statistics .md-button.md-icon-button i
+{
+  top: -1px;
+}
+.md-layout-header{
+    margin-bottom: 20px;
+}
+.md-card-statistics .md-title{
+  font-size: 21px  !important;
+  line-height: normal !important;
+}
+.md-card-statistics .md-subhead{
+  font-size: 12px !important;
+}
+.md-layout-content{
+  margin-bottom: 1px;
+}
+.md-layout-content .md-list-text-container > :nth-child(1) {
+    font-size: 16px;
+}
+.md-layout-content .md-list-text-container > :nth-child(2) {
+    font-size: 12px;
+}
+.md-layout-bar{
+  margin-bottom: 10px;
+}
+/*  LOADING  */
+
+.hidden
+{
+  /* display: none*/
+}
+.modal {
+    display:    none !important; /* <- sacar important para activar  */
+    position:   fixed;
+    z-index:    1000;
+    top:        0;
+    left:       0;
+    height:     100%;
+    width:      100%;
+    background-color: rgba(255, 255, 255, 0.2);
+}
+
+body.loading {
+    overflow: hidden;
+}
+body.loading .modal {
+    display: block;
+}
+#loading {
+    -webkit-animation: rotation 2s infinite linear;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    width: 50px;
+    height: 95px;
+    margin-left: -25px;
+    margin-top: -47.5px;
+}
+@-webkit-keyframes rotation {
+    from {-webkit-transform: rotate(0deg);}
+    to   {-webkit-transform: rotate(359deg);}
+}
+* {
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+}
