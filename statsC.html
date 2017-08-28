@@ -12,9 +12,7 @@
     <script src="js/Wizardy.js?version=3"></script>
 <!--    <script src="js/languages.js?version=3"></script>-->
 <!--    <script src="js/index.js?version=22"></script>-->
-    
-    <script src="js/core-min.js"></script>
-    <script src="js/sha256-min.js"></script>
+
     
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
@@ -28,7 +26,10 @@
 
 </head>
     
-<body id="statsC" class="">
+    
+    
+    
+<body id="statsC" class="loading">
 <div class="app-viewport" id="file-list">
     <div class="main hidden">
     <md-whiteframe md-elevation="3" class="main-toolbar">
@@ -38,8 +39,7 @@
     <md-icon>arrow_back</md-icon>
   </md-button>
   <h2 class="md-title headerCamp" style="flex: 1">Campaña</h2>
-
-          <div style="flex: 0.25">
+<div style="flex: 0.25" class="hidden">
                <md-button class="md-icon-button" id="searcher">
       <i class="material-icons">search</i>
                 </md-button>
@@ -74,13 +74,16 @@
       
       
   </md-whiteframe>
-<div style="display: inline-block">
-    <br><br><br>
-<!--    <div class="md-subhead" style="float:left;">Nombre de Campaña</div>-->
+
+<md-tabs md-fixed>
+  <md-tab id="stats" md-label="stats">
+    <div style="display: inline-block">
+
         <div class="md-title" style="float:left;" id="h2p7">Año Nuevo</div>
-<!--        <div class="md-title" style="float:left;" id="h2p8">Año Nuevo</div>-->
+
 
       
+<!--
     <md-button class="md-icon-button" md-menu-trigger style="float:right;" id="btnEnv">
         <i class="material-icons">mail_outline</i>
       </md-button>
@@ -88,182 +91,248 @@
     <md-button class="md-icon-button" md-menu-trigger active style="float:right;">
         <i class="material-icons">equalizer</i>
       </md-button>
+-->
 
     </div>
 
     
-    <md-card md-with-hover>
-<!--
-  <md-card-header>
-    <div class="md-title" style="flex: 1">1.542.854</div>
-    <div class="md-subhead" style="flex: 1">Emails enviados</div>
-    
-      <div style="flex: 1"><md-button class="md-icon-button" md-menu-trigger>
-        <md-icon>more_vert</md-icon>
-      </md-button>
-</div>
- 
-  </md-card-header>
--->
+        
+       <md-card class="md-card-statistics">
 
+            <md-layout md-gutter class="md-layout-header">
+              <md-layout md-flex="50">
+                <div class="md-title" style="flex: 1" id="totEma">1.542.854</div>
+                <div class="md-subhead">Emails enviados</div>
+              </md-layout>
+              <md-layout md-flex-offset="10">
+
+                  <span id="xEnvios">X envios</span>
+
+              </md-layout>
+            </md-layout>
+            <!--Aperturas Totales        -->
+            <md-layout md-gutter class="md-layout-content">
+              <md-layout md-flex="50">
+                <div class="md-list-text-container">
+                   <span id="apTot">542.854</span>
+                  <span>Apertura Totales</span>
+                </div>
+              </md-layout>
+              <md-layout md-flex-offset="20">
+                <div class="md-list-text-container" style="align-items: flex-end;">
+                  <span id="apTotP">70%</span>
+                  <span>de enviados</span>
+                </div>
+              </md-layout>
+            </md-layout>
+            <md-layout md-gutter class="md-layout-bar">
+              <md-layout md-flex="100">
+                <md-progress :md-progress="70"></md-progress>
+                <md-divider class="md-inset"></md-divider>
+              </md-layout>
+            </md-layout>
+            <!--Aperturas Unicas        -->
+            <md-layout md-gutter  class="md-layout-content">
+              <md-layout md-flex="50">
+                <div class="md-list-text-container">
+                  <span id="apUni">542.854</span>
+                  <span>Aperturas unicas</span>
+                </div>
+              </md-layout>
+              <md-layout md-flex-offset="20">
+                <div class="md-list-text-container" style="align-items: flex-end;">
+                  <span id="apUniP">30%</span>
+                  <span>de enviados</span>
+                </div>
+              </md-layout>
+            </md-layout>
+            <md-layout md-gutter class="md-layout-bar">
+              <md-layout md-flex="100">
+                <md-progress class="md-accent" :md-progress="30"></md-progress>
+                <md-divider class="md-inset"></md-divider>
+              </md-layout>
+            </md-layout>
+            <!--Clicks totales   -->
+            <md-layout md-gutter  class="md-layout-content">
+              <md-layout md-flex="50">
+                <div class="md-list-text-container">
+                  <span id="clTot">542.854</span>
+                  <span>Clicks totales</span>
+                </div>
+              </md-layout>
+              <md-layout md-flex-offset="20">
+                <div class="md-list-text-container" style="align-items: flex-end;">
+                  <span id="clTotP">30%</span>
+                  <span>de aperturas</span>
+                </div>
+              </md-layout>
+            </md-layout>
+            <md-layout md-gutter class="md-layout-bar">
+              <md-layout md-flex="100">
+                <md-progress class="md-accent" :md-progress="30"></md-progress>
+                <md-divider class="md-inset"></md-divider>
+              </md-layout>
+            </md-layout>
+            <!--Clicks unicos  -->
+            <md-layout md-gutter  class="md-layout-content">
+              <md-layout md-flex="50">
+                <div class="md-list-text-container">
+                  <span id="clUni">542.854</span>
+                  <span>Clicks unicos</span>
+                </div>
+              </md-layout>
+              <md-layout md-flex-offset="20">
+                <div class="md-list-text-container" style="align-items: flex-end;">
+                  <span id="clUniP">45%</span>
+                  <span>de aperturas</span>
+                </div>
+              </md-layout>
+            </md-layout>
+            <md-layout md-gutter class="md-layout-bar">
+              <md-layout md-flex="100">
+                <md-progress class="md-accent" :md-progress="45"></md-progress>
+                <md-divider class="md-inset"></md-divider>
+              </md-layout>
+            </md-layout>
+            <!--Rebotes totales -->
+            <md-layout md-gutter class="md-layout-content">
+              <md-layout md-flex="50">
+                <div class="md-list-text-container">
+                  <span id="reTot">542.854</span>
+                  <span>Rebotes totales</span>
+                </div>
+              </md-layout>
+              <md-layout md-flex-offset="20">
+                <div class="md-list-text-container" style="align-items: flex-end;">
+                  <span id="reTotP">10%</span>
+                  <span>de enviados</span>
+                </div>
+              </md-layout>
+            </md-layout>
+            <md-layout md-gutter class="md-layout-bar">
+              <md-layout md-flex="100">
+                <md-progress class="md-accent" :md-progress="10"></md-progress>
+                <md-divider class="md-inset"></md-divider>
+              </md-layout>
+            </md-layout>
+            <!--Rebotes unicos -->
+            <md-layout md-gutter class="md-layout-content">
+              <md-layout md-flex="50">
+                <div class="md-list-text-container">
+                  <span id="reUni">542.854</span>
+                  <span>Rebotes unicos</span>
+                </div>
+              </md-layout>
+              <md-layout md-flex-offset="20">
+                <div class="md-list-text-container" style="align-items: flex-end;">
+                  <span id="reUniP">39%</span>
+                  <span>de enviados</span>
+                </div>
+              </md-layout>
+            </md-layout>
+            <md-layout md-gutter class="md-layout-bar">
+              <md-layout md-flex="100">
+                <md-progress class="md-accent" :md-progress="39"></md-progress>
+                <md-divider class="md-inset"></md-divider>
+              </md-layout>
+            </md-layout>
+            <!--Desuscripciones -->
+            <md-layout md-gutter class="md-layout-content">
+              <md-layout md-flex="50">
+                <div class="md-list-text-container">
+                  <span id="desTot">542.854</span>
+                  <span>Desuscripciones</span>
+                </div>
+              </md-layout>
+              <md-layout md-flex-offset="20">
+                <div class="md-list-text-container" style="align-items: flex-end;">
+                  <span id="desTotP">25%</span>
+                  <span>de enviados</span>
+                </div>
+              </md-layout>
+            </md-layout>
+            <md-layout md-gutter class="md-layout-bar">
+              <md-layout md-flex="100">
+                <md-progress class="md-accent" :md-progress="25"></md-progress>
+                <md-divider class="md-inset"></md-divider>
+              </md-layout>
+            </md-layout>
+
+          </md-card> 
+  </md-tab>
+
+
+  <md-tab id="envios" md-label="envios">
+    
+      <md-card md-with-hover>
+
+<div style="display: inline-block">
+<div class="md-title" style="float:left;" id="h2p8">Año Nuevo</div>
+
+    </div>
+
+        <md-card-content></md-card-content>
+    </md-card>
+
+     <md-card class="card-example" style="padding: 0em;" v-for="(data, index) in listEnv"> 
+         <div v-on:click="gotoStats3(data.info.envio_id, data.info.envio.nombre)">
+      <md-card-area md-inset>
 <md-card-header>
     <md-card-header-text>
-      <div class="md-title" style="flex: 1" id="totEma">1.542.854</div>
-    <div class="md-subhead" style="flex: 1">Emails enviados</div>
+      <div class="md-title">{{ data.info.envio.nombre }}</div>
+      <div class="md-subhead">{{ dateFormat(data.info.timestamp) }}</div>
     </md-card-header-text>
 
     
-      <md-button id="btnDashDay" class="md-icon-button" md-menu-trigger>
-        <span id="xEnvios">X Envísos</span>
-      </md-button>
-
-      
   </md-card-header>
-
-  <md-card-content>
-    
-      <div class="phone-viewport">
-  <md-list class="md-double-line">
-    
-      <md-list-item>
-          
-        <div class="md-list-text-container"> 
-        <span id="apTot">542.854</span>
-        <span>Apertura Totales</span>
-            <md-progress :md-progress="70"></md-progress>   
-        </div>
-
-          <div class="md-list-text-container" style="align-items: flex-end;">
-            <span id="apTotP">70%</span>
-            <span>de enviados</span>
-          </div>
+      
+    <md-card-content style=" padding:0;">
+             
         
+       <div style="display:flex; text-align:center;"> 
+           <div> {{ (data.info.ev_envio) }}
+     </div>
+           <div style="vertical-align: text-top; margin-right:5px;">{{ (data.info.ev_vista) }}
+     </div>
+           
+           <div style="vertical-align: text-top; margin-right:5px;">{{ (data.info.ev_click) }}
+           </div>
 
-      </md-list-item>
-      
-      <md-list-item>
-        <div class="md-list-text-container">
-        <span id="apUni">542.854</span>
-        <span>Aperturas unicas</span>
-        </div>
+           <div style="vertical-align: text-top; margin-right:5px;">OR: {{ (data.info.ev_OR) }}
+           </div>
 
-          <div class="md-list-text-container" style="align-items: flex-end;">
-            <span id="apUniP">30%</span>
-            <span>de enviados</span>
-              <md-progress class="md-accent" :md-progress="30"></md-progress>
-          </div>
-        
-
-      </md-list-item>
-      
-      <md-list-item>
-        <div class="md-list-text-container">
-        <span id="clTot">542.854</span>
-        <span>Clicks totales</span>
-        </div>
-
-          <div class="md-list-text-container" style="align-items: flex-end;">
-            <span id="clTotP">30%</span>
-            <span>de aperturas</span>
-              <md-progress class="md-warn" :md-progress="30"></md-progress>
-          </div>
-        
-      </md-list-item>
-      
-      <md-list-item>
-        <div class="md-list-text-container">
-        <span id="clUni">542.854</span>
-        <span>Clicks unicos</span>
-            <md-progress :md-progress="45"></md-progress>   
-        </div>
-
-          <div class="md-list-text-container" style="align-items: flex-end;">
-            <span id="clUniP">45%</span>
-            <span>de aperturas</span>
-          </div>
-        <md-divider class="md-inset"></md-divider>
-      </md-list-item>
-      
-      <md-list-item>
-        <div class="md-list-text-container">
-        <span id="reTot">542.854</span>
-        <span>Rebotes totales</span>
-        </div>
-
-          <div class="md-list-text-container" style="align-items: flex-end;">
-            <span id="reTotP">10%</span>
-            <span>de enviados</span>
-              <md-progress class="md-warn" :md-progress="10"></md-progress>
-          </div>
-        <md-divider class="md-inset"></md-divider>
-      </md-list-item>
-      
-      <md-list-item>
-        <div class="md-list-text-container">
-        <span id="reUni">542.854</span>
-        <span>Rebotes unicos</span>
-            <md-progress class="md-warn" :md-progress="30"></md-progress>
-        </div>
-
-          <div class="md-list-text-container" style="align-items: flex-end;">
-            <span id="reUniP">39%</span>
-            <span>de enviados</span>
-          </div>
-        <md-divider class="md-inset"></md-divider>
-      </md-list-item>
-      
-      <md-list-item>
-        <div class="md-list-text-container">
-        <span id="desTot">542.854</span>
-        <span>Desuscripciones</span>
-            <md-progress class="md-warn" :md-progress="39"></md-progress>
-        </div>
-
-          <div class="md-list-text-container" style="align-items: flex-end;">
-            <span id="desTotP">30%</span>
-            <span>de enviados</span>
-          </div>
-        <md-divider class="md-inset"></md-divider>
-      </md-list-item>
-      
-      
-
-    
-    
-  </md-list>
+           <div style="vertical-align: text-top; margin-right:5px;">CR: {{ (data.info.ev_CTR) }}
+           </div>
 </div>
+    </md-card-content>
+  </md-card-area>
+         </div>
+      </md-card>
       
-  </md-card-content>
-
-  <md-card-actions>
-
-  </md-card-actions>
-</md-card>
-    
-    
+  </md-tab>
+</md-tabs>
         
         
         
-        
-      <div class="modal">
-              <img id="loading" src="img/logo.png" alt="Planisys DMDS">
-          </div>
+      
     
     
     
     <div class="footera">
     <md-bottom-bar>
   <md-bottom-bar-item md-iconset="icon-speedometer" id="aDashboard"></md-bottom-bar-item>
-  <md-bottom-bar-item md-iconset="icon-paper-plane">Campañas</md-bottom-bar-item>
+  <md-bottom-bar-item md-iconset="icon-paper-plane" active>Campañas</md-bottom-bar-item>
   <md-bottom-bar-item md-iconset="icon-envelope"></md-bottom-bar-item>
 </md-bottom-bar>
     </div>
     </div>
-    
+    <div class="modal">
+              <img id="loading" src="img/logo.png" alt="Planisys DMDS">
+          </div>
     </div>   
     
     <link rel="stylesheet" href="./css/vue-material.css">
-    <link rel="stylesheet" href="./css/statsC.css">
+    <link rel="stylesheet" href="./css/statsC2.css">
     
     <script src="cordova.js"></script>
     <script src="./js/vue.js"></script>

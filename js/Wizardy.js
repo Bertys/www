@@ -267,6 +267,7 @@ totalEnvios=envios.recordsFiltered;
 //    printEnviosTot();
     if(page=='campanasStats'){
         inicioStatsCamp();
+        printEnvios();
   }else if(page=='envios'){
         printEnvios();
   }else if(page=='envioStats'){

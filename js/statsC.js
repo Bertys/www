@@ -2,28 +2,10 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-//        deviceReadyM();
     },
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
     onDeviceReady: function() {
-//        this.receivedEvent('deviceready');
         deviceReadyM();
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
     }
 };
 
@@ -60,12 +42,13 @@ function deviceReadyM() {
     campId = localStorage.campanaId;
     campName = localStorage.campanaName;
     
-
+    document.addEventListener("backbutton", onBackKeyDown, false);
 
     
 //    console.log(b);
     $('#userName').html(b);
     $('#h2p7').html("<br />Campaña: '"+campName+"'");
+    $('#h2p8').html("<br />Campaña: '"+campName+"'");
     
     
     
@@ -79,15 +62,19 @@ function deviceReadyM() {
     
 //    console.log("Tu token es: "+x);
     startEnvios();
-    
-    
-    
-    
+
+    listenerEnvios();
     
     $('#goBack').click(function(e) {
     location.replace('./campanas.html');
         });
     $('#btnEnv').click(function(e) {
+    location.replace('./envios.html');
+        });
+    $('#aDashboard').click(function(e) {
+    location.replace('./envios.html');
+        });
+    $('#aEnvios').click(function(e) {
     location.replace('./envios.html');
         });
 
@@ -138,6 +125,84 @@ function inicioStatsCamp(){
     $('#desTot').html(wiz.enviosTot[0].info.ev_desuscripcion);
     $('#desTotP').html((wiz.enviosTot[0].info.ev_desuscripcion/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
     
+    
+    
     $(".main").removeClass("hidden");
     $body.removeClass("loading");
 }
+
+// Handle the back button
+function onBackKeyDown() {
+    location.replace('./campanas.html');
+    }
+
+function listenerEnvios(){
+        
+
+    
+    $('#anavCampanas').click(function(e) {
+      location.replace('./campanas.html');
+        });
+    $('#goBack').click(function(e) {
+    location.replace('./envios.html');
+        });
+
+}
+
+function searchEnvios(){
+
+    var str = $('.input-searchbox').val();
+
+     
+    for(i=0;i<=wiz.envios.length;i++){
+            envios.shift();
+        }
+//    alert(str);
+    var data={'search':str,'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+b,data,wiz.processEnvios);
+}
+
+function cargarMasE(){
+    var ajx;
+    var aux=contEnvMost*6;
+    if(aux<=totalEnvios){
+        console.log(aux);
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':aux,'pagina':0};
+    wiz.processPerfil(obj);
+
+    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+b,data,wiz.processEnvios);
+    contEnvMost++;
+    }else{
+//        document.getElementById('butCarMasE').setAttribute('disabled', true);
+    }
+}
+
+function printEnvios(pag){
+	if(typeof pag === "undefined"){
+        pag = 0;
+    console.log(wiz.envios);
+ for(i=0;i<=wiz.envios.length-1;i++){
+            envios.push(wiz.envios[i]);
+        }
+    if(wiz.envios.length==0){
+        envios.push({info:{envio:{nombre:"El envío seleccionado no tiene correos."},id:0}})
+        document.getElementById('butCarMasE').setAttribute('disabled', true);
+    }
+	}
+//    else{
+//        wiz.Perfil[0].info.pagina=pag;
+//        var start=wiz.Perfil[0].info.pagina*wiz.Perfil[0].info.numReg;
+//        var data={'start' : start, 'length' : wiz.Perfil[0].info.numReg, 'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+//        ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+b,data,wiz.processEnvios);
+//    }
+
+    if(totalEnvios<=6){
+//        document.getElementById('butCarMasE').setAttribute('disabled', true);
+    }
+}
+function gotoStats3(id,nombre) {
+    localStorage.envioId=id;
+        localStorage.envioName=nombre;
+    location.replace('./statsE.html');
+        }
