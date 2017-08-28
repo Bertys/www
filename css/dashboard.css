@@ -10,3 +10,7 @@
 .md-theme-default.md-bottom-bar.md-fixed .md-bottom-bar-item{
     color:white;
 }
+.hidden
+{
+   display: none
+}

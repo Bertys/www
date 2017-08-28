@@ -23,10 +23,28 @@
         <md-toolbar class="md-dense">
           <h2 class="md-title headerCamp" style="flex: 1">Campañas</h2>
           <div style="flex: 0.25">
-            <md-button class="md-icon-button">
+             <input type="search" name="searcher" id="inputSearch" class="hidden"> 
+              </div>
+          <div style="flex: 0.25">
+            <md-button class="md-icon-button" id="searcherCamp" v-on:click="searchCampanas()">
               <i class="material-icons">search</i>
             </md-button>
           </div>
+
+  
+
+            
+<!--
+            <md-input-container md-inline id="inputSearch" class="hidden">
+                            <label>Inline field</label>
+                            <md-input id="inPbo"></md-input>
+                            <md-button class="md-icon-button" id="goSearcherCamp" v-on:click="searchCampanas()">
+                              <i class="material-icons">search</i>
+                            </md-button>
+                          </md-input-container>
+-->
+            
+            
           <md-menu md-direction="bottom left" md-size="4" style="flex: 0.25">
             <md-button class="md-icon-button" md-menu-trigger>
               <md-icon>menu</md-icon>
@@ -111,21 +129,28 @@
                     -->
                   <div style="vertical-align: text-top; margin-left:8px;"> CR: {{ (data.info.stats.click_rate) }}
                   </div>
+                    
                 </div>
               </md-card-content>
+                
             </md-card-area>
             <!--
               <md-card-content>
 
               </md-card-content>
               -->
+              
           </div>
+            
         </md-card>
-        <md-button id="butCarMas" class="md-primary center" v-on:click="cargarMas()">Cargar Mas</md-button>
+        
+          <div style="align-content: center; margin-bottom:40px;"><md-button id="butCarMas" class="md-primary center" v-on:click="cargarMas()">Cargar Mas</md-button>
+                  </div>
+          
       </md-whiteframe>
 
       <div class="modal">
-        <img id="loading" src="img/logo.svg" alt="DMDS">
+        <img id="loading" src="img/dmds_iso.svg" alt="DMDS">
       </div>
 
       <md-bottom-bar class="main-toolbar-footer">

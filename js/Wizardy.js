@@ -218,6 +218,7 @@ WizzardDMDS.prototype.processCampanas = function(campana){
   }else if(page=='campanas'){
         totalCampanas=campana.recordsFiltered;
 	printCampanas();
+      console.log(totalCampanas);
   }
     
 }

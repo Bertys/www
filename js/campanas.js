@@ -18,6 +18,7 @@ var a,b,c,d,e,f,x,y,z;
 var permissions,language;
 
 var page='campanas';
+var searched=0;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -123,34 +124,41 @@ function listenerCampanas(){
 $('#goBack').click(function(e) {
     location.replace('./dashboard.html');
         });
-//$('#searcher').click(function(e) {
+$('#searcherCamp').click(function(e) {
 //    location.replace('./searcher.html');
-//        });
-    
-    var clicks=0;
-     $('#btnCampDay').click(function(e) {
-         if( clicks==0){
-    $("#btnCampDay").html('30 Dias');
-             clicks=1;
-             }else if( clicks==1){
-    $("#btnCampDay").html('90 Dias');
-                 clicks=2;
-             }else if( clicks==2){
-    $("#btnCampDay").html('365 Dias');
-                 clicks=3;
-             }else if( clicks==3){
-    $("#btnCampDay").html('7 Dias');
-                 clicks=0;
-             }
-             e.preventDefault();
+    //Aqui codigo de busqueda CAMP
+    if(searched==0){
+    $("#inputSearch").removeClass("hidden");
+    searched=1;
+        $("#inPbo").focus();
+        
+        }else if (searched==1){
+    $("#inputSearch").addClass("hidden");
+        searched=0;
+        }
+        });
+ $('#goSearcherCamp').click(function(e) {   
+   var str=$('#inputSearch').val();
+     searchCampanas(str);
     });
-    
-    
-    }
+   
 
 
 // Handle the back button
     //
-    function onBackKeyDown() {
+    
+
+$('#inputSearch').bind("keypress", function(e){
+   // enter key code is 13
+   if(e.which === 13){
+     console.log("user pressed done");
+       var str=$('#inputSearch').val();
+     searchCampanas(str);
+    } 
+});
+
+ }
+
+function onBackKeyDown() {
         location.replace('./dashboard.html');
     }

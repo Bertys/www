@@ -123,12 +123,6 @@ xhr.onreadystatechange = function () {
     }else if (xhr.readyState == 4 && xhr.status !== 200){
         console.log("Tu login es incorrecto, vuelve a intentarlo.");
         alert("Tu login es incorrecto, vuelve a intentarlo.");
-        //control de fallos del mail
-
-        $('#helper').show();
-        $('#helper').html('Tienes problemas?<br>');
-        localStorage.removeItem("nuevo");
-        getAuth(1,"user/id/"+userEmail);
 
         }else{
             console.log("Entra login else. con: xhr.readyState "+xhr.readyState+' xhr.status '+xhr.status);
