@@ -19,6 +19,7 @@ var permissions,language;
 
 var page='campanas';
 var searched=0;
+var inicioTouch, finTouch;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -79,6 +80,9 @@ function deviceReadyM() {
         urlP=document.URL;
 
 
+  
+    
+    
 //console.log(languages.es[1].welcome);
 
         loadWizzard();
@@ -128,37 +132,59 @@ $('#searcherCamp').click(function(e) {
 //    location.replace('./searcher.html');
     //Aqui codigo de busqueda CAMP
     if(searched==0){
-    $("#inputSearch").removeClass("hidden");
-    searched=1;
-        $("#inPbo").focus();
-        
-        }else if (searched==1){
-    $("#inputSearch").addClass("hidden");
-        searched=0;
-        }
-        });
- $('#goSearcherCamp').click(function(e) {   
-   var str=$('#inputSearch').val();
-     searchCampanas(str);
-    });
+        $("#inputSearch").removeClass("hidden");
+        $("#inputSearch").focus();
+    }
+});
    
 
 
-// Handle the back button
+// Handle the swipe action
     //
+   
+    document.body.addEventListener('touchstart', function(e){
+//        alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
+        guardarIni(e.changedTouches[0].pageY);
+        
+    }, false);
+    document.body.addEventListener('touchend', function(e){
+//        alert(e.changedTouches[0].pageY) // alert pageX coordinate of touch point
+        guardarFin(e.changedTouches[0].pageY);
     
+    }, false);
+    
+}
+function guardarIni(int){
+    inicioTouch=int;
+//    console.log(inicioTouch);
+} 
+function guardarFin(int){
+    finTouch=int;
+//    console.log(finTouch);
+    comparar();
+}    
+function comparar(){
+    if(inicioTouch>finTouch && (inicioTouch-finTouch)>230){
+    cargarMas();
+        }
+}
+function onBackKeyDown() {
+        location.replace('./dashboard.html');
+    }
+function onBackKeyDownaaa() {
+        alert('hola');;
+    }
+
+//////////////////////////////////
 
 $('#inputSearch').bind("keypress", function(e){
    // enter key code is 13
    if(e.which === 13){
      console.log("user pressed done");
-       var str=$('#inputSearch').val();
+     var str=$('#inputSearch').val();
      searchCampanas(str);
+       $("#inputSearch").addClass("hidden");
+//        searched=0;
+        $("#test").focus();
     } 
-});
-
- }
-
-function onBackKeyDown() {
-        location.replace('./dashboard.html');
-    }
+})

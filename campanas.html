@@ -9,8 +9,9 @@
     <script src="js/Wizardy.js?version=3"></script>
     <!--    <script src="js/languages.js?version=3"></script>-->
     <!--    <script src="js/index.js?version=22"></script>-->
-    <script src="js/core-min.js"></script>
-    <script src="js/sha256-min.js"></script>
+
+      
+      
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
       rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
@@ -21,8 +22,8 @@
     <div class="app-viewport" id="file-list">
       <md-whiteframe md-elevation="3" class="main-toolbar-header">
         <md-toolbar class="md-dense">
-          <h2 class="md-title headerCamp" style="flex: 1">Campañas</h2>
-          <div style="flex: 0.25">
+          <h2 class="md-title headerCamp" style="flex: 0.75">Campañas</h2>
+          <div style="flex: 0.75">
              <input type="search" name="searcher" id="inputSearch" class="hidden"> 
               </div>
           <div style="flex: 0.25">
@@ -30,19 +31,6 @@
               <i class="material-icons">search</i>
             </md-button>
           </div>
-
-  
-
-            
-<!--
-            <md-input-container md-inline id="inputSearch" class="hidden">
-                            <label>Inline field</label>
-                            <md-input id="inPbo"></md-input>
-                            <md-button class="md-icon-button" id="goSearcherCamp" v-on:click="searchCampanas()">
-                              <i class="material-icons">search</i>
-                            </md-button>
-                          </md-input-container>
--->
             
             
           <md-menu md-direction="bottom left" md-size="4" style="flex: 0.25">
@@ -83,7 +71,10 @@
           </md-card-header>
           <md-card-content></md-card-content>
         </md-card>
-        <md-card class="card-example" style="padding: 0em;" v-for="(data, index) in listCamp">
+        
+
+        
+        <md-card class="card-example" style="padding: 0em;" v-for="(data, index) in listCamp" id="test">
           <div v-on:click="gotoStats2(data.info.dmds_remote_id, data.info.name)">
             <md-card-area md-inset>
               <md-card-header>
@@ -143,9 +134,17 @@
           </div>
             
         </md-card>
+ 
+<!--
+          
+          
+          <button class="btn btn-danger" id="register_btn">Remove Events</button>
+          <div id="test" class="box" style="font-size:10px;"></div>
+-->
+          
+          
         
-          <div style="align-content: center; margin-bottom:40px;"><md-button id="butCarMas" class="md-primary center" v-on:click="cargarMas()">Cargar Mas</md-button>
-                  </div>
+<!--          <div style="align-content: center; margin-bottom:40px;"><md-button id="butCarMas" class="md-primary center" v-on:click="cargarMas()">Cargar Mas</md-button></div>-->
           
       </md-whiteframe>
 

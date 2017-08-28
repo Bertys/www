@@ -64,10 +64,7 @@ function deviceReadyM() {
     
    
 
-function onBackKeyDown() {
-         $('#dialog').click();
-    startlistenexit();
-    }
+
 
 
 
@@ -108,6 +105,9 @@ function processTotals(){
         
     
 }
+
+
+
 //////////CODIGO MIO ////////////////
 
 var token;
@@ -144,14 +144,8 @@ function listenerDashboard(){
         e.preventDefault();
     });
     
-}
-
-
-function startlistenexit(){
-    $('#closeapp').click(function(e) {
-        console.log('cerrando lapp');
-        navigator.app.exitApp();
-    });
+    
+    
 }
 
 function loadWizzard(){
@@ -172,5 +166,13 @@ function printPerfil(){
 }
 
 // Handle the back button
-    //
-    
+function onBackKeyDown() {
+    $('#dialog').click();
+    startlistenexit();
+    }
+function startlistenexit(){
+    $('#closeapp').click(function(e) {
+    console.log('cerrando la App');
+    navigator.app.exitApp();
+    });
+}
