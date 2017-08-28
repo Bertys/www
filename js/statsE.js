@@ -161,6 +161,13 @@ function inicioStatsEnv(){
 $('#btnInfo').click(function(e) {
     location.replace('./infoE1.html');
         });
+$('#aCampanas').click(function(e) {
+      location.replace('./campanas.html');
+        });
+    
+        $('#aDashboard').click(function(e) {
+    location.replace('./dashboard.html');
+        });
 
 // Handle the back button
     //

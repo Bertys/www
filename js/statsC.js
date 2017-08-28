@@ -65,18 +65,6 @@ function deviceReadyM() {
 
     listenerEnvios();
     
-    $('#goBack').click(function(e) {
-    location.replace('./campanas.html');
-        });
-    $('#btnEnv').click(function(e) {
-    location.replace('./envios.html');
-        });
-    $('#aDashboard').click(function(e) {
-    location.replace('./envios.html');
-        });
-    $('#aEnvios').click(function(e) {
-    location.replace('./envios.html');
-        });
 
 }
 
@@ -137,21 +125,24 @@ function onBackKeyDown() {
     }
 
 function listenerEnvios(){
-        
 
-    
     $('#anavCampanas').click(function(e) {
       location.replace('./campanas.html');
         });
-    $('#goBack').click(function(e) {
-    location.replace('./envios.html');
+    
+    $('#aCampanas').click(function(e) {
+      location.replace('./campanas.html');
+        });
+    
+        $('#aDashboard').click(function(e) {
+    location.replace('./dashboard.html');
         });
 
 }
 
-function searchEnvios(){
+function searchEnvios(str){
 
-    var str = $('.input-searchbox').val();
+//    var str = $('.input-searchbox').val();
 
      
     for(i=0;i<=wiz.envios.length;i++){
@@ -206,3 +197,52 @@ function gotoStats3(id,nombre) {
         localStorage.envioName=nombre;
     location.replace('./statsE.html');
         }
+
+$('#searcherEnvios').click(function(e) {
+    if(searched==0){
+        $("#inputSearch").removeClass("hidden");
+        $("#inputSearch").focus();
+    }
+});
+
+// Handle the swipe action
+    //
+   
+    document.body.addEventListener('touchstart', function(e){
+//        alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
+        guardarIni(e.changedTouches[0].pageY);
+        
+    }, false);
+    document.body.addEventListener('touchend', function(e){
+//        alert(e.changedTouches[0].pageY) // alert pageX coordinate of touch point
+        guardarFin(e.changedTouches[0].pageY);
+    
+    }, false);
+    
+
+function guardarIni(int){
+    inicioTouch=int;
+//    console.log(inicioTouch);
+} 
+function guardarFin(int){
+    finTouch=int;
+//    console.log(finTouch);
+    comparar();
+}    
+function comparar(){
+    if(inicioTouch>finTouch && (inicioTouch-finTouch)>230){
+    cargarMasE();
+        }
+}
+
+$('#inputSearch').bind("keypress", function(e){
+   // enter key code is 13
+   if(e.which === 13){
+     console.log("user pressed done");
+     var str=$('#inputSearch').val();
+     searchCampanas(str);
+       $("#inputSearch").addClass("hidden");
+//        searched=0;
+        $("#test").focus();
+    } 
+});

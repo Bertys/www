@@ -129,8 +129,6 @@ $('#goBack').click(function(e) {
     location.replace('./dashboard.html');
         });
 $('#searcherCamp').click(function(e) {
-//    location.replace('./searcher.html');
-    //Aqui codigo de busqueda CAMP
     if(searched==0){
         $("#inputSearch").removeClass("hidden");
         $("#inputSearch").focus();

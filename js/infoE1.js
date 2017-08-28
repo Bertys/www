@@ -87,7 +87,15 @@ function deviceReadyM() {
     
     
     $('#goBack').click(function(e) {
-    location.replace('./envios.html');
+    location.replace('./statsE.html');
+        });
+
+    $('#aCampanas').click(function(e) {
+      location.replace('./campanas.html');
+        });
+    
+        $('#aDashboard').click(function(e) {
+    location.replace('./dashboard.html');
         });
 
 }
@@ -130,6 +138,7 @@ doc.open();
 doc.write(datas2);
 doc.close();
     $body.removeClass("loading");
+    $("#iframe").focus();
 //    $('#datosEmail').trigger('click');
     
 //    var link = document.getElementById( 'datosEmail' );
@@ -145,7 +154,7 @@ doc.close();
 // Handle the back button
     //
     function onBackKeyDown() {
-        location.replace('./envios.html');
+        location.replace('./statsE.html');
     }
 
 
