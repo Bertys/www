@@ -68,8 +68,8 @@ function deviceReadyM() {
     
 //    console.log(b);
     $('#userName').html(b);
-    $('#h2p7').html("<br />Nombre de Campaña: '"+campName+"'");
-    $('#h2p8').html("<br />Nombre de Envio: '"+envName+"'");
+    $('#h2p7').html("<br />Campaña: '"+campName+"'");
+    $('#h2p8').html("<br />Envio: '"+envName+"'");
     
     
     

@@ -25,6 +25,7 @@ var searchString;
 
 var example2 = new Vue({
   el: '#file-list',
+    mounted:showHeader,
   data: {
     parentMessage: 'Campana',
     listCamp: campanas,
@@ -59,3 +60,6 @@ var example2 = new Vue({
 
 
 //setTimeout(myFunction, 3000);
+function showHeader(){
+    $(".screenHeader").removeClass("hidden");
+}

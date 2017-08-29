@@ -18,8 +18,8 @@
   </head>
   <body id="dashboard" class="loading">
     <div class="app-viewport" id="file-list">
-      <div class="main hidden">
-        <md-whiteframe md-elevation="3" class="main-toolbar-header">
+      <div class="main">
+        <md-whiteframe md-elevation="3" class="main-toolbar-header screenHeader hidden">
           <md-toolbar class="md-dense">
             <h2 class="md-title headerCamp" style="flex: 1">Dashboard</h2>
             <!--
@@ -55,7 +55,7 @@
           </md-toolbar>
         </md-whiteframe>
 
-        <div class="wrap">
+        <div class="wrap hidden">
 
             <h4 class="md-title headerCamp" style="flex: 1">Estadísticas Generales</h4>
 
@@ -223,13 +223,7 @@
 
           </md-card>
           <br><br><br><br><br>
-        </div>
-
-        <div class="hidden">
-          <md-button class="md-primary md-raised" @click="openDialog('dialog')" id="dialog">Dialog</md-button>
-        </div>
-
-        <md-dialog md-open-from="#custom" md-close-to="#custom" ref="dialog">
+            <md-dialog md-open-from="#custom" md-close-to="#custom" ref="dialog">
           <md-dialog-title>Cerra App</md-dialog-title>
           <md-dialog-content>Está seguro que desea salir y cerrar la aplicación?</md-dialog-content>
           <md-dialog-actions>
@@ -237,12 +231,19 @@
             <md-button class="md-primary" @click="closeDialog('dialog')" id="closeapp">Salir</md-button>
           </md-dialog-actions>
         </md-dialog>
+        </div>
+
+        <div class="hidden">
+          <md-button class="md-primary md-raised" @click="openDialog('dialog')" id="dialog">Dialog</md-button>
+        </div>
+
+        
 
 
         <!-- footer -->
 
         <md-bottom-bar class="main-toolbar-footer">
-          <md-bottom-bar-item md-iconset="icon-speedometer">Dashboard</md-bottom-bar-item>
+          <md-bottom-bar-item md-iconset="icon-speedometer" active>Dashboard</md-bottom-bar-item>
           <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas"></md-bottom-bar-item>
 <!--          <md-bottom-bar-item md-iconset="icon-envelope" id="aEnvios" disabled="true"></md-bottom-bar-item>-->
         </md-bottom-bar>
@@ -261,7 +262,7 @@
     <link rel="stylesheet" href="./css/dashboard.css">
     <script src="./js/vue.js"></script>
     <script src="cordova.js"></script>
-    <script src="./js/listeners.js"></script>
+<!--    <script src="./js/listeners.js"></script>-->
     <script src="./js/dashboard.js"></script>
   </body>
 </html>

@@ -35,16 +35,16 @@ function deviceReadyM() {
     
   
 StatusBar.backgroundColorByName("white");
-    setTimeout(function(){ location.replace('./login.html'); }, 1000);
+setTimeout(function(){ location.replace('./login.html'); }, 1000);
 
-
-
-        window.onpopstate = function(event) {
-            if(event && event.state) {
-                location.reload();
-            }
-        }
-    
+//
+//
+//        window.onpopstate = function(event) {
+//            if(event && event.state) {
+//                location.reload();
+//            }
+//        }
+//    
 
 }
 /////////////////////////////////////

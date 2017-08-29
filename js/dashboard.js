@@ -4,16 +4,21 @@ var app = {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
     },
     onDeviceReady: function() {
-        deviceReadyM();
+       StatusBar.backgroundColorByName("orange"); 
     }
 };
 
 app.initialize();
 
+
+$( document ).ready(function() {
+            deviceReadyM();
+});
+
 //////////////////START////////////////////////////
 function deviceReadyM() {
-    
-  StatusBar.backgroundColorByName("orange"); 
+//    alert('hi');
+  
   
     
 //    console.log(StatusBar);
@@ -45,7 +50,8 @@ function deviceReadyM() {
         ajaxStart: function() { $body.addClass("loading"); },
         ajaxStop: function() { 
             $body.removeClass("loading");
-        $(".main").removeClass("hidden");
+            $('.wrap').removeClass("hidden");
+        
         }
         });
     
