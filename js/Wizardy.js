@@ -217,7 +217,7 @@ WizzardDMDS.prototype.processCampanas = function(campana){
       processTotals();
   }else if(page=='campanas'){
         totalCampanas=campana.recordsFiltered;
-	printCampanas();
+	printCampanas(7);
       console.log(totalCampanas);
   }
     

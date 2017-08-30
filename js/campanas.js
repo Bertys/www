@@ -118,11 +118,19 @@ $('#goBack').click(function(e) {
         });
 $('#searcherCamp').click(function(e) {
     if(searched==0){
-        $("#inputSearch").removeClass("hidden");
+        $("#mainHeader").addClass("hidden");
+        $("#searchHeader").removeClass("hidden");
         $("#inputSearch").focus();
     }
 });
-   
+   $('#searcherCamp1').click(function(e) {
+    var str=$('#inputSearch').val();
+     searchCampanas(str);
+       $("#searchHeader").addClass("hidden");
+       $("#mainHeader").removeClass("hidden");
+        searched=0;
+        $("#test").focus();
+});
   
 }
 
@@ -131,19 +139,23 @@ function onBackKeyDown() {
     }
 
 var clicks=0;
-     $('#btnDashDay').click(function(e) {
+     $('#dashDays').click(function(e) {
          if( clicks==0){
     $("#btnDashDay").html('30 dias');
              clicks=1;
+             printCampanas(30);
              }else if( clicks==1){
     $("#btnDashDay").html('90 dias');
-                 clicks=2;
+             clicks=2;
+             printCampanas(90);
              }else if( clicks==2){
     $("#btnDashDay").html('365 dias');
-                 clicks=3;
+             clicks=3;
+             printCampanas(365);
              }else if( clicks==3){
     $("#btnDashDay").html('7 dias');
-                 clicks=0;
+             clicks=0;
+             printCampanas(7);
              }
              e.preventDefault();
     });
@@ -153,29 +165,29 @@ var clicks=0;
 $('#inputSearch').bind("keypress", function(e){
    // enter key code is 13
    if(e.which === 13){
-     console.log("user pressed done");
      var str=$('#inputSearch').val();
      searchCampanas(str);
-       $("#inputSearch").addClass("hidden");
-//        searched=0;
+      $("#searchHeader").addClass("hidden");
+       $("#mainHeader").removeClass("hidden");
+        searched=0;
         $("#test").focus();
     } 
 })
 
 
 //On Bottom
-$(window).scroll(function() {
-   if($(window).scrollTop() + $(window).height() == $(document).height()) {
-       // Handle the swipe action
-    document.body.addEventListener('touchstart', function(e){
-        guardarIni(e.changedTouches[0].pageY);
-    }, false);
-    document.body.addEventListener('touchend', function(e){
-        guardarFin(e.changedTouches[0].pageY);
-    }, false);
-       
-   }
-});
+//$(window).scroll(function() {
+//   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+//       // Handle the swipe action
+//    document.body.addEventListener('touchstart', function(e){
+//        guardarIni(e.changedTouches[0].pageY);
+//    }, false);
+//    document.body.addEventListener('touchend', function(e){
+//        guardarFin(e.changedTouches[0].pageY);
+//    }, false);
+//       
+//   }
+//});
 
 function guardarIni(int){
     inicioTouch=int;

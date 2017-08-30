@@ -8,7 +8,7 @@ function inicioCampanas(){
     
     
     x=localStorage.getItem("token");
-    b=localStorage.getItem("userEmail");
+    b=localStorage.getItem("usrAuxMeu");
     permissions=localStorage.getItem("permissions");
     language=localStorage.getItem("language");
     
@@ -56,23 +56,22 @@ function gotoStats2(id,name){
 function cargarMas(){
     var ajx;
     var aux=contCampMost*6;
+    console.log(totalCampanas);
     if(aux<=totalCampanas){
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':aux,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'created_at','orderDir':'desc','start':aux,'pagina':0};
     wiz.processPerfil(obj);
 
     var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,'order_dir':wiz.Perfil[0].info.orderDir};
     ajx = wiz.postInfo('campanas/'+a+'/'+z,data,wiz.processCampanas);
     contCampMost++;
         
-    }else{
-        document.getElementById('butCarMas').setAttribute('disabled', true);
     }
 }
     
     
 function cargarCampanas(){
     var ajx
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':0,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':60,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
     var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
@@ -83,24 +82,35 @@ function cargarCampanas(){
 
 
 
-function printCampanas(pag){
+function printCampanas(dias){
+    var algo=0;
+    
+    campanas.splice(0, campanas.length);
+    
+    
 	if(typeof pag === "undefined") {
         pag = 0;
-    console.log(wiz.Campanas);
-
+    console.log(JSON.stringify(wiz.Campanas[0]));
+    }
+        
+        
         for(i=0;i<=wiz.Campanas.length-1;i++){
+            var a = moment(wiz.Campanas[i].info.created_at);
+        var now = moment();
+        var auxx=now.diff(a, 'days');
+            console.log(auxx);
+            if(auxx<=dias){
             campanas.push(wiz.Campanas[i]);
+                algo=1;
+            }
         }
-
-	}else {
-        wiz.Perfil[0].info.pagina=pag;
-        var start=wiz.Perfil[0].info.pagina*wiz.Perfil[0].info.numReg;
-        var data={'start' : start, 'length' : wiz.Perfil[0].info.numReg, 'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
-        ajx = wiz.postInfo('campanas/'+a+'/'+z,data,wiz.processCampanas);
-    }
-    if(totalEnvios<=6){
-        document.getElementById('butCarMas').setAttribute('disabled', true);
-    }
+    
+        if(algo==0){
+                var obj={"info":{"id":0,"name":"No hay campañas con ese tiempo","stats":{"envios_hechos":0,"emails_enviados":0,"open_rate":0,"click_rate":0}}};
+                campanas.push(obj);
+            }
+    
+    $('#campanas').removeClass("loading");
 }
 
 
@@ -126,7 +136,7 @@ function changeOrderCamp(){
 function searchCampanas(str){
 
 //    var str = $('#inputSearch').val();
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':0,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
     
     for(i=0;i<=wiz.Campanas.length-1;i++){

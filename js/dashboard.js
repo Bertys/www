@@ -25,7 +25,7 @@ function deviceReadyM() {
     document.addEventListener("backbutton", onBackKeyDown, false);
     
     x=localStorage.getItem("token");
-    b=localStorage.getItem("userEmail");
+    b=localStorage.getItem("usrAuxMeu");
     permissions=localStorage.getItem("permissions");
     language=localStorage.getItem("language");
     
@@ -40,8 +40,8 @@ function deviceReadyM() {
     localStorage.idGroupSel = z;
     localStorage.nameGroupSel = y;
     
-    console.log(b);
-    $('#userName').html(b);
+    var auxil='<span>Hugo Planisys</span><div>'+b+'</div>';
+    $('#userName').html(auxil);
      
     $body = $("body");
         $(document).on({
@@ -162,7 +162,7 @@ function loadWizzard(){
 }
 
 function printPerfil(){
-    console.log(wiz.Perfil);
+    console.log(JSON.stringify(wiz.Perfil));
 }
 
 // Handle the back button

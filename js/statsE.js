@@ -76,13 +76,14 @@ function deviceReadyM() {
     $body = $("body");
         $(document).on({
         ajaxStart: function() { $body.addClass("loading"); },
-//        ajaxStop: function() {  }
+        ajaxStop: function() {  }
         });
     
     
     
 //    console.log("Tu token es: "+x);
     startEnvios();
+    startEnvios2();
     
     
 
@@ -119,7 +120,7 @@ function loadWizzard(){
 
 function inicioStatsEnv(){
     
-    console.log(wiz.envios[0].info);
+    console.log(JSON.stringify(wiz.envios[0].info));
     console.log(envId);
     
     for(i=0;i<wiz.envios.length;i++){
@@ -156,11 +157,11 @@ function inicioStatsEnv(){
     
     
     $('#goBack').click(function(e) {
-    location.replace('./envios.html');
+    location.replace('./statsC.html');
         });
-$('#btnInfo').click(function(e) {
-    location.replace('./infoE1.html');
-        });
+
+
+
 $('#aCampanas').click(function(e) {
       location.replace('./campanas.html');
         });
@@ -172,5 +173,43 @@ $('#aCampanas').click(function(e) {
 // Handle the back button
     //
     function onBackKeyDown() {
-        location.replace('./envios.html');
+        location.replace('./statsC.html');
     }
+
+var ajx;
+//var page='infoE1';
+function startEnvios2(){
+
+    var obj={'userEmail': c,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':0,'pagina':0};
+    wiz.processPerfil(obj);
+
+//    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    var data;
+    ajx = wiz.getInfo('envio/'+envId+'/'+a,data,wiz.processinfoE1);
+}
+
+
+function  startInfoEnvio(datas){
+//    window.frames[0].location = 'data:text/html;'+datas;
+    console.log(datas);
+    var doc = document.getElementById('iframe').contentWindow.document;
+doc.open();
+    var datas2="'"+datas+"'";
+    datas2 = datas2.replace(/\r/g, '');
+    datas2 = datas2.replace(/\t/g, '');
+    datas2 = datas2.replace(/\n/g, '');
+    console.log(datas2);
+doc.write(datas2);
+doc.close();
+    $body.removeClass("loading");
+    $("#iframe").focus();
+//    $('#datosEmail').trigger('click');
+    
+//    var link = document.getElementById( 'datosEmail' );
+//    var event = document.createEvent( 'HTMLEvents' );
+//
+//event.initEvent( 'click', true, true );
+//link.dispatchEvent( event );
+//var button = document.getElementById("datosEmail");
+//button.click();
+}
