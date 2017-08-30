@@ -9,10 +9,10 @@ body{
 /* END LOADING */
 .hidden
 {
-   /*display: none;*/
+   display: none;
 }
 .modal {
-    display:    none !important; /* <- sacar important para activar  */
+    display:    none: /*!important;  <- sacar important para activar  */
     position:   fixed;
     z-index:    1000;
     top:        0;

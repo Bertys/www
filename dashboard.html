@@ -18,8 +18,8 @@
   </head>
   <body id="dashboard" class="loading">
     <div class="app-viewport" id="file-list">
-      <div class="main">
-        <md-whiteframe md-elevation="3" class="main-toolbar-header screenHeader hidden">
+      <div class="main hidden">
+        <md-whiteframe md-elevation="3" class="main-toolbar-header screenHeader">
           <md-toolbar class="md-dense">
             <md-menu>
              <md-button class="md-icon-button" md-menu-trigger>
@@ -29,7 +29,7 @@
                 <md-menu-item>
                    <div class="md-list-text-container">
                       <span>Hugo Planisys</span>
-                      <div id="userName">johndoe@email.com</div>
+                      <div id="userName">hugo@planisys.Cam</div>
                    </div>
                 </md-menu-item>
                 <md-menu-item>
@@ -45,6 +45,7 @@
              </md-menu-content>
              </md-menu>
              <h2 class="md-title" style="flex: 1">Dashboard</h2>
+            </md-toolbar>
           </md-whiteframe>
 
 
@@ -54,11 +55,11 @@
             <md-card class="md-card-statistics">
             <md-layout md-gutter class="md-layout-header">
                <md-layout >
-                  <div class="md-title" style="flex: 1"><h3>1.542.854</h3><h5>Email Enviados</h5></div>
+                  <div class="md-title" style="flex: 1"><h3 id="totEm">1.542.854</h3><h5>Emails Enviados</h5></div>
                </md-layout>
-               <md-layout md-flex="25">
+               <md-layout md-flex="25" id="dashDays">
                   <md-button class="md-icon-button md-card-filter-day" md-menu-trigger>
-                     <span id="btnDashDay">7 dias <md-icon>more_vert</md-icon></span>
+                     <span id="btnDashDay">7 dias </span><md-icon>more_vert</md-icon>
                   </md-button>
                </md-layout>
             </md-layout>
@@ -67,13 +68,13 @@
             <md-layout md-gutter class="md-layout-content">
               <md-layout md-flex="50">
                 <div class="md-list-text-container">
-                  <h4>542.854</h4>
+                  <h4 id="apTot">542.854</h4>
                   <span>Apertura Totales</span>
                 </div>
               </md-layout>
               <md-layout md-flex-offset="20">
                 <div class="md-list-text-container" style="align-items: flex-end;">
-                  <h4>70%</h4>
+                  <h4 id="apTotp">70%</h4>
                   <h5>de enviados</h5>
                 </div>
               </md-layout>
@@ -90,13 +91,13 @@
             <md-layout md-gutter  lass="md-layout-content">
               <md-layout md-flex="50">
                 <div class="md-list-text-container">
-                  <h4>542.854</h4>
+                  <h4 id="apUni">542.854</h4>
                   <h5>Aperturas unicas</h5>
                 </div>
               </md-layout>
               <md-layout md-flex-offset="20">
                 <div class="md-list-text-container" style="align-items: flex-end;">
-                  <h4>30%</h4>
+                  <h4 id="apUnip">30%</h4>
                   <h5>de enviados</h5>
                 </div>
               </md-layout>
@@ -111,13 +112,13 @@
             <md-layout md-gutter  class="md-layout-content">
               <md-layout md-flex="50">
                 <div class="md-list-text-container">
-                  <h4>542.854</h4>
+                  <h4 id="clTot">542.854</h4>
                   <h5>Clicks totales</h5>
                 </div>
               </md-layout>
               <md-layout md-flex-offset="20">
                 <div class="md-list-text-container" style="align-items: flex-end;">
-                  <h4>30%</h4>
+                  <h4 id="clTotp">30%</h4>
                   <h5>de aperturas</h5>
                 </div>
               </md-layout>
@@ -132,13 +133,13 @@
             <md-layout md-gutter  class="md-layout-content">
               <md-layout md-flex="50">
                 <div class="md-list-text-container">
-                  <h4>542.854</h4>
+                  <h4 id="clUni">542.854</h4>
                   <h5>Clicks unicos</h5>
                 </div>
               </md-layout>
               <md-layout md-flex-offset="20">
                 <div class="md-list-text-container" style="align-items: flex-end;">
-                  <h4>45%</h4>
+                  <h4 id="clUnip">45%</h4>
                   <h5>de aperturas</h5>
                 </div>
               </md-layout>
@@ -153,13 +154,13 @@
             <md-layout md-gutter class="md-layout-content">
               <md-layout md-flex="50">
                 <div class="md-list-text-container">
-                  <h4>542.854</span>
+                  <h4 id="reTot">542.854</h4>
                   <h5>Rebotes totales</h5>
                 </div>
               </md-layout>
               <md-layout md-flex-offset="20">
                 <div class="md-list-text-container" style="align-items: flex-end;">
-                  <h4>10%</h4>
+                  <h4 id="reTotp">10%</h4>
                   <h5>de enviados</h5>
                 </div>
               </md-layout>
@@ -174,13 +175,13 @@
             <md-layout md-gutter class="md-layout-content">
               <md-layout md-flex="50">
                 <div class="md-list-text-container">
-                  <h4>542.854</h4>
+                  <h4 id="reUni">542.854</h4>
                   <span>Rebotes unicos</span>
                 </div>
               </md-layout>
               <md-layout md-flex-offset="20">
                 <div class="md-list-text-container" style="align-items: flex-end;">
-                  <h4>39%</h4>
+                  <h4 id="reUnip">39%</h4>
                   <h5>de enviados</h5>
                 </div>
               </md-layout>
@@ -195,13 +196,13 @@
             <md-layout md-gutter class="md-layout-content">
               <md-layout md-flex="50">
                 <div class="md-list-text-container">
-                  <h4>542.854</h4>
+                  <h4 id="DesTot">542.854</h4>
                   <h5>Desuscripciones</h5>
                 </div>
               </md-layout>
               <md-layout md-flex-offset="20">
                 <div class="md-list-text-container" style="align-items: flex-end;">
-                  <h4>25%</h4>
+                  <h4 id="DesTotp">25%</h4>
                   <h5>de enviados</h5>
                 </div>
               </md-layout>
@@ -238,8 +239,8 @@
         <!-- footer -->
 
         <md-bottom-bar class="main-toolbar-footer">
-          <md-bottom-bar-item md-iconset="icon-speedometer" active>Dashboard</md-bottom-bar-item>
-          <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas"></md-bottom-bar-item>
+          <md-bottom-bar-item md-iconset="icon-speedometer" md-active>Dashboard</md-bottom-bar-item>
+          <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas">Campanas</md-bottom-bar-item>
 <!--          <md-bottom-bar-item md-iconset="icon-envelope" id="aEnvios" disabled="true"></md-bottom-bar-item>-->
         </md-bottom-bar>
 
@@ -247,7 +248,7 @@
       </div>
 
       <!-- loading -->
-      <div class="modal">
+      <div class="modal hidden">
         <img id="loading" src="img/dmds_iso.svg" alt=" DMDS">
       </div>
 

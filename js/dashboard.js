@@ -15,14 +15,11 @@ $( document ).ready(function() {
             deviceReadyM();
 });
 
+var x,b,permissions,language,a,z,y,c;
 //////////////////START////////////////////////////
 function deviceReadyM() {
-//    alert('hi');
-  
-  
-    
-//    console.log(StatusBar);
-    
+
+
      loadWizzard();
         
     document.addEventListener("backbutton", onBackKeyDown, false);
@@ -43,15 +40,15 @@ function deviceReadyM() {
     localStorage.idGroupSel = z;
     localStorage.nameGroupSel = y;
     
-    
+    console.log(b);
+    $('#userName').html(b);
      
     $body = $("body");
         $(document).on({
         ajaxStart: function() { $body.addClass("loading"); },
         ajaxStop: function() { 
-            $body.removeClass("loading");
-            $('.wrap').removeClass("hidden");
-        
+//            $body.removeClass("loading");
+//            $('.wrap').removeClass("hidden");
         }
         });
     
@@ -65,13 +62,6 @@ function deviceReadyM() {
     var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
     ajx = wiz.getInfo('dashboard/'+a+'/'+z,null,wiz.processTotales);
     
-    
-    
-    
-   
-
-
-
 
 
     
@@ -105,7 +95,7 @@ function processTotals(){
             auxOR+=parseFloat(wiz.Campanas[ii].info.stats.open_rate);
             auxCR+=parseFloat(wiz.Campanas[ii].info.stats.click_rate);
         }
-        console.log('Total: Envios>'+auxEnv+' Emails>'+auxEmails+' OR>'+(auxOR/wiz.Campanas.length).toFixed(2)+'% CR>'+(auxCR/wiz.Campanas.length).toFixed(2)+'%');
+//        console.log('Total: Envios>'+auxEnv+' Emails>'+auxEmails+' OR>'+(auxOR/wiz.Campanas.length).toFixed(2)+'% CR>'+(auxCR/wiz.Campanas.length).toFixed(2)+'%');
 //        alert('Total: Envios>'+auxEnv+' Emails>'+auxEmails+' OR>'+(auxOR/wiz.Campanas.length).toFixed(2)+'% CR>'+(auxCR/wiz.Campanas.length).toFixed(2)+'%');
 //       }     
         
@@ -131,15 +121,19 @@ function listenerDashboard(){
          if( clicks==0){
     $("#btnDashDay").html('30 dias');
              clicks=1;
+             printStatsTotales('thirty');
              }else if( clicks==1){
     $("#btnDashDay").html('90 dias');
                  clicks=2;
+                 printStatsTotales('ninety');
              }else if( clicks==2){
     $("#btnDashDay").html('365 dias');
                  clicks=3;
+                 printStatsTotales('yearly');
              }else if( clicks==3){
     $("#btnDashDay").html('7 dias');
                  clicks=0;
+                 printStatsTotales('seven');
              }
              e.preventDefault();
     });
@@ -184,8 +178,95 @@ function startlistenexit(){
 }
 
 
-function printStatsTotales(){
-    console.log(JSON.stringify(wiz.Totales[0].info.seven));
-    console.log(JSON.stringify(wiz.Totales[0].info.seven.ev_envio));
+function printStatsTotales(dias){
+    var url;
+    if(dias=='seven'){
+    url=wiz.Totales[0].info.seven;
+    console.log(JSON.stringify(url));
+    
+    
+    $('#totEm').html(url.total_envios);
+    $('#apTot').html(url.ev_vista);
+    $('#apTotP').html((url.ev_vista/url.total_envios*100).toFixed(2)+'%');
+    $('#apUni').html(url.ev_vista_unica);
+    $('#apUniP').html((url.ev_vista_unica/url.total_envios*100).toFixed(2)+'%');
+    $('#clTot').html(url.ev_click);
+    $('#clTotP').html((url.ev_click/url.ev_vista*100).toFixed(2)+'%');
+    $('#clUni').html(url.ev_click_unico);
+    $('#clUniP').html((url.ev_click_unico/url.ev_vista*100).toFixed(2)+'%');
+    $('#reTot').html(url.ev_rebote);
+    $('#reTotP').html((url.ev_rebote/url.total_envios*100).toFixed(2)+'%');
+    $('#reUni').html(url.ev_rebote_unico);
+    $('#reUniP').html((url.ev_rebote_unico/url.total_envios*100).toFixed(2)+'%');
+    $('#desTot').html(url.ev_desuscripcion);
+    $('#desTotP').html((url.ev_desuscripcion/url.total_envios*100).toFixed(2)+'%');
+    
+    }else if(dias=='thirty'){
+    
+        url=wiz.Totales[0].info.thirty;
+    console.log(JSON.stringify(url));
+    
+    
+    $('#totEm').html(url.total_envios);
+    $('#apTot').html(url.ev_vista);
+    $('#apTotP').html((url.ev_vista/url.total_envios*100).toFixed(2)+'%');
+    $('#apUni').html(url.ev_vista_unica);
+    $('#apUniP').html((url.ev_vista_unica/url.total_envios*100).toFixed(2)+'%');
+    $('#clTot').html(url.ev_click);
+    $('#clTotP').html((url.ev_click/url.ev_vista*100).toFixed(2)+'%');
+    $('#clUni').html(url.ev_click_unico);
+    $('#clUniP').html((url.ev_click_unico/url.ev_vista*100).toFixed(2)+'%');
+    $('#reTot').html(url.ev_rebote);
+    $('#reTotP').html((url.ev_rebote/url.total_envios*100).toFixed(2)+'%');
+    $('#reUni').html(url.ev_rebote_unico);
+    $('#reUniP').html((url.ev_rebote_unico/url.total_envios*100).toFixed(2)+'%');
+    $('#desTot').html(url.ev_desuscripcion);
+    $('#desTotP').html((url.ev_desuscripcion/url.total_envios*100).toFixed(2)+'%');
+    }else if(dias=='ninety'){
+    
+        url=wiz.Totales[0].info.ninety;
+    console.log(JSON.stringify(url));
+    
+    
+    $('#totEm').html(url.total_envios);
+    $('#apTot').html(url.ev_vista);
+    $('#apTotP').html((url.ev_vista/url.total_envios*100).toFixed(2)+'%');
+    $('#apUni').html(url.ev_vista_unica);
+    $('#apUniP').html((url.ev_vista_unica/url.total_envios*100).toFixed(2)+'%');
+    $('#clTot').html(url.ev_click);
+    $('#clTotP').html((url.ev_click/url.ev_vista*100).toFixed(2)+'%');
+    $('#clUni').html(url.ev_click_unico);
+    $('#clUniP').html((url.ev_click_unico/url.ev_vista*100).toFixed(2)+'%');
+    $('#reTot').html(url.ev_rebote);
+    $('#reTotP').html((url.ev_rebote/url.total_envios*100).toFixed(2)+'%');
+    $('#reUni').html(url.ev_rebote_unico);
+    $('#reUniP').html((url.ev_rebote_unico/url.total_envios*100).toFixed(2)+'%');
+    $('#desTot').html(url.ev_desuscripcion);
+    $('#desTotP').html((url.ev_desuscripcion/url.total_envios*100).toFixed(2)+'%');
+    }else if(dias=='yearly'){
+    
+        url=wiz.Totales[0].info.yearly;
+    console.log(JSON.stringify(url));
+    
+    
+    $('#totEm').html(url.total_envios);
+    $('#apTot').html(url.ev_vista);
+    $('#apTotP').html((url.ev_vista/url.total_envios*100).toFixed(2)+'%');
+    $('#apUni').html(url.ev_vista_unica);
+    $('#apUniP').html((url.ev_vista_unica/url.total_envios*100).toFixed(2)+'%');
+    $('#clTot').html(url.ev_click);
+    $('#clTotP').html((url.ev_click/url.ev_vista*100).toFixed(2)+'%');
+    $('#clUni').html(url.ev_click_unico);
+    $('#clUniP').html((url.ev_click_unico/url.ev_vista*100).toFixed(2)+'%');
+    $('#reTot').html(url.ev_rebote);
+    $('#reTotP').html((url.ev_rebote/url.total_envios*100).toFixed(2)+'%');
+    $('#reUni').html(url.ev_rebote_unico);
+    $('#reUniP').html((url.ev_rebote_unico/url.total_envios*100).toFixed(2)+'%');
+    $('#desTot').html(url.ev_desuscripcion);
+    $('#desTotP').html((url.ev_desuscripcion/url.total_envios*100).toFixed(2)+'%');
+    }
+    
+    $(".main").removeClass("hidden");
+    $body.removeClass("loading");
 
 }
