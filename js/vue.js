@@ -17,6 +17,7 @@ Vue.material.registerTheme({
 })
 
 var campanas= [];
+var totales= [];
 var envios= [];
 var enviosTot= [];
 var detEnvKey= [];
@@ -28,6 +29,7 @@ var example2 = new Vue({
     mounted:showHeader,
   data: {
     parentMessage: 'Campana',
+    listTotales: totales,
     listCamp: campanas,
     listEnv: envios,
     listEnvTot: enviosTot,

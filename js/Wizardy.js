@@ -321,6 +321,52 @@ WizzardDMDS.prototype.processinfoE1 = function(campanas){
     startInfoEnvio(campanas.pieza_html);
 }
 
+WizzardDMDS.prototype.processTotales = function(totales){
+    
+
+//    console.log(JSON.stringify(totales.Totales));
+//    console.log(JSON.stringify(totales.Totales.seven));NOSE PQ NOVA
+ 
+    var len = totales.Totales.length;
+//     console.log(JSON.stringify(totales.Totales.7d));
+//     console.log(JSON.stringify(totales.Totales.365d));
+//	var i;
+	wiz.Totales = new Array();
+//	for(i=0;i<len;i++){
+		var obj = totales.Totales;
+		var totaless = new WizzardDMDS.Totales(obj);
+    
+		wiz.Totales.push(totaless);
+//	}
+	printStatsTotales();
+//    
+//    
+//    
+//    var lan = 11;
+//    var o;
+//	wiz.enviosTot = new Array();
+//
+//		var obj = {            
+//"totalEnvios":envios.recordsFiltered,
+//"ev_envio":envios.totals.ev_envio,
+//"ev_click":envios.totals.ev_click,
+//"ev_vista":envios.totals.ev_vista,
+//"ev_vista_unica":envios.totals.ev_vista_unica,
+//"ev_click_unico":envios.totals.ev_click_unico,
+//"ev_rebote":envios.totals.ev_rebote,
+//"ev_rebote_unico":envios.totals.ev_rebote_unico,
+//"ev_desuscripcion":envios.totals.ev_desuscripcion,
+//"ev_OR":envios.totals.ev_OR,
+//"ev_CTR":envios.totals.ev_CTR        
+//           };
+//		var campanastt = new WizzardDMDS.EnviosTot(obj);
+//		wiz.enviosTot.push(campanastt);
+//
+
+    
+    
+}
+
 // - Campana
 
 WizzardDMDS.DMDS = function(data){
@@ -367,6 +413,12 @@ WizzardDMDS.Perfil = function(data){
 	}
 }
 WizzardDMDS.UP = function(data){
+	this.info = new Object();
+	if(typeof data !== "undefined"){
+		this.info = data;
+	}
+}
+WizzardDMDS.Totales = function(data){
 	this.info = new Object();
 	if(typeof data !== "undefined"){
 		this.info = data;

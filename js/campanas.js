@@ -123,37 +123,9 @@ $('#searcherCamp').click(function(e) {
     }
 });
    
-
-
-// Handle the swipe action
-    //
-   
-    document.body.addEventListener('touchstart', function(e){
-//        alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
-        guardarIni(e.changedTouches[0].pageY);
-        
-    }, false);
-    document.body.addEventListener('touchend', function(e){
-//        alert(e.changedTouches[0].pageY) // alert pageX coordinate of touch point
-        guardarFin(e.changedTouches[0].pageY);
-    
-    }, false);
-    
+  
 }
-function guardarIni(int){
-    inicioTouch=int;
-//    console.log(inicioTouch);
-} 
-function guardarFin(int){
-    finTouch=int;
-//    console.log(finTouch);
-    comparar();
-}    
-function comparar(){
-    if(inicioTouch>finTouch && (inicioTouch-finTouch)>230){
-    cargarMas();
-        }
-}
+
 function onBackKeyDown() {
         location.replace('./dashboard.html');
     }
@@ -189,3 +161,33 @@ $('#inputSearch').bind("keypress", function(e){
         $("#test").focus();
     } 
 })
+
+
+//On Bottom
+$(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+       // Handle the swipe action
+    document.body.addEventListener('touchstart', function(e){
+        guardarIni(e.changedTouches[0].pageY);
+    }, false);
+    document.body.addEventListener('touchend', function(e){
+        guardarFin(e.changedTouches[0].pageY);
+    }, false);
+       
+   }
+});
+
+function guardarIni(int){
+    inicioTouch=int;
+//    console.log(inicioTouch);
+} 
+function guardarFin(int){
+    finTouch=int;
+//    console.log(finTouch);
+    comparar();
+}    
+function comparar(){
+    if(inicioTouch>finTouch && (inicioTouch-finTouch)>230){
+    cargarMas();
+        }
+}

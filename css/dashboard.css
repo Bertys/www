@@ -1,3 +1,12 @@
+.list-dashboard {
+    padding: 65px 15px 126px 15px;
+}
+.list-dashboard h2{
+    padding: 0 0 10px 2px
+}
+.md-layout-header{
+    margin-bottom: 35px;
+}
 .md-list.md-double-line .md-list-item .md-list-item-container{
     min-height: inherit;
 }
@@ -9,8 +18,4 @@
 }
 .md-theme-default.md-bottom-bar.md-fixed .md-bottom-bar-item{
     color:white;
-}
-.hidden
-{
-   display: none
 }

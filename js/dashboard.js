@@ -63,7 +63,7 @@ function deviceReadyM() {
     wiz.processPerfil(obj);
 
     var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
-    ajx = wiz.postInfo('campanas/'+a+'/'+z,data,wiz.processCampanas);
+    ajx = wiz.getInfo('dashboard/'+a+'/'+z,null,wiz.processTotales);
     
     
     
@@ -127,7 +127,7 @@ function listenerDashboard(){
         e.preventDefault();
     });
     var clicks=0;
-     $('#btnDashDay').click(function(e) {
+     $('#dashDays').click(function(e) {
          if( clicks==0){
     $("#btnDashDay").html('30 dias');
              clicks=1;
@@ -181,4 +181,11 @@ function startlistenexit(){
     console.log('cerrando la App');
     navigator.app.exitApp();
     });
+}
+
+
+function printStatsTotales(){
+    console.log(JSON.stringify(wiz.Totales[0].info.seven));
+    console.log(JSON.stringify(wiz.Totales[0].info.seven.ev_envio));
+
 }
