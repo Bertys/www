@@ -33,7 +33,7 @@ app.initialize();
 function deviceReadyM() {
     $("#infoE1").removeClass("hidden");
     
-    
+    document.addEventListener("backbutton", onBackKeyDown, false);
     
     
     
@@ -87,7 +87,15 @@ function deviceReadyM() {
     
     
     $('#goBack').click(function(e) {
-    location.replace('./envios.html');
+    location.replace('./statsE.html');
+        });
+
+    $('#aCampanas').click(function(e) {
+      location.replace('./campanas.html');
+        });
+    
+        $('#aDashboard').click(function(e) {
+    location.replace('./dashboard.html');
         });
 
 }
@@ -118,10 +126,44 @@ function loadWizzard(){
 }
 
 function  startInfoEnvio(datas){
-    window.frames[0].location = 'data:text/html;'+datas;
+//    window.frames[0].location = 'data:text/html;'+datas;
+    console.log(datas);
+    var doc = document.getElementById('iframe').contentWindow.document;
+doc.open();
+    var datas2="'"+datas+"'";
+    datas2 = datas2.replace(/\r/g, '');
+    datas2 = datas2.replace(/\t/g, '');
+    datas2 = datas2.replace(/\n/g, '');
+    console.log(datas2);
+doc.write(datas2);
+doc.close();
+    $body.removeClass("loading");
+    $("#iframe").focus();
+//    $('#datosEmail').trigger('click');
     
+//    var link = document.getElementById( 'datosEmail' );
+//    var event = document.createEvent( 'HTMLEvents' );
+//
+//event.initEvent( 'click', true, true );
+//link.dispatchEvent( event );
+//var button = document.getElementById("datosEmail");
+//button.click();
 }
-function cambiarFrame(data){
-    console.log(data);
-    $("#frame").attr("src", "data:text/html,"+data);
+
+
+// Handle the back button
+    //
+    function onBackKeyDown() {
+        location.replace('./statsE.html');
+    }
+
+
+function eventFire(el, etype){
+  if (el.fireEvent) {
+    el.fireEvent('on' + etype);
+  } else {
+    var evObj = document.createEvent('Events');
+    evObj.initEvent(etype, true, false);
+    el.dispatchEvent(evObj);
+  }
 }

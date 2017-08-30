@@ -1,48 +1,52 @@
-var app = {
-    // Application Constructor
-    initialize: function() {
-        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-    },
-
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
-    onDeviceReady: function() {
-//        this.receivedEvent('deviceready');
-        deviceReadyM();
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
-    }
-};
-
-app.initialize();
+//var app = {
+//    // Application Constructor
+//    initialize: function() {
+//        document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
+//    },
+//
+//    // deviceready Event Handler
+//    //
+//    // Bind any cordova events here. Common events are:
+//    // 'pause', 'resume', etc.
+//    onDeviceReady: function() {
+////        this.receivedEvent('deviceready');
+//        deviceReadyM();
+//    },
+//
+//    // Update DOM on a Received Event
+//    receivedEvent: function(id) {
+//        var parentElement = document.getElementById(id);
+//        var listeningElement = parentElement.querySelector('.listening');
+//        var receivedElement = parentElement.querySelector('.received');
+//
+//        listeningElement.setAttribute('style', 'display:none;');
+//        receivedElement.setAttribute('style', 'display:block;');
+//
+//        console.log('Received Event: ' + id);
+//    }
+//};
+//
+//app.initialize();
+$( document ).ready(function() {
+            deviceReadyM();
+});
 
 //////////////////START////////////////////////////
 function deviceReadyM() {
 
      $body = $("body");
+     $main = $(".main");
     listenerLogin();
 
 
 
   if(localStorage.getItem("nuevo")==null){
             console.log('entra nuevo=null');
-        $body.removeClass("hidden");
+        
         $body.removeClass("loading");
+      $main.removeClass("hidden");
 
         }else if(localStorage.getItem("nuevo")=='Bueno'){
-//            $body.addClass("loading");
             startPageLogin(localStorage.getItem("usrAuxMeu"),localStorage.getItem("pswAuxMeu"));
         }else{
 //            inicioCampanas();
@@ -122,12 +126,6 @@ xhr.onreadystatechange = function () {
     }else if (xhr.readyState == 4 && xhr.status !== 200){
         console.log("Tu login es incorrecto, vuelve a intentarlo.");
         alert("Tu login es incorrecto, vuelve a intentarlo.");
-        //control de fallos del mail
-
-        $('#helper').show();
-        $('#helper').html('Tienes problemas?<br>');
-        localStorage.removeItem("nuevo");
-        getAuth(1,"user/id/"+userEmail);
 
         }else{
             console.log("Entra login else. con: xhr.readyState "+xhr.readyState+' xhr.status '+xhr.status);

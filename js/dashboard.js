@@ -2,43 +2,30 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-//        deviceReadyM();
     },
-
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
     onDeviceReady: function() {
-//        this.receivedEvent('deviceready');
-        deviceReadyM();
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
+       StatusBar.backgroundColorByName("orange"); 
     }
 };
 
 app.initialize();
 
+
+$( document ).ready(function() {
+            deviceReadyM();
+});
+
 //////////////////START////////////////////////////
 function deviceReadyM() {
-    
-  StatusBar.backgroundColorByName("orange"); 
-  $("#dashboard").removeClass("hidden");
+//    alert('hi');
+  
+  
     
 //    console.log(StatusBar);
     
      loadWizzard();
         
+    document.addEventListener("backbutton", onBackKeyDown, false);
     
     x=localStorage.getItem("token");
     b=localStorage.getItem("userEmail");
@@ -61,7 +48,11 @@ function deviceReadyM() {
     $body = $("body");
         $(document).on({
         ajaxStart: function() { $body.addClass("loading"); },
-        ajaxStop: function() { $body.removeClass("loading"); }
+        ajaxStop: function() { 
+            $body.removeClass("loading");
+            $('.wrap').removeClass("hidden");
+        
+        }
         });
     
 
@@ -72,7 +63,7 @@ function deviceReadyM() {
     wiz.processPerfil(obj);
 
     var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
-    ajx = wiz.postInfo('campanas/'+a+'/'+z,data,wiz.processCampanas);
+    ajx = wiz.getInfo('dashboard/'+a+'/'+z,null,wiz.processTotales);
     
     
     
@@ -120,6 +111,9 @@ function processTotals(){
         
     
 }
+
+
+
 //////////CODIGO MIO ////////////////
 
 var token;
@@ -133,22 +127,31 @@ function listenerDashboard(){
         e.preventDefault();
     });
     var clicks=0;
-     $('#btnDashDay').click(function(e) {
+     $('#dashDays').click(function(e) {
          if( clicks==0){
-    $("#btnDashDay").html('30 Dias');
+    $("#btnDashDay").html('30 dias');
              clicks=1;
              }else if( clicks==1){
-    $("#btnDashDay").html('90 Dias');
+    $("#btnDashDay").html('90 dias');
                  clicks=2;
              }else if( clicks==2){
-    $("#btnDashDay").html('365 Dias');
+    $("#btnDashDay").html('365 dias');
                  clicks=3;
              }else if( clicks==3){
-    $("#btnDashDay").html('7 Dias');
+    $("#btnDashDay").html('7 dias');
                  clicks=0;
              }
              e.preventDefault();
     });
+    
+    
+    $('#aCampanas').click(function(e) {
+        location.replace('./campanas.html');
+        e.preventDefault();
+    });
+    
+    
+    
 }
 
 function loadWizzard(){
@@ -166,4 +169,23 @@ function loadWizzard(){
 
 function printPerfil(){
     console.log(wiz.Perfil);
+}
+
+// Handle the back button
+function onBackKeyDown() {
+    $('#dialog').click();
+    startlistenexit();
+    }
+function startlistenexit(){
+    $('#closeapp').click(function(e) {
+    console.log('cerrando la App');
+    navigator.app.exitApp();
+    });
+}
+
+
+function printStatsTotales(){
+    console.log(JSON.stringify(wiz.Totales[0].info.seven));
+    console.log(JSON.stringify(wiz.Totales[0].info.seven.ev_envio));
+
 }

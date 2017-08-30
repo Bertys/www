@@ -17,6 +17,7 @@ Vue.material.registerTheme({
 })
 
 var campanas= [];
+var totales= [];
 var envios= [];
 var enviosTot= [];
 var detEnvKey= [];
@@ -25,8 +26,10 @@ var searchString;
 
 var example2 = new Vue({
   el: '#file-list',
+    mounted:showHeader,
   data: {
     parentMessage: 'Campana',
+    listTotales: totales,
     listCamp: campanas,
     listEnv: envios,
     listEnvTot: enviosTot,
@@ -59,3 +62,6 @@ var example2 = new Vue({
 
 
 //setTimeout(myFunction, 3000);
+function showHeader(){
+    $(".screenHeader").removeClass("hidden");
+}

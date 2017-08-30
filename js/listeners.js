@@ -27,12 +27,11 @@ function logout(){
 $('#buthover').click(function(e) {
           logout();
         });
-$('#searcher').click(function(e) {
-    location.replace('./searcher.html');
-        });
+
 $('#aCampanas').click(function(e) {
       location.replace('./campanas.html');
         });
     $('#aDashboard').click(function(e) {
       location.replace('./dashboard.html');
         });
+ 

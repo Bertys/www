@@ -2,28 +2,10 @@ var app = {
     // Application Constructor
     initialize: function() {
         document.addEventListener('deviceready', this.onDeviceReady.bind(this), false);
-//        deviceReadyM();
     },
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
     onDeviceReady: function() {
-//        this.receivedEvent('deviceready');
         deviceReadyM();
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
     }
 };
 
@@ -34,7 +16,7 @@ var page='campanasStats';
 var campId, campName;
 //////////////////START////////////////////////////
 function deviceReadyM() {
-    $("#statsC").removeClass("hidden");
+    
     
     
     
@@ -60,12 +42,13 @@ function deviceReadyM() {
     campId = localStorage.campanaId;
     campName = localStorage.campanaName;
     
-
+    document.addEventListener("backbutton", onBackKeyDown, false);
 
     
 //    console.log(b);
     $('#userName').html(b);
-    $('#h2p5').html("<br />Nombre de Campaña: '"+campName+"'");
+    $('#h2p7').html("<br />Campaña: '"+campName+"'");
+    $('#h2p8').html("<br />Campaña: '"+campName+"'");
     
     
     
@@ -79,17 +62,9 @@ function deviceReadyM() {
     
 //    console.log("Tu token es: "+x);
     startEnvios();
+
+    listenerEnvios();
     
-    
-    
-    
-    
-    $('#goBack').click(function(e) {
-    location.replace('./campanas.html');
-        });
-    $('#btnEnv').click(function(e) {
-    location.replace('./envios.html');
-        });
 
 }
 
@@ -138,5 +113,136 @@ function inicioStatsCamp(){
     $('#desTot').html(wiz.enviosTot[0].info.ev_desuscripcion);
     $('#desTotP').html((wiz.enviosTot[0].info.ev_desuscripcion/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
     
+    
+    
+    $(".main").removeClass("hidden");
     $body.removeClass("loading");
 }
+
+// Handle the back button
+function onBackKeyDown() {
+    location.replace('./campanas.html');
+    }
+
+function listenerEnvios(){
+
+    $('#anavCampanas').click(function(e) {
+      location.replace('./campanas.html');
+        });
+    
+    $('#aCampanas').click(function(e) {
+      location.replace('./campanas.html');
+        });
+    
+        $('#aDashboard').click(function(e) {
+    location.replace('./dashboard.html');
+        });
+
+}
+
+function searchEnvios(str){
+
+//    var str = $('.input-searchbox').val();
+
+     
+    for(i=0;i<=wiz.envios.length;i++){
+            envios.shift();
+        }
+//    alert(str);
+    var data={'search':str,'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+b,data,wiz.processEnvios);
+}
+
+function cargarMasE(){
+    var ajx;
+    var aux=contEnvMost*6;
+    if(aux<=totalEnvios){
+        console.log(aux);
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':aux,'pagina':0};
+    wiz.processPerfil(obj);
+
+    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+b,data,wiz.processEnvios);
+    contEnvMost++;
+    }else{
+//        document.getElementById('butCarMasE').setAttribute('disabled', true);
+    }
+}
+
+function printEnvios(pag){
+	if(typeof pag === "undefined"){
+        pag = 0;
+    console.log(wiz.envios);
+ for(i=0;i<=wiz.envios.length-1;i++){
+            envios.push(wiz.envios[i]);
+        }
+    if(wiz.envios.length==0){
+        envios.push({info:{envio:{nombre:"El envío seleccionado no tiene correos."},id:0}})
+        document.getElementById('butCarMasE').setAttribute('disabled', true);
+    }
+	}
+//    else{
+//        wiz.Perfil[0].info.pagina=pag;
+//        var start=wiz.Perfil[0].info.pagina*wiz.Perfil[0].info.numReg;
+//        var data={'start' : start, 'length' : wiz.Perfil[0].info.numReg, 'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+//        ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+b,data,wiz.processEnvios);
+//    }
+
+    if(totalEnvios<=6){
+//        document.getElementById('butCarMasE').setAttribute('disabled', true);
+    }
+}
+function gotoStats3(id,nombre) {
+    localStorage.envioId=id;
+        localStorage.envioName=nombre;
+    location.replace('./statsE.html');
+        }
+
+$('#searcherEnvios').click(function(e) {
+    if(searched==0){
+        $("#inputSearch").removeClass("hidden");
+        $("#inputSearch").focus();
+    }
+});
+
+// Handle the swipe action
+    //
+   
+    document.body.addEventListener('touchstart', function(e){
+//        alert(e.changedTouches[0].pageX) // alert pageX coordinate of touch point
+        guardarIni(e.changedTouches[0].pageY);
+        
+    }, false);
+    document.body.addEventListener('touchend', function(e){
+//        alert(e.changedTouches[0].pageY) // alert pageX coordinate of touch point
+        guardarFin(e.changedTouches[0].pageY);
+    
+    }, false);
+    
+
+function guardarIni(int){
+    inicioTouch=int;
+//    console.log(inicioTouch);
+} 
+function guardarFin(int){
+    finTouch=int;
+//    console.log(finTouch);
+    comparar();
+}    
+function comparar(){
+    if(inicioTouch>finTouch && (inicioTouch-finTouch)>230){
+    cargarMasE();
+        }
+}
+
+$('#inputSearch').bind("keypress", function(e){
+   // enter key code is 13
+   if(e.which === 13){
+     console.log("user pressed done");
+     var str=$('#inputSearch').val();
+     searchCampanas(str);
+       $("#inputSearch").addClass("hidden");
+//        searched=0;
+        $("#test").focus();
+    } 
+});

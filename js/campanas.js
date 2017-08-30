@@ -18,6 +18,8 @@ var a,b,c,d,e,f,x,y,z;
 var permissions,language;
 
 var page='campanas';
+var searched=0;
+var inicioTouch, finTouch;
 var app = {
     // Application Constructor
     initialize: function() {
@@ -32,18 +34,6 @@ var app = {
     onDeviceReady: function() {
 //        this.receivedEvent('deviceready');
         deviceReadyM();
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
     }
 };
 
@@ -56,7 +46,7 @@ function deviceReadyM() {
     StatusBar.backgroundColorByName("blue");
     $("#campanas").removeClass("hidden");
     
-    
+    document.addEventListener("backbutton", onBackKeyDown, false);
     
     $body = $("body");
         $(document).on({
@@ -78,6 +68,9 @@ function deviceReadyM() {
         urlP=document.URL;
 
 
+  
+    
+    
 //console.log(languages.es[1].welcome);
 
         loadWizzard();
@@ -121,29 +114,80 @@ function listenerCampanas(){
 
 //////////CODIGO MIO ///////////
 $('#goBack').click(function(e) {
-    location.replace('./index.html');
+    location.replace('./dashboard.html');
         });
-$('#searcher').click(function(e) {
-    location.replace('./searcher.html');
-        });
-    
-    var clicks=0;
-     $('#btnCampDay').click(function(e) {
+$('#searcherCamp').click(function(e) {
+    if(searched==0){
+        $("#inputSearch").removeClass("hidden");
+        $("#inputSearch").focus();
+    }
+});
+   
+  
+}
+
+function onBackKeyDown() {
+        location.replace('./dashboard.html');
+    }
+
+var clicks=0;
+     $('#btnDashDay').click(function(e) {
          if( clicks==0){
-    $("#btnCampDay").html('30 Dias');
+    $("#btnDashDay").html('30 dias');
              clicks=1;
              }else if( clicks==1){
-    $("#btnCampDay").html('90 Dias');
+    $("#btnDashDay").html('90 dias');
                  clicks=2;
              }else if( clicks==2){
-    $("#btnCampDay").html('365 Dias');
+    $("#btnDashDay").html('365 dias');
                  clicks=3;
              }else if( clicks==3){
-    $("#btnCampDay").html('7 Dias');
+    $("#btnDashDay").html('7 dias');
                  clicks=0;
              }
              e.preventDefault();
     });
-    
-    
-    }
+
+//////////////////////////////////
+
+$('#inputSearch').bind("keypress", function(e){
+   // enter key code is 13
+   if(e.which === 13){
+     console.log("user pressed done");
+     var str=$('#inputSearch').val();
+     searchCampanas(str);
+       $("#inputSearch").addClass("hidden");
+//        searched=0;
+        $("#test").focus();
+    } 
+})
+
+
+//On Bottom
+$(window).scroll(function() {
+   if($(window).scrollTop() + $(window).height() == $(document).height()) {
+       // Handle the swipe action
+    document.body.addEventListener('touchstart', function(e){
+        guardarIni(e.changedTouches[0].pageY);
+    }, false);
+    document.body.addEventListener('touchend', function(e){
+        guardarFin(e.changedTouches[0].pageY);
+    }, false);
+       
+   }
+});
+
+function guardarIni(int){
+    inicioTouch=int;
+//    console.log(inicioTouch);
+} 
+function guardarFin(int){
+    finTouch=int;
+//    console.log(finTouch);
+    comparar();
+}    
+function comparar(){
+    if(inicioTouch>finTouch && (inicioTouch-finTouch)>230){
+    cargarMas();
+        }
+}
