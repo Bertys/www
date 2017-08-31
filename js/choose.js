@@ -85,10 +85,10 @@ $('#butDash').click(function(e) {
         }
     }
     
-    console.log(dmdsId);
-    console.log(dmdsName);
-    console.log(groupId);
-    console.log(groupName);
+//    console.log(dmdsId);
+//    console.log(dmdsName);
+//    console.log(groupId);
+//    console.log(groupName);
     localStorage.setItem("dmdsId", dmdsId);
   localStorage.setItem("dmdsName", dmdsName);
     localStorage.setItem("groupId", groupId);

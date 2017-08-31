@@ -195,42 +195,42 @@ function printStatsTotales(dias){
     
     if(dias=='seven'){
         url=wiz.Totales[0].info.seven;
-        if(url.total_envios==0){url.total_envios=1;}
+        if(url.ev_envio==0){url.ev_envio=1;}
     }else if(dias=='thirty'){
         url=wiz.Totales[0].info.thirty;
-        if(url.total_envios==0){url.total_envios=1;}
+        if(url.ev_envio==0){url.ev_envio=1;}
     }else if(dias=='ninety'){
         url=wiz.Totales[0].info.ninety;
-        if(url.total_envios==0){url.total_envios=1;}
+        if(url.ev_envio==0){url.ev_envio=1;}
     }else if(dias=='yearly'){
         url=wiz.Totales[0].info.yearly;
-        if(url.total_envios==0){url.total_envios=1;}
+        if(url.ev_envio==0){url.ev_envio=1;}
     }
            
     console.log(JSON.stringify(url));
     
-    $('#totEm').html(url.total_envios);
+    $('#totEm').html(url.ev_envio);
     $('#apTot').html(url.ev_vista);
-    $('#apTotP').html((url.ev_vista/url.total_envios*100).toFixed(2)+'%');
-    $("#apTotPp .md-progress-track").css("width", (url.ev_vista/url.total_envios*100).toFixed(2)+'%');
+    $('#apTotP').html((url.ev_vista/url.ev_envio*100).toFixed(2)+'%');
+    $("#apTotPp .md-progress-track").css("width", (url.ev_vista/url.ev_envio*100).toFixed(2)+'%');
     $('#apUni').html(url.ev_vista_unica);
-    $('#apUniP').html((url.ev_vista_unica/url.total_envios*100).toFixed(2)+'%');
-    $("#apUniPp .md-progress-track").css("width", (url.ev_vista_unica/url.total_envios*100).toFixed(2)+'%');
+    $('#apUniP').html((url.ev_vista_unica/url.ev_envio*100).toFixed(2)+'%');
+    $("#apUniPp .md-progress-track").css("width", (url.ev_vista_unica/url.ev_envio*100).toFixed(2)+'%');
     $('#clTot').html(url.ev_click);
-    $('#clTotP').html((url.ev_click/url.ev_vista*100).toFixed(2)+'%');
+    $('#clTotP').html((url.ev_click/url.ev_envio*100).toFixed(2)+'%');
     $("#clTotPp .md-progress-track").css("width", (url.ev_click/url.ev_vista*100).toFixed(2)+'%');
     $('#clUni').html(url.ev_click_unico);
-    $('#clUniP').html((url.ev_click_unico/url.ev_vista*100).toFixed(2)+'%');
+    $('#clUniP').html((url.ev_click_unico/url.ev_envio*100).toFixed(2)+'%');
     $("#clUniPp .md-progress-track").css("width", (url.ev_click_unico/url.ev_vista*100).toFixed(2)+'%');
     $('#reTot').html(url.ev_rebote);
-    $('#reTotP').html((url.ev_rebote/url.total_envios*100).toFixed(2)+'%');
-    $("#reTotPp .md-progress-track").css("width", (url.ev_rebote/url.total_envios*100).toFixed(2)+'%');
+    $('#reTotP').html((url.ev_rebote/url.ev_envio*100).toFixed(2)+'%');
+    $("#reTotPp .md-progress-track").css("width", (url.ev_rebote/url.ev_envio*100).toFixed(2)+'%');
     $('#reUni').html(url.ev_rebote_unico);
-    $('#reUniP').html((url.ev_rebote_unico/url.total_envios*100).toFixed(2)+'%');
-    $("#reUniPp .md-progress-track").css("width", (url.ev_rebote_unico/url.total_envios*100).toFixed(2)+'%');
+    $('#reUniP').html((url.ev_rebote_unico/url.ev_envio*100).toFixed(2)+'%');
+    $("#reUniPp .md-progress-track").css("width", (url.ev_rebote_unico/url.ev_envio*100).toFixed(2)+'%');
     $('#desTot').html(url.ev_desuscripcion);
-    $('#desTotP').html((url.ev_desuscripcion/url.total_envios*100).toFixed(2)+'%');
-    $("#desTotPp .md-progress-track").css("width", (url.ev_desuscripcion/url.total_envios*100).toFixed(2)+'%');
+    $('#desTotP').html((url.ev_desuscripcion/url.ev_envio*100).toFixed(2)+'%');
+    $("#desTotPp .md-progress-track").css("width", (url.ev_desuscripcion/url.ev_envio*100).toFixed(2)+'%');
     
         
     $(".main").removeClass("hidden");
