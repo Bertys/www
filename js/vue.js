@@ -18,6 +18,7 @@ Vue.material.registerTheme({
 
 var campanas= [];
 var permisos= [];
+var grupos= [];
 var totales= [];
 var envios= [];
 var enviosTot= [];
@@ -30,7 +31,9 @@ var example2 = new Vue({
     mounted:showHeader,
   data: {
     parentMessage: 'Campana',
-    listPermisos: permisos,
+      myModel: 'like',
+    listDmds: permisos,
+    listGroups: grupos,
     listTotales: totales,
     listCamp: campanas,
     listEnv: envios,
@@ -60,6 +63,7 @@ var example2 = new Vue({
           return mifecha;
       }
   }
+
 })
 
 

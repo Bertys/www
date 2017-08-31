@@ -181,6 +181,20 @@ WizzardDMDS.prototype.processDMDS = function(dmds){
 	printDMDS();
 }
 
+WizzardDMDS.prototype.processGroups = function(dmds){
+    
+//	var len = dmds.data.length;
+//	var i;
+//	wiz.DMDS = new Array();
+//	for(i=0;i<len;i++){
+//		var obj = dmds.data[i];
+//		var dmdss = new WizzardDMDS.DMDS(obj);
+//		wiz.DMDS.push(dmdss);
+//	}
+//	printDMDS();
+    console.log(JSON.stringify(dmds));
+}
+
 WizzardDMDS.prototype.processPerfil = function(perfil){
     
 

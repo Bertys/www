@@ -14,8 +14,8 @@ app.initialize();
 $( document ).ready(function() {
             deviceReadyM();
 });
-
-var x,b,permissions,language,a,z,y,c;
+var dmdsSel=0;
+var x,b,permissions,language,a,z,y,c,dmdsId,dmdsName,groupId,groupName;
 //////////////////START////////////////////////////
 function deviceReadyM() {
 
@@ -30,13 +30,10 @@ function deviceReadyM() {
     permissions=localStorage.getItem("permissions");
     language=localStorage.getItem("language");
     
-    permissions=JSON.parse(permissions);
     
-    for(i=0;i<=permissions.length-1;i++){
-     permisos.push(permissions[i]);
-    }
-        console.log(JSON.stringify(permisos));
-        console.log(permisos.length);
+
+    cargarDmds();
+
     
 //        console.log(JSON.stringify(permisos[0]));
 //        console.log(permisos[0].dmds_id);
@@ -44,6 +41,8 @@ function deviceReadyM() {
     
     var auxil='<span>Hugo Planisys</span><div>'+b+'</div>';
     $('#userName').html(auxil);
+    $('#preSelect').html('Hola '+b+',');
+    
      
     $body.removeClass("loading");
     $('.main').removeClass("hidden");
@@ -51,6 +50,53 @@ function deviceReadyM() {
 //    listenerDashboard();
 }
 
+function cargarDmds(){
+    var ajx
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':60,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
+    wiz.processPerfil(obj);
+
+    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    ajx = wiz.getInfo('dmdss',null,wiz.processDMDS);
+
+}
+
+function printDMDS(){
+//    console.log(wiz.DMDS);
+    console.log(JSON.stringify(wiz.DMDS));
+    
+    for(i=0;i<=wiz.DMDS.length-1;i++){
+     permisos.push(wiz.DMDS[i].info);
+    }
+    
+}
+$('#butDash').click(function(e) {
+    
+
+    dmdsId=$( "#dmds option" ).attr('value');
+//    console.log(dmdsId);
+    if(dmdsId!= undefined){
+    for(i=0;i<=permisos.length-1;i++){
+    if(dmdsId==permisos[i].id){
+        dmdsId=permisos[i].id;
+        dmdsName=permisos[i].name;
+        groupId=permisos[i].groups[0].id;
+        groupName=permisos[i].groups[0].name;
+    }
+        }
+    }
+    
+    console.log(dmdsId);
+    console.log(dmdsName);
+    console.log(groupId);
+    console.log(groupName);
+    localStorage.setItem("dmdsId", dmdsId);
+  localStorage.setItem("dmdsName", dmdsName);
+    localStorage.setItem("groupId", groupId);
+  localStorage.setItem("groupName", groupName);
+
+
+  location.replace('./dashboard.html');
+});
 
 function loadWizzard(){
 	var str;
@@ -69,12 +115,31 @@ function printPerfil(){
     console.log(JSON.stringify(wiz.Perfil));
 }
 
-function gotoDashboard(dmdsId,groupId){
+
+
+
+function gotoDashboard(dmdsId,dmdsName){
     
+    dmdsId=dmdsId;
     localStorage.setItem("dmdsId", dmdsId);
-    localStorage.setItem("groupId", groupId);
+    localStorage.setItem("dmdsName", dmdsName);
+    
+    localStorage.setItem("grouId", 1);
     location.replace('./dashboard.html');
+    
+//    cargarGrupos();
 }
+
+function cargarGrupos(){
+    var ajx
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':60,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
+    wiz.processPerfil(obj);
+
+    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    ajx = wiz.getInfo('dmds/group/'+dmdsId,null,wiz.processGroups);
+
+}
+
 
 // Handle the back button
 function onBackKeyDown() {

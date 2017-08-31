@@ -15,7 +15,7 @@ $( document ).ready(function() {
             deviceReadyM();
 });
 
-var x,b,permissions,language,a,z,y,c;
+var x,b,permissions,language,a,z,y,c,name, nameG;
 //////////////////START////////////////////////////
 function deviceReadyM() {
 
@@ -31,7 +31,9 @@ function deviceReadyM() {
     
 
     a=localStorage.getItem("dmdsId");
+    name=localStorage.getItem("dmdsName");
     z=localStorage.getItem("groupId");
+    nameG=localStorage.getItem("groupName");
       
     
 //      z=28;
@@ -39,10 +41,15 @@ function deviceReadyM() {
       y='Default';
       c='Default';
         
-    localStorage.idDmDsSel = a;
-    localStorage.nameDmDsSel = c;
-    localStorage.idGroupSel = z;
-    localStorage.nameGroupSel = y;
+//    localStorage.idDmDsSel = a;
+//    localStorage.nameDmDsSel = c;
+//    localStorage.idGroupSel = z;
+//    localStorage.nameGroupSel = y;
+    
+    console.log(a);
+    console.log(z);
+    console.log(name);
+    console.log(nameG);
     
     var auxil='<span>Hugo Planisys</span><div>'+b+'</div>';
     $('#userName').html(auxil);
@@ -171,8 +178,9 @@ function printPerfil(){
 
 // Handle the back button
 function onBackKeyDown() {
-    $('#dialog').click();
-    startlistenexit();
+//    $('#dialog').click();
+//    startlistenexit();
+    location.replace('./login.html');
     }
 function startlistenexit(){
     $('#closeapp').click(function(e) {
