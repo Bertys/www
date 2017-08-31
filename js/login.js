@@ -37,7 +37,7 @@ function deviceReadyM() {
      $body = $("body");
      $main = $(".main");
     listenerLogin();
-
+    loadWizzard();
 
 
   if(localStorage.getItem("nuevo")==null){
@@ -109,23 +109,29 @@ xhr.onreadystatechange = function () {
 
         console.log("Te has logueado correctamente con: "+usr+" y tu token es: "+json.token);
         console.log('La respuesta del servidor ha sido:');
-        console.log(json);
+        console.log(JSON.stringify(json));
 
         localStorage.setItem("token", token);
-        localStorage.setItem("permissions", token);
-        localStorage.setItem("language", token);
+        localStorage.setItem("permissions", permissions);
+        localStorage.setItem("language", 'spanish');
 
+        
+        
+            
         localStorage.setItem("nuevo", "Bueno");
         localStorage.setItem("usrAuxMeu", usrAuxMeu);
         localStorage.setItem("pswAuxMeu", pswAuxMeu);
 
-        location.replace('./dashboard.html');
+        location.replace('./choose.html');
         /*setTimeout(function(){
         }, 2000);*/
 
     }else if (xhr.readyState == 4 && xhr.status !== 200){
         console.log("Tu login es incorrecto, vuelve a intentarlo.");
         alert("Tu login es incorrecto, vuelve a intentarlo.");
+        
+        localStorage.removeItem('nuevo');
+        location.replace('./index.html');
 
         }else{
             console.log("Entra login else. con: xhr.readyState "+xhr.readyState+' xhr.status '+xhr.status);
@@ -151,4 +157,17 @@ function runScript(e) {
 //        eval(tb.value);
         return false;
     }
+}
+
+function loadWizzard(){
+	var str;
+	if(str != undefined && str.length>2){
+		var js = JSON.parse(str);
+		wiz = new WizzardDMDS(js);
+	} else{
+		wiz = new WizzardDMDS();
+	}
+	if(typeof afterLoad !== "undefined") afterLoad();
+	afterLoad = undefined;
+    //console.log("afterloadwizard");
 }

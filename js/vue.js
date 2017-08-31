@@ -17,6 +17,7 @@ Vue.material.registerTheme({
 })
 
 var campanas= [];
+var permisos= [];
 var totales= [];
 var envios= [];
 var enviosTot= [];
@@ -29,6 +30,7 @@ var example2 = new Vue({
     mounted:showHeader,
   data: {
     parentMessage: 'Campana',
+    listPermisos: permisos,
     listTotales: totales,
     listCamp: campanas,
     listEnv: envios,

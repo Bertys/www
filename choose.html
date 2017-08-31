@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="./js/vue.min.js"></script>
+    <script src="js/jquery-3.1.1.min.js"></script>
+    <script src="js/Wizardy.js?version=3"></script>
+    <!--    <script src="js/languages.js?version=3"></script>-->
+    <!--    <script src="js/index.js?version=22"></script>-->
+
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/simple-line-icons/2.4.1/css/simple-line-icons.css">
+    <script src="./js/moment-with-locales.js"></script>
+    <script src="./js/vue-material.js"></script>
+  </head>
+  <body id="dashboard" class="loading">
+    <div class="app-viewport" id="file-list">
+      <div class="main hidden">
+        <md-whiteframe md-elevation="3" class="main-toolbar-header screenHeader">
+          <md-toolbar class="md-dense">
+            <md-menu>
+             <md-button class="md-icon-button" md-menu-trigger>
+               <md-icon>menu</md-icon>
+             </md-button>
+             <md-menu-content>
+                <md-menu-item>
+                   <div class="md-list-text-container" id="userName">
+                      <span>Hugo Planisys</span>
+                      <div>hugo@planisys.com</div>
+                   </div>
+                </md-menu-item>
+                
+                <md-menu-item @click="logout()">
+                   <span>Cerrar Sesion</span>
+                   <md-button class="md-icon-button md-list-action">
+                      <md-icon id="buthover">exit_to_app</md-icon>
+                   </md-button>
+                </md-menu-item>
+             </md-menu-content>
+             </md-menu>
+             <h2 class="md-title" style="flex: 1">Lista de roles</h2>
+            </md-toolbar>
+          </md-whiteframe>
+
+         
+          
+          <div id="content">        </div>
+          
+          <div class="list-permisos">
+              <md-list class="custom-list md-triple-line">
+                <md-list-item v-on:click="gotoDashboard(data.dmds_id, data.group_id)" v-for="(data, index) in listPermisos" id="test">
+                  <div class="md-list-text-container">
+<!--                      <h4></h4>-->
+                      <md-layout md-gutter>
+                        <md-layout md-flex="20">
+                            <span><h5>{{ (data.dmds_id) }}</h5><h6>DMDS Id</h6></span>
+                        </md-layout>
+                        <md-layout md-flex="40">
+                            <span><h5>{{ (data.group_id) }}</h5><h6>Group Id</h6></span>
+                        </md-layout>
+                        <md-layout md-flex="20">
+                            <span><h5>{{ (data.role) }}</h5><h6 class="list-rate">Role</h6></span>
+                        </md-layout>
+                        <md-layout md-flex="20">
+                            <span><h5>{{ (data.user_id) }}</h5><h6 class="list-rate">UserId</h6></span>
+                        </md-layout>
+                      </md-layout>
+                  </div>
+                  <md-divider></md-divider>
+                </md-list-item>
+                  
+              </md-list>
+            </div>
+          
+
+        <div class="hidden">
+          <md-button class="md-primary md-raised" @click="openDialog('dialog')" id="dialog">Dialog</md-button>
+        </div>
+
+
+
+
+      </div>
+
+      <!-- loading -->
+      <div class="modal hidden">
+        <img id="loading" src="img/dmds_iso.svg" alt=" DMDS">
+      </div>
+
+    </div>
+    <link rel="stylesheet" href="./css/vue-material.css">
+    <link rel="stylesheet" href="./css/common.css">
+<!--    <link rel="stylesheet" href="./css/dashboard.css">-->
+    <script src="./js/vue.js"></script>
+    <script src="cordova.js"></script>
+    <script src="./js/choose.js"></script>
+  </body>
+</html>

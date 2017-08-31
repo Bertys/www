@@ -110,7 +110,8 @@ function printCampanas(dias){
                 campanas.push(obj);
             }
     
-    $('#campanas').removeClass("loading");
+    $body = $("body");
+    $body.removeClass("loading");
 }
 
 

@@ -336,6 +336,16 @@ WizzardDMDS.prototype.processTotales = function(totales){
     
 }
 
+
+WizzardDMDS.Permisions = function(data){
+	this.info = new Object();
+	if(typeof data !== "undefined"){
+		this.info = data;
+//        this.id = data.id;
+	}
+}
+
+
 // - Campana
 
 WizzardDMDS.DMDS = function(data){

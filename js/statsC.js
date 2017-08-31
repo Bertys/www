@@ -138,6 +138,23 @@ function listenerEnvios(){
     location.replace('./dashboard.html');
         });
 
+    
+    $('#searcherEnvios').click(function(e) {
+    if(searched==0){
+        $("#mainHeader").addClass("hidden");
+        $("#searchHeader").removeClass("hidden");
+        $("#inputSearch").focus();
+    }
+});
+   $('#searcherEnv1').click(function(e) {
+    var str=$('#inputSearch').val();
+     searchEnvios(str);
+       $("#searchHeader").addClass("hidden");
+       $("#mainHeader").removeClass("hidden");
+        searched=0;
+        $("#listaEnvios").focus();
+});
+    
 }
 
 function searchEnvios(str){

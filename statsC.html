@@ -32,22 +32,9 @@
 <body id="statsC" class="loading">
 <div class="app-viewport" id="file-list">
     <div class="main hidden">
-    <md-whiteframe md-elevation="3" class="main-toolbar">
+    <md-whiteframe md-elevation="3" class="main-toolbar" id="mainHeader">
  
-      <md-toolbar class="md-dense">
- <md-button class="md-icon-button" id="anavCampanas">
-    <md-icon>arrow_back</md-icon>
-  </md-button>
-  <h2 class="md-title headerCamp" style="flex: 1">Campaña</h2>
-          <div style="flex: 0.75">
-             <input type="search" name="searcher" id="inputSearch" class="hidden"> 
-              </div>
-<div style="flex: 0.25" class="hidden">
-               <md-button class="md-icon-button" id="searcherEnvios">
-      <i class="material-icons">search</i>
-                </md-button>
-       </div>
-  <md-menu md-direction="bottom left" md-size="4" style="flex: 0.25">
+      <md-menu md-direction="bottom left" md-size="4" style="flex: 0.25">
   <md-button class="md-icon-button" md-menu-trigger>
     <md-icon>menu</md-icon>
   </md-button>
@@ -73,10 +60,35 @@
     </md-menu-item>
   </md-menu-content>
 </md-menu>
+        
+        <md-toolbar class="md-dense">
+ <md-button class="md-icon-button" id="anavCampanas">
+    <md-icon>arrow_back</md-icon>
+  </md-button>
+  <h2 class="md-title headerCamp" style="flex: 1">Campaña</h2>
+          <div style="flex: 0.75">
+             <input type="search" name="searcher" id="inputSearch" class="hidden"> 
+              </div>
+<div style="flex: 0.25" class="hidden">
+               <md-button class="md-icon-button" id="searcherEnvios">
+      <i class="material-icons">search</i>
+                </md-button>
+       </div>
+  
 </md-toolbar>
       
       
   </md-whiteframe>
+        
+        <md-whiteframe md-elevation="3" class="main-toolbar-header hidden" id="searchHeader">
+          <md-toolbar class="md-dense">
+           <div style="flex: 0.75"><input type="search" name="searcher" id="inputSearch"></div>
+             <md-button class="md-icon-button" id="searcherEnv1">
+               <md-icon>search</md-icon>
+             </md-button>
+           </md-toolbar>
+
+         </md-whiteframe>
 
 <md-tabs md-fixed>
   <md-tab id="stats" md-label="stats">
@@ -277,7 +289,7 @@
         <md-card-content></md-card-content>
     </md-card>
 
-     <md-card class="card-example" style="padding: 0em;" v-for="(data, index) in listEnv"> 
+     <md-card class="card-example" style="padding: 0em;" v-for="(data, index) in listEnv" id="listaEnvios"> 
          <div v-on:click="gotoStats3(data.info.envio_id, data.info.envio.nombre)">
       <md-card-area md-inset>
 <md-card-header>
@@ -323,8 +335,8 @@
     
     <div class="footera">
     <md-bottom-bar>
-  <md-bottom-bar-item md-iconset="icon-speedometer" id="aDashboard"></md-bottom-bar-item>
-  <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas" active>Campañas</md-bottom-bar-item>
+  <md-bottom-bar-item md-iconset="icon-speedometer" id="aDashboard">Dashboard</md-bottom-bar-item>
+  <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas" md-active>Campañas</md-bottom-bar-item>
 <!--  <md-bottom-bar-item md-iconset="icon-envelope"></md-bottom-bar-item>-->
 </md-bottom-bar>
     </div>
@@ -336,6 +348,7 @@
     
     <link rel="stylesheet" href="./css/vue-material.css">
     <link rel="stylesheet" href="./css/statsC2.css">
+    <link rel="stylesheet" href="./css/common.css">
     
     <script src="cordova.js"></script>
     <script src="./js/vue.js"></script>
