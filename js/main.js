@@ -13,10 +13,15 @@ function inicioCampanas(){
     language=localStorage.getItem("language");
     
 
-      z=28;
-      a=14;
-      y='Default';
-      c='PLANISYS Production';
+//      z=28;
+//      a=14;
+//      y='Default';
+//      c='PLANISYS Production';
+    
+        a=localStorage.getItem("dmdsId");
+    c=localStorage.getItem("dmdsName");
+    z=localStorage.getItem("groupId");
+    y=localStorage.getItem("groupName");
         
     localStorage.idDmDsSel = a;
     localStorage.nameDmDsSel = c;
