@@ -19,6 +19,7 @@ var permissions,language;
 
 var page='campanas';
 var searched=0;
+var search=0;
 var inicioTouch, finTouch;
 var app = {
     // Application Constructor
@@ -126,13 +127,15 @@ $('#searcherCamp').click(function(e) {
         $("#mainHeader").addClass("hidden");
         $("#outSer").addClass("hidden");
         $("#searchHeader").removeClass("hidden");
-        $("#subheader").removeClass("hidden");
+        
         $("#inputSearch").focus();
     }
 });
    $('#searcherCamp1').click(function(e) {
     var str=$('#inputSearch').val();
-       $("#askSearch").html('Has buscado: '+str);
+       $("#askSearch").html('Has buscado: '+str+' y hay '+totalCampanas+' resultados.');
+       $("#subheader").removeClass("hidden");
+       console.log(str);
         searchCampanas(str);
        $("#searchHeader").addClass("hidden");
        $("#mainHeader").removeClass("hidden");
@@ -141,6 +144,16 @@ $('#searcherCamp').click(function(e) {
 });
   
 }
+
+$('#clearSearch').click(function(e) {
+    $('#inputSearch').val('');
+    var str='';
+     searchCampanas(str);
+       $("#subhHeader").addClass("hidden");
+       $("#mainHeader").removeClass("hidden");
+       $("#searchHeader").addClass("hidden");
+       $("#outSer").removeClass("hidden");
+        });
 
 function onBackKeyDown() {
         location.replace('./dashboard.html');
@@ -180,8 +193,11 @@ $('#inputSearch').bind("keypress", function(e){
    // enter key code is 13
    if(e.which === 13){
      var str=$('#inputSearch').val();
-     searchCampanas(str);
-      $("#searchHeader").addClass("hidden");
+       $("#askSearch").html('Has buscado: '+str+' y hay '+totalCampanas+' resultados.');
+       $("#subheader").removeClass("hidden");
+       console.log(str);
+        searchCampanas(str);
+       $("#searchHeader").addClass("hidden");
        $("#mainHeader").removeClass("hidden");
         searched=0;
         $("#test").focus();

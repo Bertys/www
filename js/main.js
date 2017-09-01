@@ -66,6 +66,7 @@ function cargarMas(){
     
 function cargarCampanas(){
     var ajx
+    search=0;
     var obj={'userEmail': b,'token': x,'language':language,'numReg':60,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
@@ -108,6 +109,31 @@ function printCampanas(dias){
     $("#loading").hide();
 }
 
+function printCamp(){
+
+    
+    campanas.splice(0, campanas.length);
+    
+    
+	if(typeof pag === "undefined") {
+        pag = 0;
+    console.log(JSON.stringify(wiz.Campanas[0]));
+    }
+        
+        
+        for(i=0;i<=wiz.Campanas.length-1;i++){
+            
+            campanas.push(wiz.Campanas[i]);
+      
+        }
+    
+        if(wiz.Campanas.length==0){
+                var obj={"info":{"id":0,"name":"No hay campañas con ese tiempo","stats":{"envios_hechos":0,"emails_enviados":0,"open_rate":0,"click_rate":0}}};
+                campanas.push(obj);
+            }
+    
+    $("#loading").hide();
+}
 
 
 
@@ -129,18 +155,26 @@ function changeOrderCamp(){
 
 
 function searchCampanas(str){
-
-//    var str = $('#inputSearch').val();
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':totalCampanas,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
+    
+    var ajx;
+    var search=1;
+    //    var str = $('#inputSearch').val();
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':50,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
+    
+    
+//    if(str==''){
+//        var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+//    }else{
+       var data={'search':str,'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir}; 
+//    }
+
+
     
     for(i=0;i<=wiz.Campanas.length-1;i++){
             campanas.shift();
         }
-    
-//    alert(str);
-    var data={'search':str,'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
-    ajx = wiz.postInfo('campanas/'+a+'/'+z,data,wiz.processCampanas);
+    ajx = wiz.postInfo('campanas/'+a+'/'+z,data,wiz.processCamp);
 }
 
 

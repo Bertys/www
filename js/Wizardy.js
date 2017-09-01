@@ -3,8 +3,10 @@ var wizUrl = 'http://dmds-users-dev.planisys.net/api/v1/';
 var version = 1.01;
 var wizGlobal;
 var totalCampanas;
+var totalissim;
 var totalEnvios;
 var totalUsers;
+var search;
 
 //var language ='es';
 //language = getCookie('language');
@@ -233,9 +235,35 @@ WizzardDMDS.prototype.processCampanas = function(campana){
       processTotals();
   }else if(page=='campanas'){
         totalCampanas=campana.recordsFiltered;
+        totalissimCampanas=campana.recordsTotal;
 	printCampanas(7);
+
       console.log(totalCampanas);
   }
+    
+}
+
+WizzardDMDS.prototype.processCamp = function(campana){
+    
+	var len = campana.data.length;
+//    console.log(campana.recordsFiltered);
+    
+	var i;
+	wiz.Campanas = new Array();
+//    console.log('antes del for'+wiz.campanas);
+	for(i=0;i<len;i++){
+//        console.log('dentro del for namas');
+		var obj = campana.data[i];
+		var campanass = new WizzardDMDS.Campanas(obj);
+		wiz.Campanas.push(campanass);
+//        console.log('dentro del for'+wiz.campanas);
+	}
+//    wiz.Campanas.push({'recordsFiltered':campana.recordsFiltered});
+//console.log(wiz.Campanas);
+//alert(page);
+
+
+             printCamp(); 
     
 }
 

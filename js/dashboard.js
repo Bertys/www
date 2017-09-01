@@ -173,7 +173,7 @@ function onBackKeyDown() {
 
 
 function printStatsTotales(dias){
-    var url;
+    var url,res1,res2,res3,res4,res5,res6;
     
     if(dias=='seven'){
         url=wiz.Totales[0].info.seven;
@@ -193,25 +193,43 @@ function printStatsTotales(dias){
     
     $('#totEm').html(url.ev_envio);
     $('#apTot').html(url.ev_vista);
-    $('#apTotP').html((url.ev_vista/url.ev_envio*100).toFixed(2)+'%');
+    if((url.ev_vista/url.ev_envio*100).toFixed(0)>=100){
+        res1='100%'
+        }else{ res1=(url.ev_vista/url.ev_envio*100).toFixed(2)+'%'}
+    $('#apTotP').html(res1);
     $("#apTotPp .md-progress-track").css("width", (url.ev_vista/url.ev_envio*100).toFixed(2)+'%');
     $('#apUni').html(url.ev_vista_unica);
-    $('#apUniP').html((url.ev_vista_unica/url.ev_envio*100).toFixed(2)+'%');
+    if((url.ev_vista_unica/url.ev_envio*100).toFixed(0)>=100){
+        res2='100%'
+        }else{ res2=(url.ev_vista_unica/url.ev_envio*100).toFixed(2)+'%'}
+    $('#apUniP').html(res2);
     $("#apUniPp .md-progress-track").css("width", (url.ev_vista_unica/url.ev_envio*100).toFixed(2)+'%');
     $('#clTot').html(url.ev_click);
-    $('#clTotP').html((url.ev_click/url.ev_vista*100).toFixed(2)+'%');
+    if((url.ev_click/url.ev_vista*100).toFixed(0)>=100){
+        res3='100%'
+        }else{ res3=(url.ev_click/url.ev_vista*100).toFixed(2)+'%'}
+    $('#clTotP').html(res3);
     $("#clTotPp .md-progress-track").css("width", (url.ev_click/url.ev_vista*100).toFixed(2)+'%');
     $('#clUni').html(url.ev_click_unico);
-    $('#clUniP').html((url.ev_click_unico/url.ev_vista*100).toFixed(2)+'%');
+    if((url.ev_click_unico/url.ev_vista*100).toFixed(0)>=100){
+        res4='100%'
+        }else{ res4=(url.ev_click_unico/url.ev_vista*100).toFixed(2)+'%'}
+    $('#clUniP').html(res4);
     $("#clUniPp .md-progress-track").css("width", (url.ev_click_unico/url.ev_vista*100).toFixed(2)+'%');
 //    $('#reTot').html(url.ev_rebote);
 //    $('#reTotP').html((url.ev_rebote/url.ev_envio*100).toFixed(2)+'%');
 //    $("#reTotPp .md-progress-track").css("width", (url.ev_rebote/url.ev_envio*100).toFixed(2)+'%');
     $('#reUni').html(url.ev_rebote_unico);
-    $('#reUniP').html((url.ev_rebote_unico/url.ev_envio*100).toFixed(2)+'%');
+    if((url.ev_rebote_unico/url.ev_envio*100).toFixed(0)>=100){
+        res5='100%'
+        }else{ res5=(url.ev_rebote_unico/url.ev_envio*100).toFixed(2)+'%'}
+    $('#reUniP').html(res5);
     $("#reUniPp .md-progress-track").css("width", (url.ev_rebote_unico/url.ev_envio*100).toFixed(2)+'%');
     $('#desTot').html(url.ev_desuscripcion);
-    $('#desTotP').html((url.ev_desuscripcion/url.ev_envio*100).toFixed(2)+'%');
+    if((url.ev_desuscripcion/url.ev_envio*100).toFixed(0)>=100){
+        res6='100%'
+        }else{ res6=(url.ev_desuscripcion/url.ev_envio*100).toFixed(2)+'%'}
+    $('#desTotP').html(res6);
     $("#desTotPp .md-progress-track").css("width", (url.ev_desuscripcion/url.ev_envio*100).toFixed(2)+'%');
     
         
