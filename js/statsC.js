@@ -130,13 +130,6 @@ function listenerEnvios(){
       location.replace('./campanas.html');
         });
     
-    $('#aCampanas').click(function(e) {
-      location.replace('./campanas.html');
-        });
-    
-        $('#aDashboard').click(function(e) {
-    location.replace('./dashboard.html');
-        });
 
     
     $('#searcherEnvios').click(function(e) {
@@ -252,14 +245,14 @@ function comparar(){
         }
 }
 
-//$('#inputSearch').bind("keypress", function(e){
-//   // enter key code is 13
-//   if(e.which === 13){
-//     console.log("user pressed done");
-//     var str=$('#inputSearch').val();
-//     searchCampanas(str);
-//       $("#inputSearch").addClass("hidden");
-////        searched=0;
-//        $("#test").focus();
-//    } 
-//});
+$('#inputSearch').bind("keypress", function(e){
+   // enter key code is 13
+   if(e.which === 13){
+     var str=$('#inputSearch').val();
+     searchCampanas(str);
+      $("#searchHeader").addClass("hidden");
+       $("#mainHeader").removeClass("hidden");
+        searched=0;
+        $("#test").focus();
+    } 
+})

@@ -29,10 +29,10 @@
     
     
     
-<body id="statsC" class="hidden loading">
+<body id="statsC" class="loading">
 <div class="app-viewport" id="file-list">
     
-        
+   <div class="main hidden">     
         <md-whiteframe md-elevation="3" class="main-toolbar-header" id="mainHeader">
           <md-toolbar class="md-dense">
             <md-menu>
@@ -65,7 +65,7 @@
     <md-icon>arrow_back</md-icon>
   </md-button>
               
-             <h2 class="md-title" style="flex: 1">Campañas</h2>
+             <h2 class="md-title" style="flex: 1">Detalles de Campaña</h2>
 
              <md-button class="md-icon-button" id="searcherEnvios">
                <md-icon>search</md-icon>
@@ -88,12 +88,12 @@
          </md-whiteframe>
         
     
-<div class="main hidden">
+
         
         
         
 <md-tabs md-fixed>
-  <md-tab id="stats" md-label="stats">
+  <md-tab id="stats" md-label="Detalles">
     <div style="display: inline-block">
 
         <div class="md-title" style="float:left;" id="h2p7">Año Nuevo</div>
@@ -271,61 +271,47 @@
 
   <md-tab id="envios" md-label="envios">
     
-      <md-card md-with-hover>
 
 <div style="display: inline-block">
 <div class="md-title" style="float:left;" id="h2p8">Año Nuevo</div>
 
     </div>
 
-        <md-card-content></md-card-content>
-    </md-card>
 
-     <md-card class="card-example" style="padding: 0em;" v-for="(data, index) in listEnv" id="listaEnvios"> 
-         <div v-on:click="gotoStats3(data.info.envio_id, data.info.envio.nombre)">
-      <md-card-area md-inset>
-<md-card-header>
-    <md-card-header-text>
-      <div class="md-title">{{ data.info.envio.nombre }}</div>
-      <div class="md-subhead">{{ dateFormat(data.info.timestamp) }}</div>
-    </md-card-header-text>
-
+<div class="list-enviosg">
+              <md-list class="custom-list md-triple-line">
+                <md-list-item v-on:click="gotoStats3(data.info.envio_id, data.info.envio.nombre)" v-for="(data, index) in listEnv" id="listaEnvios">
+                  <div class="md-list-text-container">
+                      <h4>{{ data.info.envio.nombre }}</h4>
+                      <h6>{{ dateFormat(data.info.timestamp) }}</h6>
+                      <md-layout md-gutter>
+                        <md-layout md-flex="20">
+                            <span><h5>{{ (data.info.ev_vista) }}</h5><h6>Envios</h6></span>
+                        </md-layout>
+                        <md-layout md-flex="40">
+                            <span><h5>{{ (data.info.ev_click) }}</h5><h6>Emails Enviados</h6></span>
+                        </md-layout>
+                        <md-layout md-flex="20">
+                            <span><h5>{{ (data.info.ev_OR) }}</h5><h6 class="list-rate">OR</h6></span>
+                        </md-layout>
+                        <md-layout md-flex="20">
+                            <span><h5>{{ (data.info.ev_CTR) }}</h5><h6 class="list-rate">CR</h6></span>
+                        </md-layout>
+                      </md-layout>
+                  </div>
+                  <md-divider></md-divider>
+                </md-list-item>
+                  
+              </md-list>
+            </div>
+     
     
-  </md-card-header>
-      
-    <md-card-content style=" padding:0;">
-             
-        
-       <div style="display:flex; text-align:center;"> 
-           <div> {{ (data.info.ev_envio) }}
-     </div>
-           <div style="vertical-align: text-top; margin-right:5px;">{{ (data.info.ev_vista) }}
-     </div>
-           
-           <div style="vertical-align: text-top; margin-right:5px;">{{ (data.info.ev_click) }}
-           </div>
-
-           <div style="vertical-align: text-top; margin-right:5px;">OR: {{ (data.info.ev_OR) }}
-           </div>
-
-           <div style="vertical-align: text-top; margin-right:5px;">CR: {{ (data.info.ev_CTR) }}
-           </div>
-</div>
-    </md-card-content>
-  </md-card-area>
-         </div>
-      </md-card>
-      
   </md-tab>
 </md-tabs>
         
         
         
-      
-    
-    </div>
-    
-    <div class="footera">
+      <div class="footer">
     <md-bottom-bar>
   <md-bottom-bar-item md-iconset="icon-speedometer" id="aDashboard">Dashboard</md-bottom-bar-item>
   <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas" md-active>Campañas</md-bottom-bar-item>
@@ -333,14 +319,18 @@
 </md-bottom-bar>
     </div>
     
+    </div>
+    
+    
+    
     <div class="modal">
               <img id="loading" src="img/dmds_iso.svg" alt="Planisys DMDS">
           </div>
     </div>   
     
     <link rel="stylesheet" href="./css/vue-material.css">
-<!--    <link rel="stylesheet" href="./css/statsC2.css">-->
-    <link rel="stylesheet" href="./css/common.css">
+    <link rel="stylesheet" href="./css/statsC2.css">
+<!--    <link rel="stylesheet" href="./css/common.css">-->
 <!--      <link rel="stylesheet" href="./css/campanas.css">-->
     
     <script src="cordova.js"></script>

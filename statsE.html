@@ -33,20 +33,7 @@
     <div class="main hidden">
     <md-whiteframe md-elevation="3" class="main-toolbar">
  
-      <md-toolbar class="md-dense">
- <md-button class="md-icon-button" id="goBack">
-    <md-icon>arrow_back</md-icon>
-  </md-button>
-  <h2 class="md-title headerCamp" style="flex: 1">Campaña</h2>
-
-<!--
-          <div style="flex: 0.25">
-               <md-button class="md-icon-button" id="searcher">
-      <i class="material-icons">search</i>
-                </md-button>
-       </div>
--->
-  <md-menu md-direction="bottom left" md-size="4" style="flex: 0.25">
+        <md-menu md-direction="bottom left" md-size="4" style="flex: 0.25">
   <md-button class="md-icon-button" md-menu-trigger>
     <md-icon>menu</md-icon>
   </md-button>
@@ -74,6 +61,21 @@
     </md-menu-item>
   </md-menu-content>
 </md-menu>
+        
+      <md-toolbar class="md-dense">
+ <md-button class="md-icon-button" id="goBack">
+    <md-icon>arrow_back</md-icon>
+  </md-button>
+  <h2 class="md-title headerCamp" style="flex: 1">Detalles de envío</h2>
+
+<!--
+          <div style="flex: 0.25">
+               <md-button class="md-icon-button" id="searcher">
+      <i class="material-icons">search</i>
+                </md-button>
+       </div>
+-->
+  
 </md-toolbar>
       
       
@@ -127,7 +129,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress :md-progress="70"></md-progress>
+                <md-progress :md-progress="70" id="apTotPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -148,7 +150,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="30"></md-progress>
+                <md-progress class="md-accent" :md-progress="30" id="apUniPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -169,7 +171,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="30"></md-progress>
+                <md-progress class="md-accent" :md-progress="30" id="clTotPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -190,7 +192,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="45"></md-progress>
+                <md-progress class="md-accent" :md-progress="45" id="clUniPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -211,7 +213,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="10"></md-progress>
+                <md-progress class="md-accent" :md-progress="10" id="reTotPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -232,7 +234,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="39"></md-progress>
+                <md-progress class="md-accent" :md-progress="39" id="reUniPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -253,7 +255,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="25"></md-progress>
+                <md-progress class="md-accent" :md-progress="25" id="desTotPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -261,10 +263,13 @@
           </md-card> 
             </md-tab>
             
+            
+            
             <md-tab id="info" md-label="info">
                 
                 <md-card md-with-hover>
 
+<!--
 <md-card-header>
     <md-card-header-text>
       <div class="md-title" style="flex: 1" id="totEma"></div>
@@ -274,6 +279,7 @@
 
       
   </md-card-header>
+-->
 
   <md-card-content>
     
@@ -287,14 +293,14 @@
         <div class="md-list-text-container"> 
         
         <span>Hora del envío</span>
-            <span id="apTot">02/04/2017 10:30:00 am.</span>
+            <span id="horEnv">02/04/2017 10:30:00 am.</span>
               
         </div>
 
           <div class="md-list-text-container" style="align-items: flex-end;">
             
             <span>Estado</span>
-              <span id="apTotP">Enviado</span>
+              <span id="status">Enviado</span>
           </div>
         
 
@@ -304,7 +310,7 @@
         <div class="md-list-text-container">
    
         <span>E-mail del remitente</span>
-            <span id="clUni">info@planisys.com</span>
+            <span id="emrem">info@planisys.com</span>
                
         </div>
 
@@ -317,7 +323,7 @@
         
         <span>Asunto</span>
             
-            <span id="apUni">La mejor CDN de todos los tiempos</span>
+            <span id="asunto">La mejor CDN de todos los tiempos</span>
         </div>
 
 
@@ -327,7 +333,7 @@
         <div class="md-list-text-container">
         
         <span>Nombre del remitente</span>
-            <span id="clTot">Planisys - Cloud...</span>
+            <span id="nomrem">Planisys - Cloud...</span>
         </div>
 
           
@@ -338,7 +344,7 @@
         <div class="md-list-text-container">
    
         <span>E-mail de respuesta</span>
-            <span id="clUni">info@planisys.com</span>
+            <span id="emres">info@planisys.com</span>
                
         </div>
 
@@ -350,7 +356,7 @@
         <div class="md-list-text-container">
         
         <span>Segmentación</span>
-            <span id="reTot">Base blab</span>
+            <span id="segmen">Base blab</span>
         </div>
 
           
@@ -363,18 +369,18 @@
         <div class="md-list-text-container">
         
         <span>Tipo de envío</span>
-            <span id="desTot">Puntual</span>
+            <span id="tipo">Puntual</span>
         
         </div>
           <div class="md-list-text-container" style="align-items: flex-end;">
             
             <span>Analytics</span>
-              <span id="desTotP">Si</span>
+              <span id="analy">Si</span>
           </div>
           <div class="md-list-text-container" style="align-items: flex-end;">
             
             <span>ConsCore</span>
-              <span id="desTotP">No</span>
+              <span id="consc">No</span>
           </div>
         <md-divider class="md-inset"></md-divider>
       </md-list-item>
@@ -427,9 +433,8 @@
     
     <script src="cordova.js"></script>
     <script src="./js/vue.js"></script>
-<!--    <script src="./js/listeners.js"></script>-->
+    <script src="./js/listeners.js"></script>
     <script src="./js/statsE.js"></script>
-<!--    <script src="./js/infoE1.js"></script>-->
    
     
 </body>
