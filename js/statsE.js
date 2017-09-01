@@ -147,16 +147,16 @@ function inicioStatsEnv(){
         console.log('done'+JSON.stringify(wiz.envios[i].info)); 
         
         //segunda parte
-            $('#horEnv').html(JSON.stringify(wiz.envios[i].info.modificado));
-            $('#status').html(JSON.stringify(wiz.envios[i].info.estado));
-            $('#emrem').html(JSON.stringify(wiz.envios[i].info.envio.remitente));
-            $('#asunto').html(JSON.stringify(wiz.envios[i].info.envio.asunto));
-            $('#nomrem').html(JSON.stringify(wiz.envios[i].info.envio.remitente_nombre));
-            $('#emres').html(JSON.stringify(wiz.envios[i].info.envio.reply_to));
-//            $('#segmen').html(JSON.stringify(wiz.envios[i].info.envio));
-            $('#tipo').html(JSON.stringify(wiz.envios[i].info.envio.tipo));
-//            $('#analy').html(JSON.stringify(wiz.envios[i].info.envio));
-//            $('#consc').html(JSON.stringify(wiz.envios[i].info.envio));
+            $('#horEnv').html(wiz.envios[i].info.modificado);
+            $('#status').html(wiz.envios[i].info.estado);
+            $('#emrem').html(wiz.envios[i].info.envio.remitente);
+            $('#asunto').html(wiz.envios[i].info.envio.asunto);
+            $('#nomrem').html(wiz.envios[i].info.envio.remitente_nombre);
+            $('#emres').html(wiz.envios[i].info.envio.reply_to);
+//            $('#segmen').html(wiz.envios[i].info.envio);
+            $('#tipo').html(wiz.envios[i].info.envio.tipo);
+//            $('#analy').html(wiz.envios[i].info.envio);
+//            $('#consc').html(wiz.envios[i].info.envio);
         
     }
     }

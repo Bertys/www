@@ -130,7 +130,13 @@ function listenerEnvios(){
       location.replace('./campanas.html');
         });
     
+    $('#envios').click(function(e) {
+      $("#searcherEnvios").removeClass("hidden");
+        });
 
+    $('#stats').click(function(e) {
+      $("#searcherEnvios").addClass("hidden");
+        });
     
     $('#searcherEnvios').click(function(e) {
     if(searched==0){
