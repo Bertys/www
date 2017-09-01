@@ -27,12 +27,8 @@ var app = {
 //        deviceReadyM();
     },
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
+
     onDeviceReady: function() {
-//        this.receivedEvent('deviceready');
         deviceReadyM();
     }
 };
@@ -42,9 +38,9 @@ app.initialize();
 //////////////////START////////////////////////////
 function deviceReadyM() {
 //    console.log(localStorage.getItem("nuevo")==null);
-    
+
     StatusBar.backgroundColorByName("blue");
-    $("#campanas").removeClass("hidden");
+    
     
     document.addEventListener("backbutton", onBackKeyDown, false);
     
@@ -67,8 +63,17 @@ function deviceReadyM() {
 
         urlP=document.URL;
 
-
-  
+    console.log(wiz.campanas.length);
+    if(wiz.campanas.length==0){
+//    $("#btnDashDay").mouseleave();
+        $("#auxC").html('Prueba a cambiar los días!');
+        $("#campanas").removeClass("hidden");
+        $("#campanas").removeClass("loading");
+        
+    }else{
+        $("#campanas").removeClass("hidden");
+        $("#campanas").removeClass("loading");
+    }
     
     
 //console.log(languages.es[1].welcome);
@@ -140,22 +145,28 @@ function onBackKeyDown() {
 
 var clicks=0;
      $('#dashDays').click(function(e) {
+         $("#loading").show();
          if( clicks==0){
+             
     $("#btnDashDay").html('30 dias');
              clicks=1;
              printCampanas(30);
              }else if( clicks==1){
+                 
     $("#btnDashDay").html('90 dias');
              clicks=2;
              printCampanas(90);
              }else if( clicks==2){
+                 
     $("#btnDashDay").html('365 dias');
              clicks=3;
              printCampanas(365);
+                 
              }else if( clicks==3){
     $("#btnDashDay").html('7 dias');
              clicks=0;
              printCampanas(7);
+                 
              }
              e.preventDefault();
     });

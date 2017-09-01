@@ -11,41 +11,41 @@ var app = {
 
 app.initialize();
 
-
+var searched=0;
 var page='campanasStats';
-var campId, campName;
+var campId, campName,a,b,c,d,x,y,z,permissions,language,name,nameG;
 //////////////////START////////////////////////////
 function deviceReadyM() {
-    
-    
-    
+
     
     loadWizzard();
 
     
     
     x=localStorage.getItem("token");
-    b=localStorage.getItem("userEmail");
+    b=localStorage.getItem("usrAuxMeu");
     permissions=localStorage.getItem("permissions");
     language=localStorage.getItem("language");
     
 
-      z=28;
-      a=14;
-      y='Default';
-      c='PLANISYS Production';
+//      z=28;
+//      a=14;
+//      y='Default';
+//      c='PLANISYS Production';
         
-    localStorage.idDmDsSel = a;
-    localStorage.nameDmDsSel = c;
-    localStorage.idGroupSel = z;
-    localStorage.nameGroupSel = y;
+        a=localStorage.getItem("dmdsId");
+    name=localStorage.getItem("dmdsName");
+    z=localStorage.getItem("groupId");
+    nameG=localStorage.getItem("groupName");
+    
+
     campId = localStorage.campanaId;
     campName = localStorage.campanaName;
     
     document.addEventListener("backbutton", onBackKeyDown, false);
 
     
-//    console.log(b);
+    console.log(b,a,z,campId);
     $('#userName').html(b);
     $('#h2p7').html("<br />Campaña: '"+campName+"'");
     $('#h2p8').html("<br />Campaña: '"+campName+"'");
@@ -215,12 +215,12 @@ function gotoStats3(id,nombre) {
     location.replace('./statsE.html');
         }
 
-$('#searcherEnvios').click(function(e) {
-    if(searched==0){
-        $("#inputSearch").removeClass("hidden");
-        $("#inputSearch").focus();
-    }
-});
+//$('#searcherEnvios').click(function(e) {
+//    if(searched==0){
+//        $("#inputSearch").removeClass("hidden");
+//        $("#inputSearch").focus();
+//    }
+//});
 
 // Handle the swipe action
     //
@@ -252,14 +252,14 @@ function comparar(){
         }
 }
 
-$('#inputSearch').bind("keypress", function(e){
-   // enter key code is 13
-   if(e.which === 13){
-     console.log("user pressed done");
-     var str=$('#inputSearch').val();
-     searchCampanas(str);
-       $("#inputSearch").addClass("hidden");
-//        searched=0;
-        $("#test").focus();
-    } 
-});
+//$('#inputSearch').bind("keypress", function(e){
+//   // enter key code is 13
+//   if(e.which === 13){
+//     console.log("user pressed done");
+//     var str=$('#inputSearch').val();
+//     searchCampanas(str);
+//       $("#inputSearch").addClass("hidden");
+////        searched=0;
+//        $("#test").focus();
+//    } 
+//});

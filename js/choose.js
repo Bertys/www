@@ -23,7 +23,7 @@ function deviceReadyM() {
     $body.addClass("loading");
      loadWizzard();
         
-    document.addEventListener("backbutton", onBackKeyDown, false);
+    document.addEventListener("backbutton", onBackKeyDownC, false);
     
     x=localStorage.getItem("token");
     b=localStorage.getItem("usrAuxMeu");
@@ -142,7 +142,7 @@ function cargarGrupos(){
 
 
 // Handle the back button
-function onBackKeyDown() {
+function onBackKeyDownC() {
     $('#dialog').click();
     startlistenexit();
     }

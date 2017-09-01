@@ -38,16 +38,6 @@ function inicioCampanas(){
 }
 
 
-function gotoEnvios2(id,name){
-    
-        console.log('id '+id);
-        campanaId=id;
-        localStorage.campanaId=campanaId;
-        localStorage.campanaName=name;
-    
-//    history.pushState({urlPath:'./envios.html'},"page 4",'./envios.html');
-    location.replace('./envios.html');
-}
 function gotoStats2(id,name){
     
         console.log('id '+id);
@@ -103,7 +93,7 @@ function printCampanas(dias){
             var a = moment(wiz.Campanas[i].info.created_at);
         var now = moment();
         var auxx=now.diff(a, 'days');
-            console.log(auxx);
+//            console.log(auxx);
             if(auxx<=dias){
             campanas.push(wiz.Campanas[i]);
                 algo=1;
@@ -115,8 +105,7 @@ function printCampanas(dias){
                 campanas.push(obj);
             }
     
-    $body = $("body");
-    $body.removeClass("loading");
+    $("#loading").hide();
 }
 
 

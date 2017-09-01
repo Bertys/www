@@ -32,10 +32,12 @@
                       <div>hugo@planisys.com</div>
                    </div>
                 </md-menu-item>
+<!--
                 <md-menu-item>
                    <span>Lenguaje</span>
                    <md-icon>near_me</md-icon>
                 </md-menu-item>
+-->
                 <md-menu-item @click="logout()">
                    <span>Cerrar Sesion</span>
                    <md-button class="md-icon-button md-list-action">
@@ -225,8 +227,8 @@
         <!-- footer -->
 
         <md-bottom-bar class="main-toolbar-footer">
-          <md-bottom-bar-item md-iconset="icon-speedometer" md-active>Dashboard</md-bottom-bar-item>
-          <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas">Campanas</md-bottom-bar-item>
+          <md-bottom-bar-item md-iconset="icon-speedometer" md-active id="aDashboard">Dashboard</md-bottom-bar-item>
+          <md-bottom-bar-item md-iconset="icon-paper-plane" id="aCampanas">Campañas</md-bottom-bar-item>
 <!--          <md-bottom-bar-item md-iconset="icon-envelope" id="aEnvios" disabled="true"></md-bottom-bar-item>-->
         </md-bottom-bar>
 
@@ -244,7 +246,7 @@
     <link rel="stylesheet" href="./css/dashboard.css">
     <script src="./js/vue.js"></script>
     <script src="cordova.js"></script>
-<!--    <script src="./js/listeners.js"></script>-->
+    <script src="./js/listeners.js"></script>
     <script src="./js/dashboard.js"></script>
   </body>
 </html>

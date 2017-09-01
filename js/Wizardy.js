@@ -59,6 +59,8 @@ WizzardDMDS.prototype.getInfo = function(url,data,callback){
 		},
 		error:function(jqXHR,textStatus,errorThrown){
 			console.log(errorThrown);
+			alert(errorThrown);
+            location.replace('./index.html');
 		}
 	});
 }

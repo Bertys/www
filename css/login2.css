@@ -133,3 +133,14 @@ body.loading .modal {
     from {-webkit-transform: rotate(0deg);}
     to   {-webkit-transform: rotate(359deg);}
 }
+
+.footer {
+  position: absolute;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  padding: 1em;
+  text-align: center;
+  font-size: 0.8em;
+  color: #706f6f;
+}

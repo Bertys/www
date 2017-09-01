@@ -1,16 +1,13 @@
 ///////Listeners////////////////file:///android_asset/www/index.html
 
-function goPerfil(){
-    location.replace('./perfil.html');
-}
 function goCampanas(){
-    location.replace('./index.html');
+    location.replace('./campanas.html');
 }
-function goEnvios(){
-    location.replace('./envios.html');
-}
-function goDetalles(){
-    location.replace('./detalles.html');
+//function goEnvios(){
+//    location.replace('./envios.html');
+//}
+function goDashboard(){
+    location.replace('./dashboard.html');
 }
 function logout(){
     if (typeof x !== 'undefined') {

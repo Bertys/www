@@ -5,25 +5,9 @@ var app = {
 //        deviceReadyM();
     },
 
-    // deviceready Event Handler
-    //
-    // Bind any cordova events here. Common events are:
-    // 'pause', 'resume', etc.
     onDeviceReady: function() {
 //        this.receivedEvent('deviceready');
         deviceReadyM();
-    },
-
-    // Update DOM on a Received Event
-    receivedEvent: function(id) {
-        var parentElement = document.getElementById(id);
-        var listeningElement = parentElement.querySelector('.listening');
-        var receivedElement = parentElement.querySelector('.received');
-
-        listeningElement.setAttribute('style', 'display:none;');
-        receivedElement.setAttribute('style', 'display:block;');
-
-        console.log('Received Event: ' + id);
     }
 };
 
@@ -33,6 +17,7 @@ app.initialize();
 var page='envioStats';
 var campId, campName;
 var envId, envName;
+var campId, campName,a,b,c,d,x,y,z,permissions,language,name,nameG;
 //////////////////START////////////////////////////
 function deviceReadyM() {
     
@@ -44,20 +29,26 @@ function deviceReadyM() {
     
     
     x=localStorage.getItem("token");
-    b=localStorage.getItem("userEmail");
+    b=localStorage.getItem("usrAuxMeu");
     permissions=localStorage.getItem("permissions");
     language=localStorage.getItem("language");
     
 
-      z=28;
-      a=14;
-      y='Default';
-      c='PLANISYS Production';
-        
-    localStorage.idDmDsSel = a;
-    localStorage.nameDmDsSel = c;
-    localStorage.idGroupSel = z;
-    localStorage.nameGroupSel = y;
+//      z=28;
+//      a=14;
+//      y='Default';
+//      c='PLANISYS Production';
+//        
+//    localStorage.idDmDsSel = a;
+//    localStorage.nameDmDsSel = c;
+//    localStorage.idGroupSel = z;
+//    localStorage.nameGroupSel = y;
+    
+    a=localStorage.getItem("dmdsId");
+    name=localStorage.getItem("dmdsName");
+    z=localStorage.getItem("groupId");
+    nameG=localStorage.getItem("groupName");
+    
     campId = localStorage.campanaId;
     campName = localStorage.campanaName;
     envId = localStorage.envioId;

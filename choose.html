@@ -29,7 +29,7 @@
   <md-input-container>
     <label for="dmds">Escoge Dmds</label>
     <md-select name="dmds" id="dmds">
-<!--      <md-option class="auxilii" v-for="(data, index) in listDmds" :value="data.name" v-on:click="gotoDashboard(data.id, data.name)" name="data.id">{{ data.name }}</md-option>-->
+
     
         <md-option class="auxilii" v-for="(data, index) in listDmds" :value="data.id">{{ data.name }}</md-option>
         
@@ -45,8 +45,23 @@
             
             
             </div>
+            <div class="hidden">
+          <md-button class="md-primary md-raised" @click="openDialog('dialog')" id="dialog">Dialog</md-button>
+        </div>
+            <md-dialog md-open-from="#customy" md-close-to="#customy" ref="dialog">
+          <md-dialog-title>Cerra App</md-dialog-title>
+          <md-dialog-content>Está seguro que desea salir y cerrar la aplicación?</md-dialog-content>
+          <md-dialog-actions>
+            <md-button class="md-primary" @click="closeDialog('dialog')">Cancelar</md-button>
+            <md-button class="md-primary" @click="closeDialog('dialog')" id="closeapp">Salir</md-button>
+          </md-dialog-actions>
+        </md-dialog>
+
+            
+            
             </div>
 
+        <div class="footer">DMDS © 2016-2017 Planisys</div>
       <!-- loading -->
       <div class="modal">
         <img id="loading" src="img/dmds_iso.svg" alt="DMDS">
@@ -57,6 +72,7 @@
 
     <link rel="stylesheet" href="./css/vue-material.css">
     <link rel="stylesheet" href="./css/login2.css">
+<!--    <link rel="stylesheet" href="./css/common.css">-->
     <!--    <link rel="stylesheet" href="./css/login.css">-->
     <!--    <link rel="stylesheet" href="./css/estilosLogin.css">-->
     <script src="./js/vue.js"></script>

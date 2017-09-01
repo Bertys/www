@@ -123,10 +123,7 @@ var nIntentos=0;
 var page='dashboard';
 
 function listenerDashboard(){
-            $('#aCampanas').click(function(e) {
-        location.replace('./campanas.html');
-        e.preventDefault();
-    });
+           
     var clicks=0;
      $('#dashDays').click(function(e) {
          if( clicks==0){
@@ -148,15 +145,7 @@ function listenerDashboard(){
              }
              e.preventDefault();
     });
-    
-    
-    $('#aCampanas').click(function(e) {
-        location.replace('./campanas.html');
-        e.preventDefault();
-    });
-    
-    
-    
+ 
 }
 
 function loadWizzard(){
@@ -178,16 +167,9 @@ function printPerfil(){
 
 // Handle the back button
 function onBackKeyDown() {
-//    $('#dialog').click();
-//    startlistenexit();
-    location.replace('./login.html');
+    location.replace('./choose.html');
     }
-function startlistenexit(){
-    $('#closeapp').click(function(e) {
-    console.log('cerrando la App');
-    navigator.app.exitApp();
-    });
-}
+
 
 
 function printStatsTotales(dias){

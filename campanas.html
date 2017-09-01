@@ -15,7 +15,7 @@
       <script src="./js/moment-with-locales.js"></script>
       <script src="./js/vue-material.js"></script>
    </head>
-   <body id="campanas" class="hidden">
+   <body id="campanas" class="hidden loading">
       <div class="app-viewport" id="file-list">
          <md-whiteframe md-elevation="3" class="main-toolbar-header" id="mainHeader">
           <md-toolbar class="md-dense">
@@ -30,10 +30,12 @@
                       <div id="userName">hugo@planisys.com</div>
                    </div>
                 </md-menu-item>
+<!--
                 <md-menu-item>
                    <span>Lenguaje</span>
                    <md-icon>near_me</md-icon>
                 </md-menu-item>
+-->
                 <md-menu-item @click="logout()">
                    <span>Cerrar Sesion</span>
                    <md-button class="md-icon-button md-list-action">
@@ -74,6 +76,7 @@
               <md-layout md-flex="25" id="dashDays">
                  <md-button class="md-icon-button md-card-filter-day" md-menu-trigger>
                     <span id="btnDashDay">7 dias</span><md-icon>more_vert</md-icon>
+<!--                     <md-tooltip md-delay="100" md-direction="bottom">Prueba a cambiar</md-tooltip>-->
                  </md-button>
               </md-layout>
            </md-layout>
@@ -104,6 +107,8 @@
                   
               </md-list>
             </div>
+           
+           <div id="auxC"></div>
 
          </md-whiteframe>
 
