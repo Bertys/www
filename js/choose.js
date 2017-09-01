@@ -33,7 +33,7 @@ function deviceReadyM() {
     
 
     cargarDmds();
-
+    
     
 //        console.log(JSON.stringify(permisos[0]));
 //        console.log(permisos[0].dmds_id);
@@ -44,8 +44,7 @@ function deviceReadyM() {
     $('#preSelect').html('Hola '+b+',');
     
      
-    $body.removeClass("loading");
-    $('.main').removeClass("hidden");
+    
 
 //    listenerDashboard();
 }
@@ -67,6 +66,24 @@ function printDMDS(){
     for(i=0;i<=wiz.DMDS.length-1;i++){
      permisos.push(wiz.DMDS[i].info);
     }
+    
+    console.log(permisos.length);
+    if(permisos.length==1){
+        dmdsId=permisos[0].id;
+        dmdsName=permisos[0].name;
+        groupId=permisos[0].groups[0].id;
+        groupName=permisos[0].groups[0].name;
+        
+       localStorage.setItem("dmdsId", dmdsId);
+  localStorage.setItem("dmdsName", dmdsName);
+    localStorage.setItem("groupId", groupId);
+  localStorage.setItem("groupName", groupName);
+
+
+  location.replace('./dashboard.html');
+    }
+    $body.removeClass("loading");
+    $('.main').removeClass("hidden");
     
 }
 $('#butDash').click(function(e) {

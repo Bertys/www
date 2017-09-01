@@ -153,10 +153,18 @@ function inicioStatsEnv(){
             $('#asunto').html(wiz.envios[i].info.envio.asunto);
             $('#nomrem').html(wiz.envios[i].info.envio.remitente_nombre);
             $('#emres').html(wiz.envios[i].info.envio.reply_to);
-//            $('#segmen').html(wiz.envios[i].info.envio);
+            $('#segmen').html(wiz.envios[i].info.envio.filtro_id);
             $('#tipo').html(wiz.envios[i].info.envio.tipo);
-//            $('#analy').html(wiz.envios[i].info.envio);
-//            $('#consc').html(wiz.envios[i].info.envio);
+            if(wiz.envios[i].info.envio.no_tag==0){
+                $('#analy').html('Si');
+            }else{
+                $('#analy').html('No');
+            }
+            if(wiz.envios[i].info.envio.dax_tag==0){
+                $('#consc').html('Si');
+            }else{
+                $('#consc').html('No');
+            }
         
     }
     }

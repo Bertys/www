@@ -124,13 +124,16 @@ $('#goBack').click(function(e) {
 $('#searcherCamp').click(function(e) {
     if(searched==0){
         $("#mainHeader").addClass("hidden");
+        $("#outSer").addClass("hidden");
         $("#searchHeader").removeClass("hidden");
+        $("#subheader").removeClass("hidden");
         $("#inputSearch").focus();
     }
 });
    $('#searcherCamp1').click(function(e) {
     var str=$('#inputSearch').val();
-     searchCampanas(str);
+       $("#askSearch").html('Has buscado: '+str);
+        searchCampanas(str);
        $("#searchHeader").addClass("hidden");
        $("#mainHeader").removeClass("hidden");
         searched=0;

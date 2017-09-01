@@ -131,7 +131,7 @@ function changeOrderCamp(){
 function searchCampanas(str){
 
 //    var str = $('#inputSearch').val();
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':totalCampanas,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
     
     for(i=0;i<=wiz.Campanas.length-1;i++){
