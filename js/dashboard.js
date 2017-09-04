@@ -15,7 +15,7 @@ $( document ).ready(function() {
             deviceReadyM();
 });
 
-var x,b,permissions,language,a,z,y,c,name, nameG;
+var x,b,permissions,language,a,z,y,c,name, nameG,first,last,mail;
 //////////////////START////////////////////////////
 function deviceReadyM() {
 
@@ -28,7 +28,16 @@ function deviceReadyM() {
     b=localStorage.getItem("usrAuxMeu");
     permissions=localStorage.getItem("permissions");
     language=localStorage.getItem("language");
+    first=localStorage.getItem("first_name");
+    last=localStorage.getItem("last_name");
+
     
+    //actualizacion de los datos del menu
+    usMail[0].first=first;
+    usMail[0].last=last;
+    usMail[0].mail=b;
+    usMail[0].language=language;
+
 
     a=localStorage.getItem("dmdsId");
     name=localStorage.getItem("dmdsName");
@@ -51,8 +60,6 @@ function deviceReadyM() {
     console.log(name);
     console.log(nameG);
     
-    var auxil='<span>Hugo Planisys</span><div>'+b+'</div>';
-    $('#userName').html(auxil);
      
     $body = $("body");
         $(document).on({
@@ -146,6 +153,10 @@ function listenerDashboard(){
              e.preventDefault();
     });
  
+    $('#aCampanas').click(function(e) {
+      location.replace('./campanas.html');
+        });
+    
 }
 
 function loadWizzard(){
@@ -237,3 +248,4 @@ function printStatsTotales(dias){
     $body.removeClass("loading");
 
 }
+

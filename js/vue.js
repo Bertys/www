@@ -24,14 +24,16 @@ var envios= [];
 var enviosTot= [];
 var detEnvKey= [];
 var detEnvVal= [];
+var usMail= [{'first': "first",'last': "last",'mail':"language",'mail':"a@b.c"}];
 var searchString;
+//var usMail='planisys@planisys.com';
 
 var example2 = new Vue({
   el: '#file-list',
     mounted:showHeader,
   data: {
     parentMessage: 'Campana',
-      myModel: 'like',
+    userMail: usMail,
     listDmds: permisos,
     listGroups: grupos,
     listTotales: totales,

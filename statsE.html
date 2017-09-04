@@ -41,10 +41,10 @@
 
   <md-menu-content>
     <md-menu-item>
-      <div class="md-list-text-container">
-            <span>Hugo Planisys</span>
-            <div id="userName">hugo@planisys.com</div>
-          </div>
+      <div class="md-list-text-container" id="userName" v-model="userMail">
+                      <span>{{userMail[0].first}} {{userMail[0].last}}</span>
+                      <div>{{userMail[0].mail}}</div>
+                   </div>
     </md-menu-item>
       
 <!--

@@ -42,7 +42,6 @@ function deviceReadyM() {
 
     StatusBar.backgroundColorByName("blue");
     
-    
     document.addEventListener("backbutton", onBackKeyDown, false);
     
     $body = $("body");

@@ -87,12 +87,17 @@ WizzardDMDS.prototype.postInfo = function(url,data,callback){
                 
 			} else{
 				callback(data);
+                console.log(url);
+                console.log(JSON.stringify(data));
 			}
 		},
 		error:function(jqXHR,textStatus,errorThrown){
 			console.log(errorThrown);
+            console.log(url);
+            console.log(JSON.stringify(data));
 		}
 	});
+    
 }
 WizzardDMDS.prototype.putInfo = function(_url,_data,okCallback,errCallback){
 	var _data = JSON.stringify(_data);
@@ -271,7 +276,7 @@ WizzardDMDS.prototype.processCamp = function(campana){
 WizzardDMDS.prototype.processEnvios = function(envios){
     
 totalEnvios=envios.recordsFiltered;
-//    console.log(totalEnvios);
+    console.log(JSON.stringify(envios));
  
     var len = envios.data.length;
 	var i;

@@ -23,15 +23,19 @@ function deviceReadyM() {
     
     
     x=localStorage.getItem("token");
-    b=localStorage.getItem("usrAuxMeu");
-    permissions=localStorage.getItem("permissions");
-    language=localStorage.getItem("language");
     
-
-//      z=28;
-//      a=14;
-//      y='Default';
-//      c='PLANISYS Production';
+    permissions=localStorage.getItem("permissions");
+    
+    
+    b=localStorage.getItem("usrAuxMeu");
+    language=localStorage.getItem("language");
+    first=localStorage.getItem("first_name");
+    last=localStorage.getItem("last_name");
+//  //actualizacion de los datos del menu
+    usMail[0].first=first;
+    usMail[0].last=last;
+    usMail[0].mail=b;
+    usMail[0].language=language;
         
         a=localStorage.getItem("dmdsId");
     name=localStorage.getItem("dmdsName");
@@ -74,7 +78,8 @@ function startEnvios(){
     var obj={'userEmail': c,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
-    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+//    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    var data={"start":wiz.Perfil[0].info.start,"length":wiz.Perfil[0].info.numReg,"order_by":wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir}; 
     ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+campId,data,wiz.processEnvios);
 }
 
@@ -147,6 +152,7 @@ function listenerEnvios(){
 });
    $('#searcherEnv1').click(function(e) {
     var str=$('#inputSearch').val();
+//       console.log(str);
      searchEnvios(str);
        $("#searchHeader").addClass("hidden");
        $("#mainHeader").removeClass("hidden");
@@ -158,32 +164,20 @@ function listenerEnvios(){
 
 function searchEnvios(str){
 
-//    var str = $('.input-searchbox').val();
-
-     
+    var str0 = str.toString();
+    console.log(str0);
+    var ajx;
     for(i=0;i<=wiz.envios.length;i++){
             envios.shift();
         }
-//    alert(str);
-    var data={'search':str,'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
-    ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+b,data,wiz.processEnvios);
-}
-
-function cargarMasE(){
-    var ajx;
-    var aux=contEnvMost*6;
-    if(aux<=totalEnvios){
-        console.log(aux);
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':aux,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
-
-    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
-    ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+b,data,wiz.processEnvios);
-    contEnvMost++;
-    }else{
-//        document.getElementById('butCarMasE').setAttribute('disabled', true);
-    }
+//    alert(str);
+    var data={'search':str0, 'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+//    var data={"search":str,"start":0,"length":6,"order_by":"id","order_dir":"asc"}; 
+    ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+campId,data,wiz.processEnvios);
 }
+
 
 function printEnvios(pag){
 	if(typeof pag === "undefined"){
@@ -194,7 +188,7 @@ function printEnvios(pag){
         }
     if(wiz.envios.length==0){
         envios.push({info:{envio:{nombre:"El envío seleccionado no tiene correos."},id:0}})
-        document.getElementById('butCarMasE').setAttribute('disabled', true);
+//        document.getElementById('butCarMasE').setAttribute('disabled', true);
     }
 	}
 //    else{
@@ -255,7 +249,7 @@ $('#inputSearch').bind("keypress", function(e){
    // enter key code is 13
    if(e.which === 13){
      var str=$('#inputSearch').val();
-     searchCampanas(str);
+     searchEnvios(str);
       $("#searchHeader").addClass("hidden");
        $("#mainHeader").removeClass("hidden");
         searched=0;

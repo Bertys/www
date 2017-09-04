@@ -70,7 +70,7 @@ function deviceReadyM() {
 //////////CODIGO MIO ////////////////
 
 
-var token;
+var token,email,first_name,language,last_name;
 var permissions;
 var nIntentos=0;
 
@@ -83,14 +83,14 @@ function listenerLogin(){
         var ppssww = passwordsha256.toString();
         startPageLogin(user,ppssww);
         userEmail=user;
-        document.cookie = "userEmail="+userEmail;
+//        document.cookie = "userEmail="+userEmail;
         e.preventDefault();
     });
 }
 function startPageLogin(usr,psw){
 
 nIntentos++;
-usrAuxMeu=usr;
+
 pswAuxMeu=psw;
 
 
@@ -106,6 +106,10 @@ xhr.onreadystatechange = function () {
 
         token=json.token;
         permissions=JSON.stringify(json.permissions);
+        language=json.lang;
+        first_name=json.first_name;
+        last_name=json.last_name;
+        email=json.email;
 
         console.log("Te has logueado correctamente con: "+usr+" y tu token es: "+json.token);
         console.log('La respuesta del servidor ha sido:');
@@ -113,13 +117,16 @@ xhr.onreadystatechange = function () {
 
         localStorage.setItem("token", token);
         localStorage.setItem("permissions", permissions);
-        localStorage.setItem("language", 'spanish');
+        localStorage.setItem("language", language);
+        localStorage.setItem("first_name", first_name);
+        localStorage.setItem("last_name", last_name);
+//        localStorage.setItem("usrAuxMeu", email);
 
         
         
             
         localStorage.setItem("nuevo", "Bueno");
-        localStorage.setItem("usrAuxMeu", usrAuxMeu);
+        localStorage.setItem("usrAuxMeu", email);
         localStorage.setItem("pswAuxMeu", pswAuxMeu);
 
         location.replace('./choose.html');

@@ -29,20 +29,19 @@ function deviceReadyM() {
     
     
     x=localStorage.getItem("token");
-    b=localStorage.getItem("usrAuxMeu");
-    permissions=localStorage.getItem("permissions");
-    language=localStorage.getItem("language");
     
-
-//      z=28;
-//      a=14;
-//      y='Default';
-//      c='PLANISYS Production';
-//        
-//    localStorage.idDmDsSel = a;
-//    localStorage.nameDmDsSel = c;
-//    localStorage.idGroupSel = z;
-//    localStorage.nameGroupSel = y;
+    permissions=localStorage.getItem("permissions");
+    
+    
+    b=localStorage.getItem("usrAuxMeu");
+    language=localStorage.getItem("language");
+    first=localStorage.getItem("first_name");
+    last=localStorage.getItem("last_name");
+//    //actualizacion de los datos del menu
+    usMail[0].first=first;
+    usMail[0].last=last;
+    usMail[0].mail=b;
+    usMail[0].language=language;
     
     a=localStorage.getItem("dmdsId");
     name=localStorage.getItem("dmdsName");
