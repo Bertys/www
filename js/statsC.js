@@ -316,6 +316,6 @@ $('#clearSearch').click(function(e) {
         
     $("#test").focus();
     $('#inputSearch').val('');
-    cleared=1;
+    searched=0;
     startEnvios();
         });
