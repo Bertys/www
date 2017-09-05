@@ -40,6 +40,10 @@ function inicioCampanas(){
     
 //    console.log("Tu token es: "+x);
     cargarCampanas();
+    
+    
+    $body = $("body");
+    
 }
 
 
@@ -111,7 +115,7 @@ function printCampanas(dias){
                 campanas.push(obj);
             }
     
-    $("#loading").hide();
+    $body.removeClass("loading");
 }
 
 function printCamp(){
@@ -136,8 +140,8 @@ function printCamp(){
                 var obj={"info":{"id":0,"name":"No hay campañas con ese tiempo","stats":{"envios_hechos":0,"emails_enviados":0,"open_rate":0,"click_rate":0}}};
                 campanas.push(obj);
             }
-    
-    $("#loading").hide();
+   $("#askSearch").html('Has buscado: '+str+' y hay '+totalCampanas+' resultados.');
+   $body.removeClass("loading");
 }
 
 
@@ -161,6 +165,7 @@ function changeOrderCamp(){
 
 function searchCampanas(str){
     
+    $body.addClass("loading");
     var ajx;
     var search=1;
     //    var str = $('#inputSearch').val();

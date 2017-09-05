@@ -233,8 +233,6 @@ WizzardDMDS.prototype.processCampanas = function(campana){
 //        console.log('dentro del for'+wiz.campanas);
 	}
 //    wiz.Campanas.push({'recordsFiltered':campana.recordsFiltered});
-//console.log(wiz.Campanas);
-//alert(page);
 
   if(page=='dashboard'){
       processTotals();
@@ -243,7 +241,7 @@ WizzardDMDS.prototype.processCampanas = function(campana){
         totalissimCampanas=campana.recordsTotal;
 	printCampanas(7);
 
-      console.log(totalCampanas);
+//      console.log(totalCampanas);
   }
     
 }
@@ -255,21 +253,19 @@ WizzardDMDS.prototype.processCamp = function(campana){
     
 	var i;
 	wiz.Campanas = new Array();
-//    console.log('antes del for'+wiz.campanas);
 	for(i=0;i<len;i++){
-//        console.log('dentro del for namas');
 		var obj = campana.data[i];
 		var campanass = new WizzardDMDS.Campanas(obj);
 		wiz.Campanas.push(campanass);
-//        console.log('dentro del for'+wiz.campanas);
 	}
-//    wiz.Campanas.push({'recordsFiltered':campana.recordsFiltered});
-//console.log(wiz.Campanas);
-//alert(page);
-
-
-             printCamp(); 
-    
+            totalCampanas=campana.recordsFiltered;
+            totalissimCampanas=campana.recordsTotal;
+             
+    if(cleared==0){
+        printCamp(); 
+    }else if(cleared==1){
+//        printCampanas(7); 
+    }
 }
 
 
@@ -470,5 +466,5 @@ function getCookie(cname) {
 }
 
 function printPerfil(){
-    console.log(wiz.Perfil);
+//    console.log(wiz.Perfil);
 }

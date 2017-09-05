@@ -113,6 +113,7 @@ function inicioStatsEnv(){
     console.log(JSON.stringify(wiz.envios[0].info));
     console.log(envId);
     
+    var res1,res2,res3,res4,res5,res6,res7;
     
     
     for(i=0;i<wiz.envios.length;i++){
@@ -123,28 +124,49 @@ function inicioStatsEnv(){
     console.log(JSON.stringify(wiz.enviosTot[0].info));
     $('#totEma').html(wiz.envios[i].info.ev_envio);
     $('#apTot').html(wiz.envios[i].info.ev_vista);
-    $('#apTotP').html((wiz.envios[i].info.ev_vista/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
+            if((wiz.envios[i].info.ev_vista/wiz.envios[i].info.ev_envio*100).toFixed(0)>=100){
+        res1='100%'
+        }else{ res1=(wiz.envios[i].info.ev_vista/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%'}
+    $('#apTotP').html(res1);
     $("#apTotPp .md-progress-track").css("width",(wiz.envios[i].info.ev_vista/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');   
     $('#apUni').html(wiz.envios[i].info.ev_vista_unica);
-    $('#apUniP').html((wiz.envios[i].info.ev_vista_unica/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
+            if((wiz.envios[i].info.ev_vista_unica/wiz.envios[i].info.ev_envio*100).toFixed(0)>=100){
+        res2='100%'
+        }else{ res2=(wiz.envios[i].info.ev_vista_unica/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%'}
+    $('#apUniP').html(res2);
     $("#apUniPp .md-progress-track").css("width",(wiz.envios[i].info.ev_vista_unica/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
     $('#clTot').html(wiz.envios[i].info.ev_click);
-    $('#clTotP').html((wiz.envios[i].info.ev_click/wiz.envios[i].info.ev_vista).toFixed(2)+'%');
+            if((wiz.envios[i].info.ev_click/wiz.envios[i].info.ev_vista).toFixed(0)>=100){
+        res3='100%'
+        }else{ res3=(wiz.envios[i].info.ev_click/wiz.envios[i].info.ev_vista).toFixed(2)+'%'}
+    $('#clTotP').html(res3);
     $("#clTotPp .md-progress-track").css("width",(wiz.envios[i].info.ev_click/wiz.envios[i].info.ev_vista).toFixed(2)+'%');
     $('#clUni').html(wiz.envios[i].info.ev_click_unico);
-    $('#clUniP').html((wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista).toFixed(2)+'%');
+            if((wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista).toFixed(0)>=100){
+        res4='100%'
+        }else{ res4=(wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista).toFixed(2)+'%'}
+    $('#clUniP').html(res4);
     $("#clUniPp .md-progress-track").css("width",(wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista).toFixed(2)+'%');
-    $('#reTot').html(wiz.envios[i].info.ev_rebote);
-    $('#reTotP').html((wiz.envios[i].info.ev_rebote/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
-    $("#reTotPp .md-progress-track").css("width",(wiz.envios[i].info.ev_rebote/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
+//    $('#reTot').html(wiz.envios[i].info.ev_rebote);
+//    $('#reTotP').html((wiz.envios[i].info.ev_rebote/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
+//    $("#reTotPp .md-progress-track").css("width",(wiz.envios[i].info.ev_rebote/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
     $('#reUni').html(wiz.envios[i].info.ev_rebote_hard);
-    $('#reUniP').html((wiz.envios[i].info.ev_rebote_hard/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
+            if((wiz.envios[i].info.ev_rebote_hard/wiz.envios[i].info.ev_envio*100).toFixed(0)>=100){
+        res6='100%'
+        }else{ res6=(wiz.envios[i].info.ev_rebote_hard/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%'}
+    $('#reUniP').html(res6);
     $("#reUniPp .md-progress-track").css("width",(wiz.envios[i].info.ev_rebote_hard/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
     $('#desTot').html(wiz.envios[i].info.ev_desuscripcion);
-    $('#desTotP').html((wiz.envios[i].info.ev_desuscripcion/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
+            if((wiz.envios[i].info.ev_desuscripcion/wiz.envios[i].info.ev_envio*100).toFixed(0)>=100){
+        res7='100%'
+        }else{ res7=(wiz.envios[i].info.ev_desuscripcion/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%'}
+    $('#desTotP').html(res7);
     $("#desTotPp .md-progress-track").css("width",(wiz.envios[i].info.ev_desuscripcion/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
         console.log('done'+JSON.stringify(wiz.envios[i].info)); 
         
+            
+            
+            ////////////////////////////////////////////
         //segunda parte
             $('#horEnv').html(wiz.envios[i].info.modificado);
             $('#status').html(wiz.envios[i].info.estado);

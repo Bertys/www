@@ -11,6 +11,7 @@ var app = {
 
 app.initialize();
 
+var stringSearch;
 var searched=0;
 var page='campanasStats';
 var campId, campName,a,b,c,d,x,y,z,permissions,language,name,nameG;
@@ -99,24 +100,67 @@ function loadWizzard(){
 
 
 function inicioStatsCamp(){
+    
+     var res1,res2,res3,res4,res5,res6,res7;
+
 //    console.log(JSON.stringify(wiz.enviosTot.info.totalEnvios));
     console.log(JSON.stringify(wiz.enviosTot[0].info));
     $('#xEnvios').html(wiz.enviosTot[0].info.totalEnvios +' Envíos');
     $('#totEma').html(wiz.enviosTot[0].info.ev_envio);
+    
     $('#apTot').html(wiz.enviosTot[0].info.ev_vista);
-    $('#apTotP').html((wiz.enviosTot[0].info.ev_vista/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
+    if((wiz.enviosTot[0].info.ev_vista/wiz.enviosTot[0].info.ev_envio*100).toFixed(0)>=100){
+        res1='100%'
+        }else{ res1=(wiz.enviosTot[0].info.ev_vista/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%'}
+    $('#apTotP').html(res1);
+    $("#apTotPp .md-progress-track").css("width", (wiz.enviosTot[0].info.ev_vista/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
+    
     $('#apUni').html(wiz.enviosTot[0].info.ev_vista_unica);
-    $('#apUniP').html((wiz.enviosTot[0].info.ev_vista_unica/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
+    if((wiz.enviosTot[0].info.ev_vista_unica/wiz.enviosTot[0].info.ev_envio*100).toFixed(0)>=100){
+        res2='100%'
+        }else{ res2=(wiz.enviosTot[0].info.ev_vista_unica/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%'}
+    $('#apUniP').html(res2);
+    $("#apUniPp .md-progress-track").css("width", (wiz.enviosTot[0].info.ev_vista_unica/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
+    
     $('#clTot').html(wiz.enviosTot[0].info.ev_click);
-    $('#clTotP').html((wiz.enviosTot[0].info.ev_click/wiz.enviosTot[0].info.ev_vista*100).toFixed(2)+'%');
+    if((wiz.enviosTot[0].info.ev_click/wiz.enviosTot[0].info.ev_vista*100).toFixed(0)>=100){
+        res3='100%'
+        }else{ res3=(wiz.enviosTot[0].info.ev_click/wiz.enviosTot[0].info.ev_vista*100).toFixed(2)+'%'}
+    $('#clTotP').html(res3);
+    $("#clTotPp .md-progress-track").css("width", (wiz.enviosTot[0].info.ev_click/wiz.enviosTot[0].info.ev_vista*100).toFixed(2)+'%');
+    
     $('#clUni').html(wiz.enviosTot[0].info.ev_click_unico);
-    $('#clUniP').html((wiz.enviosTot[0].info.ev_click_unico/wiz.enviosTot[0].info.ev_vista*100).toFixed(2)+'%');
-    $('#reTot').html(wiz.enviosTot[0].info.ev_rebote);
-    $('#reTotP').html((wiz.enviosTot[0].info.ev_rebote/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
+    if((wiz.enviosTot[0].info.ev_click_unico/wiz.enviosTot[0].info.ev_vista*100).toFixed(0)>=100){
+        res4='100%'
+        }else{ res4=(wiz.enviosTot[0].info.ev_click_unico/wiz.enviosTot[0].info.ev_vista*100).toFixed(2)+'%'}
+    $('#clUniP').html(res4);
+    $("#clUniPp .md-progress-track").css("width", (wiz.enviosTot[0].info.ev_click_unico/wiz.enviosTot[0].info.ev_vista*100).toFixed(2)+'%');
+
+    
+//    $('#reTot').html(wiz.enviosTot[0].info.ev_rebote);
+//    if((wiz.enviosTot[0].info.ev_click_unico/wiz.enviosTot[0].info.ev_vista*100).toFixed(0)>=100){
+//        res5='100%'
+//        }else{ res5=(wiz.enviosTot[0].info.ev_click_unico/wiz.enviosTot[0].info.ev_vista*100).toFixed(2)+'%'}
+//    $('#reTotP').html(res5);
+//    $("#reTotPp .md-progress-track").css("width", (wiz.enviosTot[0].info.ev_click_unico/wiz.enviosTot[0].info.ev_vista*100).toFixed(2)+'%');
+//    $('#reTotP').html((wiz.enviosTot[0].info.ev_rebote/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
+//    
+    
+    
     $('#reUni').html(wiz.enviosTot[0].info.ev_rebote_unico);
-    $('#reUniP').html((wiz.enviosTot[0].info.ev_rebote_unico/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
+    if((wiz.enviosTot[0].info.ev_rebote_unico/wiz.enviosTot[0].info.ev_envio*100).toFixed(0)>=100){
+        res6='100%'
+        }else{ res6=(wiz.enviosTot[0].info.ev_rebote_unico/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%'}
+    $('#reUniP').html(res6);
+    $("#reUniPp .md-progress-track").css("width", (wiz.enviosTot[0].info.ev_rebote_unico/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
+    
+    
     $('#desTot').html(wiz.enviosTot[0].info.ev_desuscripcion);
-    $('#desTotP').html((wiz.enviosTot[0].info.ev_desuscripcion/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
+    if((wiz.enviosTot[0].info.ev_desuscripcion/wiz.enviosTot[0].info.ev_envio*100).toFixed(0)>=100){
+        res7='100%'
+        }else{ res7=(wiz.enviosTot[0].info.ev_desuscripcion/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%'}
+    $('#desTotP').html(res7);
+    $("#desTotPp .md-progress-track").css("width", (wiz.enviosTot[0].info.ev_desuscripcion/wiz.enviosTot[0].info.ev_envio*100).toFixed(2)+'%');
     
     
     
@@ -156,7 +200,7 @@ function listenerEnvios(){
      searchEnvios(str);
        $("#searchHeader").addClass("hidden");
        $("#mainHeader").removeClass("hidden");
-        searched=0;
+        searched=1;
         $("#listaEnvios").focus();
 });
     
@@ -164,8 +208,7 @@ function listenerEnvios(){
 
 function searchEnvios(str){
 
-    var str0 = str.toString();
-    console.log(str0);
+    stringSearch=str;
     var ajx;
     for(i=0;i<=wiz.envios.length;i++){
             envios.shift();
@@ -173,7 +216,7 @@ function searchEnvios(str){
     var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 //    alert(str);
-    var data={'search':str0, 'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    var data={'search':str, 'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
 //    var data={"search":str,"start":0,"length":6,"order_by":"id","order_dir":"asc"}; 
     ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+campId,data,wiz.processEnvios);
 }
@@ -201,6 +244,12 @@ function printEnvios(pag){
     if(totalEnvios<=6){
 //        document.getElementById('butCarMasE').setAttribute('disabled', true);
     }
+    
+   if(searched==1){ 
+    $("#askSearch").html('Hay '+totalEnvios+' resultados para "'+stringSearch+'".');
+    $("#subheader").removeClass("hidden"); 
+    }
+   $body.removeClass("loading");
 }
 function gotoStats3(id,nombre) {
     localStorage.envioId=id;
@@ -252,7 +301,21 @@ $('#inputSearch').bind("keypress", function(e){
      searchEnvios(str);
       $("#searchHeader").addClass("hidden");
        $("#mainHeader").removeClass("hidden");
-        searched=0;
+        searched=1;
         $("#test").focus();
     } 
 })
+
+$('#clearSearch').click(function(e) {
+
+       $("#subheader").addClass("hidden");
+       $("#mainHeader").removeClass("hidden");
+       $("#searchHeader").addClass("hidden");
+       $("#outSer").removeClass("hidden");
+       $("#dashDays").removeClass("hidden");
+        
+    $("#test").focus();
+    $('#inputSearch').val('');
+    cleared=1;
+    startEnvios();
+        });

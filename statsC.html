@@ -68,14 +68,13 @@
              <h2 class="md-title" style="flex: 1">Detalles de Campaña</h2>
 
              <md-button class="md-icon-button" id="searcherEnvios" class="hidden">
-               <md-icon>search</md-icon>
+               <md-icon class="hidden" id="icosearchE">search</md-icon>
              </md-button>
            </md-toolbar>
            <!--<div style="flex: 0.75">
    <input type="search" name="searcher" id="inputSearch" class="hidden">
 </div>-->
          </md-whiteframe>
-
 
           <md-whiteframe md-elevation="3" class="main-toolbar-header hidden" id="searchHeader">
           <md-toolbar class="md-dense">
@@ -88,6 +87,12 @@
          </md-whiteframe>
         
     
+       <md-layout md-gutter class="md-layout-header hidden" id="subheader">
+              
+                 <div class="md-title" id="askSearch"></div><br>
+               <i class="material-icons" id="clearSearch">close</i>
+  
+           </md-layout>
 
         
         
@@ -134,7 +139,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress :md-progress="70"></md-progress>
+                <md-progress :md-progress="70" id="apTotPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -155,7 +160,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="30"></md-progress>
+                <md-progress class="md-accent" :md-progress="30" id="apUniPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -176,7 +181,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="30"></md-progress>
+                <md-progress class="md-accent" :md-progress="30" id="clTotPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -197,11 +202,12 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="45"></md-progress>
+                <md-progress class="md-accent" :md-progress="45" id="clUniPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
             <!--Rebotes totales -->
+<!--
             <md-layout md-gutter class="md-layout-content">
               <md-layout md-flex="50">
                 <div class="md-list-text-container">
@@ -222,12 +228,13 @@
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
+-->
             <!--Rebotes unicos -->
             <md-layout md-gutter class="md-layout-content">
               <md-layout md-flex="50">
                 <div class="md-list-text-container">
                   <span id="reUni">542.854</span>
-                  <span>Rebotes unicos</span>
+                  <span>Rebotes</span>
                 </div>
               </md-layout>
               <md-layout md-flex-offset="20">
@@ -239,7 +246,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="39"></md-progress>
+                <md-progress class="md-accent" :md-progress="39" id="reUniPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>
@@ -260,7 +267,7 @@
             </md-layout>
             <md-layout md-gutter class="md-layout-bar">
               <md-layout md-flex="100">
-                <md-progress class="md-accent" :md-progress="25"></md-progress>
+                <md-progress class="md-accent" :md-progress="25" id="desTotPp"></md-progress>
                 <md-divider class="md-inset"></md-divider>
               </md-layout>
             </md-layout>

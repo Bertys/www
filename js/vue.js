@@ -25,7 +25,6 @@ var enviosTot= [];
 var detEnvKey= [];
 var detEnvVal= [];
 var usMail= [{'first': "first",'last': "last",'mail':"language",'mail':"a@b.c"}];
-var searchString;
 //var usMail='planisys@planisys.com';
 
 var example2 = new Vue({
@@ -41,8 +40,7 @@ var example2 = new Vue({
     listEnv: envios,
     listEnvTot: enviosTot,
     detallesEnvKey: detEnvKey,
-    detallesEnvVal: detEnvVal,
-    searchString: searchString
+    detallesEnvVal: detEnvVal
   },
   methods: {
 //      cargarNuevo: function() {
