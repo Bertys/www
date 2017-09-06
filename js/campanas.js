@@ -50,7 +50,9 @@ function deviceReadyM() {
     $body = $("body");
         $(document).on({
         ajaxStart: function() { $body.addClass("loading"); },
-        ajaxStop: function() { $body.removeClass("loading"); }
+        ajaxStop: function() { 
+//            $body.removeClass("loading"); 
+        }
         });
     
         
@@ -292,7 +294,7 @@ function inicioCampanas(){
 
     
 //    console.log(b);
-    $('#userName').html(b);
+//    $('#userName').html(b);
     $('#h2p1').html("<br />Lista de Campañas: '"+c+"'");
     
 //    console.log("Tu token es: "+x);
@@ -377,7 +379,7 @@ function printCampanas(dias){
         $("#auxC").removeClass("hidden");
         $("#auxC").html('No hay campañas que contengan envíos en los ultimos '+dias+' dias.');
         $("#campanas").removeClass("hidden");
-        $("#campanas").removeClass("loading");
+//        $("#campanas").removeClass("loading");
         $body.removeClass("loading");
 //        $('#loading').addClass("hidden");
         
