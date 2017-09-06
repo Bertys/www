@@ -325,7 +325,7 @@ function gotoStats2(id,name){
 function cargarCampanas(){
     var ajx
     search=0;
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':60,'Orderby':'last_activity','orderDir':'asc','start':0,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':60,'Orderby':'last_activity','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
     var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
@@ -436,8 +436,8 @@ function searchCampanas(str){
     var ajx;
     var search=1;
     //    var str = $('#inputSearch').val();
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':50,'Orderby':'last_activity','orderDir':'asc','start':0,'pagina':0};
-    wiz.processPerfil(obj);
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':50,'Orderby':'last_activity','orderDir':'desc','start':0,'pagina':0};
+    wiz.processPerfil(obj)
     
     
 //    if(str==''){
