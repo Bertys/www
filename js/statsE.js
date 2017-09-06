@@ -174,7 +174,7 @@ function inicioStatsEnv(){
             $('#asunto').html(wiz.envios[i].info.envio.asunto);
             $('#nomrem').html(wiz.envios[i].info.envio.remitente_nombre);
             $('#emres').html(wiz.envios[i].info.envio.reply_to);
-            $('#segmen').html(wiz.envios[i].info.envio.filtro_id);
+            $('#segmen').html(wiz.envios[i].info.envio.filtro.nombre);
             $('#tipo').html(wiz.envios[i].info.envio.tipo);
             if(wiz.envios[i].info.envio.no_tag==0){
                 $('#analy').html('Si');

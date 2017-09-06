@@ -17,6 +17,7 @@ var pswAuxMeu;
 var a,b,c,d,e,f,x,y,z;
 var permissions,language;
 
+var dias=7;
 var cleared=0;
 var page='campanas';
 var searched=0;
@@ -65,17 +66,7 @@ function deviceReadyM() {
 
         urlP=document.URL;
 
-    console.log(wiz.campanas.length);
-    if(wiz.campanas.length==0){
-//    $("#btnDashDay").mouseleave();
-        $("#auxC").html('Prueba a cambiar los días!');
-        $("#campanas").removeClass("hidden");
-        $("#campanas").removeClass("loading");
-        
-    }else{
-        $("#campanas").removeClass("hidden");
-        $("#campanas").removeClass("loading");
-    }
+    
     
     
 //console.log(languages.es[1].welcome);
@@ -131,15 +122,15 @@ $('#searcherCamp').click(function(e) {
         $("#inputSearch").focus();
     }
 });
-   $('#searcherCamp1').click(function(e) {
-    var str=$('#inputSearch').val();
-
-        searchCampanas(str);
-       $("#searchHeader").addClass("hidden");
-       $("#mainHeader").removeClass("hidden");
-        searched=1;
-        $("#test").focus();
-});
+//   $('#searcherCamp1').click(function(e) {
+//    var str=$('#inputSearch').val();
+//
+//        searchCampanas(str);
+//       $("#searchHeader").addClass("hidden");
+//       $("#mainHeader").removeClass("hidden");
+//        searched=1;
+//        $("#test").focus();
+//});
   
 }
 
@@ -173,6 +164,20 @@ $('#clearSearch').click(function(e) {
     cargarCampanas();
         });
 
+$('#backSearch').click(function(e) {
+
+       $("#subheader").addClass("hidden");
+       $("#mainHeader").removeClass("hidden");
+       $("#searchHeader").addClass("hidden");
+       $("#outSer").removeClass("hidden");
+       $("#dashDays").removeClass("hidden");
+        
+    $("#test").focus();
+    $('#inputSearch').val('');
+    searched=0;
+    cargarCampanas();
+        });
+
 
 function onBackKeyDown() {
         location.replace('./dashboard.html');
@@ -180,8 +185,10 @@ function onBackKeyDown() {
 
 var clicks=0;
      $('#dashDays').click(function(e) {
-         var dias;
+         
          $body.addClass("loading");
+         $('#loading').removeClass("hidden");
+         $("#auxC").addClass("hidden");
          if( clicks==0){
              
             $("#btnDashDay").html('30 dias');
@@ -208,6 +215,7 @@ var clicks=0;
                  
              }
          
+         $body.removeClass("loading");
              e.preventDefault();
          printCampanas(dias);
     });
@@ -325,7 +333,7 @@ function gotoStats2(id,name){
 function cargarCampanas(){
     var ajx
     search=0;
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':60,'Orderby':'last_activity','orderDir':'desc','start':0,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':99,'Orderby':'last_activity','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
     var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
@@ -337,8 +345,11 @@ function cargarCampanas(){
 
 
 function printCampanas(dias){
+
     var algo=0;
-    
+    if(dias==365){
+        dias=9999999;
+    }
     campanas.splice(0, campanas.length);
     
     
@@ -355,20 +366,37 @@ function printCampanas(dias){
             console.log(auxx);
             if(auxx<=dias){
             campanas.push(wiz.Campanas[i]);
-                algo=1;
+                algo++;
             }
         }
     
-        if(algo==0){
-                var obj={"info":{"id":0,"name":"No hay campañas con ese tiempo","stats":{"envios_hechos":0,"emails_enviados":0,"open_rate":0,"click_rate":0}}};
-                campanas.push(obj);
-            }
+    console.log(wiz.Campanas.length);
+    console.log(algo);
+    if(algo==0){
+//    $("#btnDashDay").mouseleave();
+        $("#auxC").removeClass("hidden");
+        $("#auxC").html('No hay campañas que contengan envíos en los ultimos '+dias+' dias.');
+        $("#campanas").removeClass("hidden");
+        $("#campanas").removeClass("loading");
+        $body.removeClass("loading");
+//        $('#loading').addClass("hidden");
+        
+    }else{
+        $("#auxC").addClass("hidden");
+        $("#campanas").removeClass("hidden");
+        $body.removeClass("loading");
+        $('#loading').addClass("hidden");
+    }
+    
+    
+    
     if(cleared==0){
         $("#askSearch").removeClass("hidden");
     }else if(cleared==1){
         $("#askSearch").addClass("hidden");
     }
     $body.removeClass("loading");
+//    $('#loading').addClass("hidden");
 }
 
 function printCamp(){
@@ -389,16 +417,11 @@ function printCamp(){
       
         }
     
-        if(wiz.Campanas.length==0){
-                var obj={"info":{"id":0,"name":"No hay campañas con ese tiempo","stats":{"envios_hechos":0,"emails_enviados":0,"open_rate":0,"click_rate":0}}};
-                campanas.push(obj);
-            }
-    
-    if(cleared==0){
-        $("#askSearch").removeClass("hidden");
-    }else if(cleared==1){
-        $("#askSearch").addClass("hidden");
-    }
+//    if(cleared==0){
+//        $("#askSearch").removeClass("hidden");
+//    }else if(cleared==1){
+//        $("#askSearch").addClass("hidden");
+//    }
     
     
     if(searched==1){
