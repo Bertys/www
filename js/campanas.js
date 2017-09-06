@@ -306,26 +306,26 @@ function gotoStats2(id,name){
     location.replace('./statsC.html');
 }
 
-function cargarMas(){
-    var ajx;
-    var aux=contCampMost*6;
-    console.log(totalCampanas);
-    if(aux<=totalCampanas){
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'created_at','orderDir':'desc','start':aux,'pagina':0};
-    wiz.processPerfil(obj);
-
-    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,'order_dir':wiz.Perfil[0].info.orderDir};
-    ajx = wiz.postInfo('campanas/'+a+'/'+z,data,wiz.processCampanas);
-    contCampMost++;
-        
-    }
-}
+//function cargarMas(){
+//    var ajx;
+//    var aux=contCampMost*6;
+//    console.log(totalCampanas);
+//    if(aux<=totalCampanas){
+//    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'created_at','orderDir':'desc','start':aux,'pagina':0};
+//    wiz.processPerfil(obj);
+//
+//    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,'order_dir':wiz.Perfil[0].info.orderDir};
+//    ajx = wiz.postInfo('campanas/'+a+'/'+z,data,wiz.processCampanas);
+//    contCampMost++;
+//        
+//    }
+//}
     
     
 function cargarCampanas(){
     var ajx
     search=0;
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':60,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':60,'Orderby':'last_activity','orderDir':'asc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
     var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
@@ -349,10 +349,10 @@ function printCampanas(dias){
         
         
         for(i=0;i<=wiz.Campanas.length-1;i++){
-            var a = moment(wiz.Campanas[i].info.created_at);
+            var a = moment(wiz.Campanas[i].info.last_activity);
         var now = moment();
         var auxx=now.diff(a, 'days');
-//            console.log(auxx);
+            console.log(auxx);
             if(auxx<=dias){
             campanas.push(wiz.Campanas[i]);
                 algo=1;
@@ -436,7 +436,7 @@ function searchCampanas(str){
     var ajx;
     var search=1;
     //    var str = $('#inputSearch').val();
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':50,'Orderby':'created_at','orderDir':'desc','start':0,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':50,'Orderby':'last_activity','orderDir':'asc','start':0,'pagina':0};
     wiz.processPerfil(obj);
     
     

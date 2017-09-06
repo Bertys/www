@@ -240,7 +240,7 @@ WizzardDMDS.prototype.processCampanas = function(campana){
         totalCampanas=campana.recordsFiltered;
         totalissimCampanas=campana.recordsTotal;
 	printCampanas(7);
-
+//printCamp(); 
 //      console.log(totalCampanas);
   }
     
