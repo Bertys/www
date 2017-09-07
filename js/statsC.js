@@ -244,6 +244,7 @@ function printEnvios(pag){
 function gotoStats3(id,nombre) {
     localStorage.envioId=id;
         localStorage.envioName=nombre;
+        localStorage.envMost=contEnvMost*6;
     location.replace('./statsE.html');
         }
 

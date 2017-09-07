@@ -13,7 +13,7 @@ var app = {
 
 app.initialize();
 
-
+var enviosMostrados;
 var page='envioStats';
 var campId, campName;
 var envId, envName;
@@ -36,6 +36,7 @@ function deviceReadyM() {
     b=localStorage.getItem("usrAuxMeu");
     language=localStorage.getItem("language");
     first=localStorage.getItem("first_name");
+    enviosMostrados=localStorage.getItem("envMost");
     last=localStorage.getItem("last_name");
 //    //actualizacion de los datos del menu
     usMail[0].first=first;
@@ -82,10 +83,10 @@ function deviceReadyM() {
 var ajx
 function startEnvios(){
 
-    var obj={'userEmail': c,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':0,'pagina':0};
+    var obj={'userEmail': c,'token': x,'language':language,'numReg':enviosMostrados,'Orderby':'id','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
-    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
+    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,'order_dir':wiz.Perfil[0].info.orderDir};
     ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+campId,data,wiz.processEnvios);
 }
 
@@ -112,11 +113,13 @@ function inicioStatsEnv(){
     
     console.log(JSON.stringify(wiz.envios[0].info));
     console.log(envId);
+    console.log(wiz.envios.length);
     
     var res1,res2,res3,res4,res5,res6,res7;
     
     
     for(i=0;i<wiz.envios.length;i++){
+//       console.log( wiz.envios[i].info.envio.id);
         if(wiz.envios[i].info.envio.id==envId){
     console.log(wiz.envios[i].info);
    
@@ -213,9 +216,6 @@ function inicioStatsEnv(){
 var ajx;
 //var page='infoE1';
 function startEnvios2(){
-
-    var obj={'userEmail': c,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'asc','start':0,'pagina':0};
-    wiz.processPerfil(obj);
 
 //    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
     var data;
