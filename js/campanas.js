@@ -122,6 +122,12 @@ $('#searcherCamp').click(function(e) {
         $("#outSer").addClass("hidden");
         $("#searchHeader").removeClass("hidden");
         $("#inputSearch").focus();
+    }else if(searched==1){
+        $("#mainHeader").addClass("hidden");
+        $("#outSer").addClass("hidden");
+        $("#searchHeader").removeClass("hidden");
+        $('#inputSearch').val('');
+        $("#inputSearch").focus();
     }
 });
 //   $('#searcherCamp1').click(function(e) {
@@ -146,7 +152,7 @@ $('#inputSearch').bind("keypress", function(e){
         searchCampanas(str);
        $("#searchHeader").addClass("hidden");
        $("#mainHeader").removeClass("hidden");
-        searched=0;
+        searched=1;
         $("#test").focus();
     } 
 })
@@ -420,7 +426,7 @@ function printCamp(){
     
     if(searched==1){
         $("#askSearch").html('Hay '+totalCampanas+' resultados para "'+stringSearch+'".');
-   $("#subheader").removeClass("hidden"); 
+        $("#subheader").removeClass("hidden"); 
     }
    
    $("body").removeClass("loading");

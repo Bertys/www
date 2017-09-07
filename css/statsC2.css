@@ -12,9 +12,12 @@
 }
 .hidden
 {
-   display: none;
+   display: none !important;
 }
-
+.HIDEN
+{
+   display: none !important;
+}
 
 .modal {
     display:    none;

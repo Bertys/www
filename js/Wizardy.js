@@ -239,7 +239,7 @@ WizzardDMDS.prototype.processCampanas = function(campana){
   }else if(page=='campanas'){
         totalCampanas=campana.recordsFiltered;
         totalissimCampanas=campana.recordsTotal;
-	printCampanas(7);
+	printCampanas(dias);
 //printCamp(); 
 //      console.log(totalCampanas);
   }
@@ -312,8 +312,6 @@ totalEnvios=envios.recordsFiltered;
 //    printEnviosTot();
     if(page=='campanasStats'){
         inicioStatsCamp();
-        printEnvios();
-  }else if(page=='envios'){
         printEnvios();
   }else if(page=='envioStats'){
       console.log(JSON.stringify(wiz.enviosTot));

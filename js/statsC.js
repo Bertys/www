@@ -178,32 +178,22 @@ function listenerEnvios(){
     $('#anavCampanas').click(function(e) {
       location.replace('./campanas.html');
         });
-    
-    $('#envios').click(function(e) {
-      $("#searcherEnvios").removeClass("hidden");
-        });
-
-    $('#stats').click(function(e) {
-      $("#searcherEnvios").addClass("hidden");
+    $('#anavCampanas2').click(function(e) {
+      location.replace('./campanas.html');
         });
     
     $('#searcherEnvios').click(function(e) {
     if(searched==0){
-        $("#mainHeader").addClass("hidden");
+        $("#mainHeaderEnvios").addClass("hidden");
         $("#searchHeader").removeClass("hidden");
+        $("#inputSearch").focus();
+    }else if(searched==1){
+        $("#mainHeaderEnvios").addClass("hidden");
+        $("#searchHeader").removeClass("hidden");
+        $('#inputSearch').val('');
         $("#inputSearch").focus();
     }
 });
-   $('#searcherEnv1').click(function(e) {
-    var str=$('#inputSearch').val();
-//       console.log(str);
-     searchEnvios(str);
-       $("#searchHeader").addClass("hidden");
-       $("#mainHeader").removeClass("hidden");
-        searched=1;
-        $("#listaEnvios").focus();
-});
-    
 }
 
 function searchEnvios(str){
@@ -223,27 +213,27 @@ function searchEnvios(str){
 
 
 function printEnvios(pag){
+    var algo=0;
 	if(typeof pag === "undefined"){
         pag = 0;
-    console.log(wiz.envios);
+        console.log(JSON.stringify(wiz.envios));
+    }
+
  for(i=0;i<=wiz.envios.length-1;i++){
             envios.push(wiz.envios[i]);
+     algo++;
         }
-    if(wiz.envios.length==0){
-        envios.push({info:{envio:{nombre:"El envío seleccionado no tiene correos."},id:0}})
-//        document.getElementById('butCarMasE').setAttribute('disabled', true);
+    
+    console.log(wiz.envios.length);
+    console.log(algo);
+    if(algo==0){
+        $("#auxE").removeClass("hidden");
+        $("#auxE").html('No hay envíos para: '+stringSearch+'.');
+    }else{
+        $("#auxE").addClass("hidden");
+//        $(".main").removeClass("hidden");
     }
-	}
-//    else{
-//        wiz.Perfil[0].info.pagina=pag;
-//        var start=wiz.Perfil[0].info.pagina*wiz.Perfil[0].info.numReg;
-//        var data={'start' : start, 'length' : wiz.Perfil[0].info.numReg, 'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
-//        ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+b,data,wiz.processEnvios);
-//    }
 
-    if(totalEnvios<=6){
-//        document.getElementById('butCarMasE').setAttribute('disabled', true);
-    }
     
    if(searched==1){ 
     $("#askSearch").html('Hay '+totalEnvios+' resultados para "'+stringSearch+'".');
@@ -256,13 +246,6 @@ function gotoStats3(id,nombre) {
         localStorage.envioName=nombre;
     location.replace('./statsE.html');
         }
-
-//$('#searcherEnvios').click(function(e) {
-//    if(searched==0){
-//        $("#inputSearch").removeClass("hidden");
-//        $("#inputSearch").focus();
-//    }
-//});
 
 // Handle the swipe action
     //
@@ -300,7 +283,7 @@ $('#inputSearch').bind("keypress", function(e){
      var str=$('#inputSearch').val();
      searchEnvios(str);
       $("#searchHeader").addClass("hidden");
-       $("#mainHeader").removeClass("hidden");
+       $("#mainHeaderEnvios").removeClass("hidden");
         searched=1;
         $("#test").focus();
     } 
@@ -309,7 +292,7 @@ $('#inputSearch').bind("keypress", function(e){
 $('#clearSearch').click(function(e) {
 
        $("#subheader").addClass("hidden");
-       $("#mainHeader").removeClass("hidden");
+       $("#mainHeaderEnvios").removeClass("hidden");
        $("#searchHeader").addClass("hidden");
        $("#outSer").removeClass("hidden");
        $("#dashDays").removeClass("hidden");
@@ -322,7 +305,7 @@ $('#clearSearch').click(function(e) {
 $('#backSearch').click(function(e) {
 
        $("#subheader").addClass("hidden");
-       $("#mainHeader").removeClass("hidden");
+       $("#mainHeaderEnvios").removeClass("hidden");
        $("#searchHeader").addClass("hidden");
        $("#outSer").removeClass("hidden");
        $("#dashDays").removeClass("hidden");

@@ -25,7 +25,6 @@ var enviosTot= [];
 var detEnvKey= [];
 var detEnvVal= [];
 var usMail= [{'first': "first",'last': "last",'mail':"language",'mail':"a@b.c"}];
-//var usMail='planisys@planisys.com';
 
 var example2 = new Vue({
   el: '#file-list',
@@ -61,7 +60,28 @@ var example2 = new Vue({
       dateFormat(data){
       var mifecha = moment(data).format('DD/MM/YY');  
           return mifecha;
-      }
+      },
+      
+      onChange(tabIndex) {
+        switch (tabIndex) {
+            case 0:
+                this.activeTab=0;
+                console.log('Stats');
+                $("#mainHeaderStats").removeClass("hidden");
+                $("#mainHeaderEnvios").addClass("hidden");
+            break;
+            case 1:
+                this.activeTab=1;
+                console.log('Envios');
+                $("#mainHeaderEnvios").removeClass("hidden");
+                $("#mainHeaderStats").addClass("hidden");
+            break;
+        }
+        },
+        onTabClick(event){
+//            alert('hit')
+            console.warn(event.target)
+        }
   }
 
 })

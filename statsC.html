@@ -33,7 +33,7 @@
 <div class="app-viewport" id="file-list">
     
    <div class="main hidden">     
-        <md-whiteframe md-elevation="3" class="main-toolbar-header" id="mainHeader">
+        <md-whiteframe md-elevation="3" class="main-toolbar-header" id="mainHeaderStats">
           <md-toolbar class="md-dense">
             <md-menu>
              <md-button class="md-icon-button" md-menu-trigger>
@@ -62,27 +62,58 @@
              </md-menu>
 
               <md-button class="md-icon-button" id="anavCampanas">
-    <md-icon>arrow_back</md-icon>
-  </md-button>
+                <md-icon>arrow_back</md-icon>
+              </md-button>
               
-             <h2 class="md-title" style="flex: 1">Detalles de Campaña</h2>
+             <h2 class="md-title" style="flex: 1">Campaña</h2>
 
-             <md-button class="md-icon-button" id="searcherEnvios" class="hidden">
-               <md-icon class="hidden" id="icosearchE">search</md-icon>
+           </md-toolbar>
+         </md-whiteframe>
+       
+       <md-whiteframe md-elevation="3" class="main-toolbar-header" id="mainHeaderEnvios" class="hidden">
+          <md-toolbar class="md-dense">
+            <md-menu>
+             <md-button class="md-icon-button" md-menu-trigger>
+               <md-icon>menu</md-icon>
+             </md-button>
+             <md-menu-content>
+                <md-menu-item>
+                   <div class="md-list-text-container" id="userName" v-model="userMail">
+                      <span>{{userMail[0].first}} {{userMail[0].last}}</span>
+                      <div>{{userMail[0].mail}}</div>
+                   </div>
+                </md-menu-item>
+<!--
+                <md-menu-item>
+                   <span>Lenguaje</span>
+                   <md-icon>near_me</md-icon>
+                </md-menu-item>
+-->
+                <md-menu-item @click="logout()">
+                   <span>Cerrar Sesion</span>
+                   <md-button class="md-icon-button md-list-action">
+                      <md-icon id="buthover">exit_to_app</md-icon>
+                   </md-button>
+                </md-menu-item>
+             </md-menu-content>
+             </md-menu>
+
+              <md-button class="md-icon-button" id="anavCampanas2">
+                <md-icon>arrow_back</md-icon>
+              </md-button>
+              
+             <h2 class="md-title" style="flex: 1">Campaña</h2>
+
+             <md-button class="md-icon-button" id="searcherEnvios" class="">
+               <md-icon class="" id="icosearchE">search</md-icon>
              </md-button>
            </md-toolbar>
-           <!--<div style="flex: 0.75">
-   <input type="search" name="searcher" id="inputSearch" class="hidden">
-</div>-->
          </md-whiteframe>
 
           <md-whiteframe md-elevation="3" class="main-toolbar-header hidden" id="searchHeader">
           <md-toolbar class="md-dense">
               <i class="material-icons" id="backSearch">keyboard_backspace</i>
            <div style="flex: 0.75"><input type="search" name="searcher" id="inputSearch"></div>
-             <md-button class="md-icon-button" id="searcherEnv1">
-               <md-icon>search</md-icon>
-             </md-button>
            </md-toolbar>
 
          </md-whiteframe>
@@ -98,7 +129,7 @@
         
         
         
-<md-tabs md-fixed>
+<md-tabs md-fixed @change="onChange"  @click.native="onTabClick">
   <md-tab id="stats" md-label="Detalles">
     <div style="display: inline-block">
 
@@ -313,7 +344,7 @@
               </md-list>
             </div>
      
-    
+    <div id="auxE"></div>
   </md-tab>
 </md-tabs>
         
