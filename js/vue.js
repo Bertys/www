@@ -76,6 +76,9 @@ var example2 = new Vue({
                 console.log('Envios');
                 $("#mainHeaderEnvios").removeClass("hidden");
                 $("#mainHeaderStats").addClass("hidden");
+                if(searched==1){
+                $("#subheader").removeClass("hidden");
+                    }
             break;
         }
         },
