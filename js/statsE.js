@@ -225,7 +225,7 @@ function startEnvios2(){
 
 function  startInfoEnvio(datas){
 //    window.frames[0].location = 'data:text/html;'+datas;
-    console.log(datas);
+//    console.log(datas);
     var doc = document.getElementById('iframe').contentWindow.document;
 doc.open();
     var datas2="'"+datas+"'";
