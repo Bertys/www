@@ -86,7 +86,7 @@ function startEnvios(){
     var obj={'userEmail': c,'token': x,'language':language,'numReg':enviosMostrados,'Orderby':'id','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
-    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,'order_dir':wiz.Perfil[0].info.orderDir};
+    var data={'start' : "0", 'length' : "44",'order_by' : wiz.Perfil[0].info.Orderby,'order_dir':wiz.Perfil[0].info.orderDir};
     ajx = wiz.postInfo('envios/'+a+'/'+z+'/'+campId,data,wiz.processEnvios);
 }
 

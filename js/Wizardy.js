@@ -46,6 +46,7 @@ WizzardDMDS.prototype.getInfo = function(url,data,callback){
 		beforeSend: function (request)
     {
         request.setRequestHeader("Accept", 'application/json');
+        request.setRequestHeader("Content-Type", 'application/json');
         request.setRequestHeader("Authorization", x);
     },
 		dataType: 'json',
@@ -75,7 +76,8 @@ WizzardDMDS.prototype.postInfo = function(url,data,callback){
 		data:JSON.stringify(data),
 		beforeSend: function (request)
     {
-//        request.setRequestHeader("Accept", 'application/json');
+        request.setRequestHeader("Accept", 'application/json');
+        request.setRequestHeader("Content-Type", 'application/json');
         request.setRequestHeader("Authorization", x);
     },
 		dataType: 'json',
