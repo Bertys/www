@@ -84,7 +84,28 @@ var example2 = new Vue({
             break;
         }
         },
+      onChange2(tabIndex) {
+        switch (tabIndex) {
+            case 0:
+                this.activeTab=0;
+                console.log('Stats');
+                
+            break;
+            case 1:
+                this.activeTab=1;
+                console.log('Info');
+            break;
+            case 2:
+            this.activeTab=2;
+            console.log('Pieza');
+            break;
+        }
+        },
         onTabClick(event){
+//            alert('hit')
+            console.warn(event.target)
+        },
+      onTabClick2(event){
 //            alert('hit')
             console.warn(event.target)
         }

@@ -237,13 +237,9 @@ doc.write(datas2);
 doc.close();
     $body.removeClass("loading");
     $("#iframe").focus();
-//    $('#datosEmail').trigger('click');
+    $('#datosEmail').trigger('click');
     
 //    var link = document.getElementById( 'datosEmail' );
 //    var event = document.createEvent( 'HTMLEvents' );
-//
-//event.initEvent( 'click', true, true );
-//link.dispatchEvent( event );
-//var button = document.getElementById("datosEmail");
-//button.click();
+
 }
