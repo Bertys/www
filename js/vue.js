@@ -69,6 +69,7 @@ var example2 = new Vue({
                 console.log('Stats');
                 $("#mainHeaderStats").removeClass("hidden");
                 $("#mainHeaderEnvios").addClass("hidden");
+                $("#askSearch").addClass("hidden");
             break;
             case 1:
                 this.activeTab=1;
