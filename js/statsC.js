@@ -319,3 +319,16 @@ $('#clearSearch').click(function(e) {
     searched=0;
     startEnvios();
         });
+$('#backSearch').click(function(e) {
+
+       $("#subheader").addClass("hidden");
+       $("#mainHeader").removeClass("hidden");
+       $("#searchHeader").addClass("hidden");
+       $("#outSer").removeClass("hidden");
+       $("#dashDays").removeClass("hidden");
+        
+    $("#test").focus();
+    $('#inputSearch').val('');
+    searched=0;
+    cargarCampanas();
+        });

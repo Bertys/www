@@ -188,8 +188,7 @@ function onBackKeyDown() {
 var clicks=0;
      $('#dashDays').click(function(e) {
          
-         $body.addClass("loading");
-         $('#loading').removeClass("hidden");
+         $("body").addClass("loading");
          $("#auxC").addClass("hidden");
          if( clicks==0){
              
@@ -217,7 +216,7 @@ var clicks=0;
                  
              }
          
-         $body.removeClass("loading");
+         
              e.preventDefault();
          printCampanas(dias);
     });
@@ -301,7 +300,6 @@ function inicioCampanas(){
     cargarCampanas();
     
     
-    $body = $("body");
     
 }
 
@@ -378,16 +376,11 @@ function printCampanas(dias){
 //    $("#btnDashDay").mouseleave();
         $("#auxC").removeClass("hidden");
         $("#auxC").html('No hay campañas que contengan envíos en los ultimos '+dias+' dias.');
-        $("#campanas").removeClass("hidden");
-//        $("#campanas").removeClass("loading");
-        $body.removeClass("loading");
-//        $('#loading').addClass("hidden");
+        $(".main").removeClass("hidden");
         
     }else{
         $("#auxC").addClass("hidden");
-        $("#campanas").removeClass("hidden");
-        $body.removeClass("loading");
-        $('#loading').addClass("hidden");
+        $(".main").removeClass("hidden");
     }
     
     
@@ -397,8 +390,7 @@ function printCampanas(dias){
     }else if(cleared==1){
         $("#askSearch").addClass("hidden");
     }
-    $body.removeClass("loading");
-//    $('#loading').addClass("hidden");
+    $("body").removeClass("loading");
 }
 
 function printCamp(){
@@ -431,7 +423,7 @@ function printCamp(){
    $("#subheader").removeClass("hidden"); 
     }
    
-   $body.removeClass("loading");
+   $("body").removeClass("loading");
 }
 
 
@@ -455,7 +447,7 @@ function changeOrderCamp(){
 
 function searchCampanas(str){
     
-    $body.addClass("loading");
+    $("body").addClass("loading");
     stringSearch=str;
     cleared=0;
     var ajx;

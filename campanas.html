@@ -15,8 +15,9 @@
       <script src="./js/moment-with-locales.js"></script>
       <script src="./js/vue-material.js"></script>
    </head>
-   <body id="campanas" class="hidden loading">
+   <body id="campanas" class="loading">
       <div class="app-viewport" id="file-list">
+          <div class="hidden main">
          <md-whiteframe md-elevation="3" class="main-toolbar-header" id="mainHeader">
           <md-toolbar class="md-dense">
             <md-menu>
@@ -131,10 +132,11 @@
 
       </div>
        
-       <div class="modal">
+       <div class="modal hidden">
             <img id="loading" src="img/dmds_iso.svg" alt="DMDS">
          </div>
 
+       </div>
       <link rel="stylesheet" href="./css/vue-material.css">
       <link rel="stylesheet" href="./css/common.css">
       <link rel="stylesheet" href="./css/campanas.css">
