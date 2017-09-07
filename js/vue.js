@@ -15,7 +15,7 @@ Vue.material.registerTheme({
     accent: 'green'
   },
 })
-
+var pageSS;
 var campanas= [];
 var permisos= [];
 var grupos= [];
@@ -67,6 +67,7 @@ var example2 = new Vue({
             case 0:
                 this.activeTab=0;
                 console.log('Stats');
+                pageSS='Stats';
                 $("#mainHeaderStats").removeClass("hidden");
                 $("#mainHeaderEnvios").addClass("hidden");
                 $("#subheader").addClass("hidden");
@@ -74,6 +75,7 @@ var example2 = new Vue({
             case 1:
                 this.activeTab=1;
                 console.log('Envios');
+                pageSS='Envios';
                 $("#mainHeaderEnvios").removeClass("hidden");
                 $("#mainHeaderStats").addClass("hidden");
                 if(searched==1){
