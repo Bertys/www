@@ -138,6 +138,7 @@ xhr.onreadystatechange = function () {
         alert("Tu login es incorrecto, vuelve a intentarlo.");
         
         localStorage.removeItem('nuevo');
+        $('#password').val('');
 //        location.replace('./index.html');
 
         }else{
