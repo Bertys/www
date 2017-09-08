@@ -121,7 +121,9 @@ function inicioStatsEnv(){
     for(i=0;i<wiz.envios.length;i++){
 //       console.log( wiz.envios[i].info.envio.id);
         if(wiz.envios[i].info.envio.id==envId){
-    console.log(wiz.envios[i].info);
+            
+    console.log('Datos del envío seleccionado.');
+    console.log(JSON.stringify(wiz.envios[i].info));
    
 //    console.log(JSON.stringify(wiz.enviosTot.info.totalEnvios));
     console.log(JSON.stringify(wiz.enviosTot[0].info));
