@@ -226,6 +226,11 @@ function startEnvios2(){
 function  startInfoEnvio(datas){
 //    window.frames[0].location = 'data:text/html;'+datas;
 //    console.log(datas);
+    if(datas==null){
+        $("#iframeHelp").html('No hay pieza para este envío.');
+        $("#iframe").addClass('hidden');
+    }else{
+    $("#iframeHelp").addClass('hidden');
     var doc = document.getElementById('iframe').contentWindow.document;
 doc.open();
     var datas2="'"+datas+"'";
@@ -235,9 +240,12 @@ doc.open();
     console.log(datas2);
 doc.write(datas2);
 doc.close();
+        
+        }
+        
     $body.removeClass("loading");
-    $("#iframe").focus();
-    $('#datosEmail').trigger('click');
+//    $("#iframe").focus();
+//    $('#datosEmail').trigger('click');
     
 //    var link = document.getElementById( 'datosEmail' );
 //    var event = document.createEvent( 'HTMLEvents' );
