@@ -310,10 +310,12 @@ function inicioCampanas(){
 }
 
 
-function gotoStats2(id,name){
+function gotoStats2(id,name,numEnvios){
     
         console.log('id '+id);
         campanaId=id;
+    
+        localStorage.numEnvios=numEnvios;
         localStorage.campanaId=campanaId;
         localStorage.campanaName=name;
     

@@ -14,7 +14,7 @@ app.initialize();
 var stringSearch;
 var searched=0;
 var page='campanasStats';
-var campId, campName,a,b,c,d,x,y,z,permissions,language,name,nameG;
+var campId, campName,a,b,c,d,x,y,z,permissions,language,name,nameG,nuEn;
 //////////////////START////////////////////////////
 function deviceReadyM() {
 
@@ -32,6 +32,7 @@ function deviceReadyM() {
     language=localStorage.getItem("language");
     first=localStorage.getItem("first_name");
     last=localStorage.getItem("last_name");
+    nuEn=localStorage.getItem("numEnvios");
 //  //actualizacion de los datos del menu
     usMail[0].first=first;
     usMail[0].last=last;
@@ -76,7 +77,12 @@ function deviceReadyM() {
 var ajx
 function startEnvios(){
 
-    var obj={'userEmail': c,'token': x,'language':language,'numReg':6,'Orderby':'timestamp','orderDir':'desc','start':0,'pagina':0};
+    var heigg=$(window).height(); 
+    console.log(heigg);
+    
+    var auxNum=(heigg/100).toFixed(0);
+    
+    var obj={'userEmail': c,'token': x,'language':language,'numReg':auxNum,'Orderby':'timestamp','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
 //    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};

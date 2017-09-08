@@ -157,11 +157,11 @@ function inicioStatsEnv(){
     $('#clTotP').html(res3);
     $("#clTotPp .md-progress-track").css("width",(wiz.envios[i].info.ev_click/wiz.envios[i].info.ev_vista).toFixed(2)+'%');
     $('#clUni').html(wiz.envios[i].info.ev_click_unico);
-            if((wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista).toFixed(0)>=100){
+            if((wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista_unica).toFixed(0)>=100){
         res4='100%'
-        }else{ res4=(wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista).toFixed(2)+'%'}
+        }else{ res4=(wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista_unica).toFixed(2)+'%'}
     $('#clUniP').html(res4);
-    $("#clUniPp .md-progress-track").css("width",(wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista).toFixed(2)+'%');
+    $("#clUniPp .md-progress-track").css("width",(wiz.envios[i].info.ev_click_unico/wiz.envios[i].info.ev_vista_unica).toFixed(2)+'%');
 //    $('#reTot').html(wiz.envios[i].info.ev_rebote);
 //    $('#reTotP').html((wiz.envios[i].info.ev_rebote/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
 //    $("#reTotPp .md-progress-track").css("width",(wiz.envios[i].info.ev_rebote/wiz.envios[i].info.ev_envio*100).toFixed(2)+'%');
@@ -186,7 +186,7 @@ function inicioStatsEnv(){
             $('#horEnv').html(wiz.envios[i].info.modificado);
             $('#status').html(wiz.envios[i].info.estado);
             $('#emrem').html(wiz.envios[i].info.envio.remitente);
-            $('#asunto').html(wiz.envios[i].info.envio.asunto);
+            $('#asunto').html(diacriticsReplace(wiz.envios[i].info.envio.asunto));
             $('#nomrem').html(wiz.envios[i].info.envio.remitente_nombre);
             $('#emres').html(wiz.envios[i].info.envio.reply_to);
             $('#segmen').html(wiz.envios[i].info.envio.filtro.nombre);
@@ -209,6 +209,92 @@ function inicioStatsEnv(){
     $body.removeClass("loading");
    
 }
+////////////////////Diacritics
+function diacriticsReplace( str ) {
+    return str.replace( /[^A-Za-z0-9\s]+/g, function( a ) {
+        return diacriticsMap[ a ] || a;
+    } );
+}
+
+var diacriticsMap = {
+	"\u00C0": "A",   // À
+	"\u00C1": "A",   // Á
+	"\u00C2": "A",   // Â
+	"\u00C3": "A",   // Ã
+	"\u00C4": "A",   // Ä
+	"\u00C5": "A",   // Å
+	"\u00C6": "AE",  // Æ
+	"\u00C7": "C",   // Ç
+	"\u00C8": "E",   // È
+	"\u00C9": "E",   // É
+	"\u00CA": "E",   // Ê
+	"\u00CB": "E",   // Ë
+	"\u00CC": "I",   // Ì
+	"\u00CD": "I",   // Í
+	"\u00CE": "I",   // Î
+	"\u00CF": "I",   // Ï
+	"\u0132": "IJ",  // Ĳ
+	"\u00D0": "D",   // Ð
+	"\u00D1": "N",   // Ñ
+	"\u00D2": "O",   // Ò
+	"\u00D3": "O",   // Ó
+	"\u00D4": "O",   // Ô
+	"\u00D5": "O",   // Õ
+	"\u00D6": "O",   // Ö
+	"\u00D8": "O",   // Ø
+	"\u0152": "OE",  // Œ
+	"\u00DE": "TH",  // Þ
+	"\u00D9": "U",   // Ù
+	"\u00DA": "U",   // Ú
+	"\u00DB": "U",   // Û
+	"\u00DC": "U",   // Ü
+	"\u00DD": "Y",   // Ý
+	"\u0178": "Y",   // Ÿ
+	"\u00E0": "a",   // à
+	"\u00E1": "a",   // á
+	"\u00E2": "a",   // â
+	"\u00E3": "a",   // ã
+	"\u00E4": "a",   // ä
+	"\u00E5": "a",   // å
+	"\u00E6": "ae",  // æ
+	"\u00E7": "c",   // ç
+	"\u00E8": "e",   // è
+	"\u00E9": "e",   // é
+	"\u00EA": "e",   // ê
+	"\u00EB": "e",   // ë
+	"\u00EC": "i",   // ì
+	"\u00ED": "i",   // í
+	"\u00EE": "i",   // î
+	"\u00EF": "i",   // ï
+	"\u0133": "ij",  // ĳ
+	"\u00F0": "d",   // ð
+	"\u00F1": "n",   // ñ
+	"\u00F2": "o",   // ò
+	"\u00F3": "o",   // ó
+	"\u00F4": "o",   // ô
+	"\u00F5": "o",   // õ
+	"\u00F6": "o",   // ö
+	"\u00F8": "o",   // ø
+	"\u0153": "oe",  // œ
+	"\u00DF": "ss",  // ß
+	"\u00FE": "th",  // þ
+	"\u00F9": "u",   // ù
+	"\u00FA": "u",   // ú
+	"\u00FB": "u",   // û
+	"\u00FC": "u",   // ü
+	"\u00FD": "y",   // ý
+	"\u00FF": "y",   // ÿ
+	"\uFB00": "ff",  // ﬀ
+	"\uFB01": "fi",  // ﬁ
+	"\uFB02": "fl",  // ﬂ
+	"\uFB03": "ffi", // ﬃ
+	"\uFB04": "ffl", // ﬄ
+	"\uFB05": "ft",  // ﬅ
+	"\uFB06": "st",  // ﬆ
+};
+
+
+
 //////////////////START////////////////////////////
 
     

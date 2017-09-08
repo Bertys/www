@@ -81,10 +81,11 @@ function printDMDS(){
 
 
   location.replace('./dashboard.html');
-    }
+    }else{
     $body.removeClass("loading");
     $body.removeClass("hidden");
     $('.main').removeClass("hidden");
+        }
     
 }
 $('#butDash').click(function(e) {

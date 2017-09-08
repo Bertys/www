@@ -95,7 +95,7 @@
 
             <div class="list-campang">
               <md-list class="custom-list md-triple-line">
-                <md-list-item v-on:click="gotoStats2(data.info.dmds_remote_id, data.info.name)" v-for="(data, index) in listCamp" id="test">
+                <md-list-item v-on:click="gotoStats2(data.info.dmds_remote_id, data.info.name, data.info.stats.envios_hechos)" v-for="(data, index) in listCamp" id="test">
                   <div class="md-list-text-container">
                       <h4>{{ data.info.name }}</h4>
                       <md-layout md-gutter>
