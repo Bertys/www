@@ -76,7 +76,7 @@ function deviceReadyM() {
 var ajx
 function startEnvios(){
 
-    var obj={'userEmail': c,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'desc','start':0,'pagina':0};
+    var obj={'userEmail': c,'token': x,'language':language,'numReg':6,'Orderby':'timestamp','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 
 //    var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
@@ -207,7 +207,7 @@ function searchEnvios(str){
     for(i=0;i<=wiz.envios.length;i++){
             envios.shift();
         }
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':999, 'Orderby':'id','orderDir':'desc','start':0,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':999, 'Orderby':'timestamp','orderDir':'desc','start':0,'pagina':0};
     wiz.processPerfil(obj);
 //    alert(str);
     var data={'search':str, 'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,"order_dir":wiz.Perfil[0].info.orderDir};
@@ -330,7 +330,7 @@ function cargarMasE(){
     var aux=contEnvMost*6;
     console.log(totalEnvios);
     if(aux<=totalEnvios){
-    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'id','orderDir':'desc','start':aux,'pagina':0};
+    var obj={'userEmail': b,'token': x,'language':language,'numReg':6,'Orderby':'timestamp','orderDir':'desc','start':aux,'pagina':0};
     wiz.processPerfil(obj);
 
     var data={'start' : wiz.Perfil[0].info.start, 'length' : wiz.Perfil[0].info.numReg,'order_by' : wiz.Perfil[0].info.Orderby,'order_dir':wiz.Perfil[0].info.orderDir};
