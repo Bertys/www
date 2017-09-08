@@ -39,8 +39,7 @@ function deviceReadyM() {
 //        console.log(permisos[0].dmds_id);
   
     
-    var auxil='<span>Hugo Planisys</span><div>'+b+'</div>';
-    $('#userName').html(auxil);
+    
     $('#preSelect').html('Hola '+b+',');
     
      
@@ -83,7 +82,7 @@ function printDMDS(){
   location.replace('./dashboard.html');
     }
     $body.removeClass("loading");
-    $('.main').removeClass("hidden");
+    $$body.removeClass("hidden");
     
 }
 $('#butDash').click(function(e) {
