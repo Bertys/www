@@ -15,7 +15,7 @@ $( document ).ready(function() {
             deviceReadyM();
 });
 var dmdsSel=0;
-var x,b,permissions,language,a,z,y,c,dmdsId,dmdsName,groupId,groupName;
+var x,b,permissions,language,a,z,y,c,dmdsId,dmdsName,groupId,groupName,first,last;
 //////////////////START////////////////////////////
 function deviceReadyM() {
 
@@ -29,7 +29,8 @@ function deviceReadyM() {
     b=localStorage.getItem("usrAuxMeu");
     permissions=localStorage.getItem("permissions");
     language=localStorage.getItem("language");
-    
+    first=localStorage.getItem("first_name");
+    last=localStorage.getItem("last_name");
     
 
     cargarDmds();
@@ -40,7 +41,7 @@ function deviceReadyM() {
   
     
     
-    $('#preSelect').html('Hola '+b+',');
+    $('#preSelect').html('Hola '+first+' '+last+',');
     
      
     
