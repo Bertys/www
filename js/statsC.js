@@ -101,6 +101,10 @@ function loadWizzard(){
 
 function inicioStatsCamp(){
     
+    if(wiz.enviosTot[0].info.ev_envio==0){
+        wiz.enviosTot[0].info.ev_envio=1;
+    }
+    
      var res1,res2,res3,res4,res5,res6,res7;
 
 //    console.log(JSON.stringify(wiz.enviosTot.info.totalEnvios));

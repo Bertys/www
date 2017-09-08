@@ -117,6 +117,9 @@ function inicioStatsEnv(){
     
     var res1,res2,res3,res4,res5,res6,res7;
     
+    if(wiz.envios[i].info.ev_envio==0){
+        wiz.envios[i].info.ev_envio=1;
+    }
     
     for(i=0;i<wiz.envios.length;i++){
 //       console.log( wiz.envios[i].info.envio.id);
