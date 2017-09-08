@@ -78,6 +78,7 @@ var ajx
 function startEnvios(){
 
     var heigg=$(window).height(); 
+//    $(document).height();
     console.log(heigg);
     
     var auxNum=(heigg/100).toFixed(0);
