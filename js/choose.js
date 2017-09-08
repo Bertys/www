@@ -82,7 +82,7 @@ function printDMDS(){
   location.replace('./dashboard.html');
     }
     $body.removeClass("loading");
-    $$body.removeClass("hidden");
+    $body.removeClass("hidden");
     
 }
 $('#butDash').click(function(e) {
