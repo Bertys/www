@@ -281,7 +281,7 @@ totalEnvios=envios.recordsFiltered;
 	wiz.envios = new Array();
 	for(i=0;i<len;i++){
 		var obj = envios.data[i];
-        console.log(JSON.stringify(envios.data[i]));
+//        console.log(JSON.stringify(envios.data[i]));
 		var envioss = new WizzardDMDS.Envios(obj);
 		wiz.envios.push(envioss);
 	}

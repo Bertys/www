@@ -220,12 +220,12 @@ function printEnvios(pag){
     var algo=0;
 	if(typeof pag === "undefined"){
         pag = 0;
-//        console.log(JSON.stringify(wiz.envios));
+        console.log(JSON.stringify(wiz.envios));
     }
 
  for(i=0;i<=wiz.envios.length-1;i++){
             envios.push(wiz.envios[i]);
-     console.log(JSON.stringify(wiz.envios[i]));
+//     console.log(JSON.stringify(wiz.envios[i]));
      algo++;
         }
     
