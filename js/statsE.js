@@ -123,16 +123,21 @@ function inicioStatsEnv(){
 //       console.log( wiz.envios[i].info.envio.id);
         if(wiz.envios[i].info.envio.id==envId){
             
-            if(wiz.envios[i].info.ev_envio==0){
-        wiz.envios[i].info.ev_envio=1;
-    }
-            
+     
     console.log('Datos del envío seleccionado.');
     console.log(JSON.stringify(wiz.envios[i].info));
    
 //    console.log(JSON.stringify(wiz.enviosTot.info.totalEnvios));
     console.log(JSON.stringify(wiz.enviosTot[0].info));
     $('#totEma').html(wiz.envios[i].info.ev_envio);
+            
+     if(wiz.envios[i].info.ev_envio==0){
+        wiz.envios[i].info.ev_envio=1;
+    }
+    if(wiz.envios[i].info.ev_vista==0){
+        wiz.envios[i].info.ev_vista=1;
+    }
+          
     $('#apTot').html(wiz.envios[i].info.ev_vista);
             if((wiz.envios[i].info.ev_vista/wiz.envios[i].info.ev_envio*100).toFixed(0)>=100){
         res1='100%'
