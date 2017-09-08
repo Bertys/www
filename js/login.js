@@ -138,7 +138,7 @@ xhr.onreadystatechange = function () {
         alert("Tu login es incorrecto, vuelve a intentarlo.");
         
         localStorage.removeItem('nuevo');
-        location.replace('./index.html');
+//        location.replace('./index.html');
 
         }else{
             console.log("Entra login else. con: xhr.readyState "+xhr.readyState+' xhr.status '+xhr.status);
